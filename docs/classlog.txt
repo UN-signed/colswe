@@ -1,6 +1,6 @@
 31/08/2017
 Creamos 4 moukup iniciales
   Landing page
-  Modal logup
+  Modal sign up
   Modal login
   welcome page
