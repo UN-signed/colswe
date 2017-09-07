@@ -34,6 +34,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#"> Welcome <%= current_user.email %> </a>
+              </li>
+            <% end %>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
             </li>
@@ -41,7 +47,6 @@
               <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
             </li>
             <% if user_signed_in? %>
-              Signed in as <%= current_user.email %>. This cannot be cheese?
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" data-method="delete" href="<%=destroy_user_session_path%>">Cerrar Sesión</a>
               </li>
