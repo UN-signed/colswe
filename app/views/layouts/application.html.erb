@@ -40,12 +40,19 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#log_in">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#sign_up">Registro</a>
-            </li>
+            <% if user_signed_in? %>
+              Signed in as <%= current_user.email %>. This cannot be cheese?
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" data-method="delete" href="<%=destroy_user_session_path%>">Cerrar Sesión</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="<%=new_user_session_path%>">Iniciar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="<%=new_user_registration_path%>">Registro</a>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
