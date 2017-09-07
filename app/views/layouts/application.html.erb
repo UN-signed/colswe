@@ -34,18 +34,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#"> Welcome <%= current_user.email %> </a>
+              </li>
+            <% end %>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#log_in">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#sign_up">Registro</a>
-            </li>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" data-method="delete" href="<%=destroy_user_session_path%>">Cerrar Sesión</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="<%=new_user_session_path%>">Iniciar Sesión</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="<%=new_user_registration_path%>">Registro</a>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
