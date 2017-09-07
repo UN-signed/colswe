@@ -26,8 +26,18 @@
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">CONTACTANOS</h2>
-            <hr class="primary">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio. Fusce purus sapien, varius non interdum varius, eleifend vel ex. Fusce gravida sagittis nisl a rhoncus. Cras eu commodo arcu. Nulla fermentum et risus vitae maximus. Etiam quis posuere ligula, et mattis nisi. Duis blandit orci ut feugiat mattis.</p>
+            <hr class="primary"><br>
+            <form>
+             <div class="form-group">
+               <label for="email">Email:</label>
+               <input type="email" class="form-control" id="email">
+             </div>
+             <div class="form-group">
+               <label for="pwd">Mensaje:</label>
+               <input type="password" class="form-control" id="pwd">
+             </div>
+             <button type="submit" class="btn btn-default">Enviar</button>
+            </form>
           </div>
         </div>
         <div class="row">
@@ -40,6 +50,6 @@
         </div>
       </div>
     </section>
-    
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
