@@ -56,6 +56,7 @@ group :development do
 end
 
 group :production do
+  gem 'bootstrap-sass', '2.1'
   gem 'pg'
   gem 'rails_12factor'
 end
