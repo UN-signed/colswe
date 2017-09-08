@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'webpacker'
 #Gemas de Boostrap
 
-#gem 'boostrap-sass'
+gem 'boostrap-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
