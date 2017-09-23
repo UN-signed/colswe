@@ -25,3 +25,7 @@ $(function () {
     $name.toggleClass('inverted', $(this).scrollTop() < $nav.height());
   });
 });
+
+$(document).ready(function() {
+  $('.ui.secondary.scrolled.menu').menu();
+});

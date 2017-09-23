@@ -23,24 +23,62 @@
 
 <% if user_signed_in? %>
 
-<div class="ui four stackable cards">
-  <a class="ui card" href="http://www.dog.com">
-    <div class="content">
-      <div class="header">Nombre del Proyecto</div>
-      <div class="meta">
-        <span class="category">Área de Investigación</span>
-      </div>
-      <div class="description">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio.</p>
+<section style="padding:30px 40px;">
+  <div class="ui secondary menu">
+    <div class="right menu">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search icon"></i>
       </div>
     </div>
-    <div class="extra content">
-      <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/matt.jpg"> Matt
-      <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/helen.jpg"> Helen
-      <img class="ui avatar image" src="https://semantic-ui.com/images/avatar2/small/elyse.jpg"> Elyse
+  </div>
+
+  <div class="ui secondary scrolled menu">
+    <div class="right menu">
+      <a class="item text-center">Proyectos</a>
+      <a class="item text-center">Artículos</a>
+      <a class="item text-center">Investigadores</a>
+      <a class="item text-center">Preguntas</a>
     </div>
-  </a>
-</div>
+  </div>
+
+  <h6 class="ui heading" style="margin-bottom:30px">Resultados 2 de 2</h6>
+
+  <div class="ui four stackable link cards">
+    <div class="ui card" href="">
+      <div class="content">
+        <div class="header">Nombre del Proyecto</div>
+        <div class="meta">
+          <span class="category">Área de Investigación</span>
+        </div>
+        <div class="description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio.</p>
+        </div>
+      </div>
+      <div class="extra content">
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/matt.jpg"> Matt
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/helen.jpg"> Helen
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg"> Elyse
+      </div>
+    </div>
+    <div class="ui card" href="">
+      <div class="content">
+        <div class="header">Nombre del Proyecto</div>
+        <div class="meta">
+          <span class="category">Área de Investigación</span>
+        </div>
+        <div class="description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio.</p>
+        </div>
+      </div>
+      <div class="extra content">
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/matt.jpg"> Matt
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/helen.jpg"> Helen
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg"> Elyse
+      </div>
+    </div>
+  </div>
+</section>
 
 <% else %>
 
@@ -56,7 +94,5 @@
     </div>
   </div>
 </section>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
 <% end %>
