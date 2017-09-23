@@ -6,12 +6,8 @@
 /*@import "bootstrap-sporckets";*/
 @import "bootstrap";
 
-/*body {
-  padding: 0 100px!important;
-}*/
-
 .login {
-  margin-top: 100px !important;
+  margin-top: 5% !important;
   width: 350px;
   padding: 30px 30px !important;
   margin-left: calc(50% - 170px) !important;
@@ -30,8 +26,6 @@
 }
 
 .socials {
-  /*margin-top: 100px !important;*/
-  /*padding: 30px 30px !important;*/
   width: 500px;
   margin-left: calc(50% - 200px) !important;
 }
