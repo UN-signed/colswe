@@ -1,66 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Colswe</title>
+    <title>SmartHub - Grupos de Investigación en la UN</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
     <!-- Bootstrap core CSS -->
     <link href="https://blackrockdigital.github.io/startbootstrap-creative/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    <!-- Custom fonts for this template -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-creative/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<body>
+  <div class="ui secondary menu" id="main-menu">
+    <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+    <div class="item" style="margin-left:-15px;">
+      <h2 class="ui teal header">SmartHub</h2>
+    </div>
 
-    <!-- Plugin CSS -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-creative/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <div class="right menu">
 
-    <!-- Custom styles for this template -->
-    <!-- <link href="https://blackrockdigital.github.io/startbootstrap-creative/css/creative.min.css" rel="stylesheet"> -->
-
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">COLSWE APP</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#"> Bienvenido(a) <%= current_user.email %> </a>
-              </li>
-            <% end %>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
-            </li>
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" data-method="delete" href="<%=destroy_user_session_path%>">Cerrar Sesión</a>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<%=new_user_session_path%>">Iniciar Sesión</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<%=new_user_registration_path%>">Registro</a>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+      <% if user_signed_in? %>
+      <div class="item">
+        Bienvenido <%= current_user.email %>
       </div>
-    </nav>
-    <%= yield %>
-  </body>
+      <div class="item">
+        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">
+          Cerrar Sesión
+        </a>
+      </div>
+
+      <% else %>
+      <div class="item">
+        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+      </div>
+      <div class="item">
+        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <%= yield %>
+</body>
+
 </html>
