@@ -9,7 +9,7 @@
 
 
 /*  --------------------------------
-    --------- Main Styles ----------
+    -------- Landing Styles --------
     --------------------------------  */
 
 #main-menu {
@@ -17,6 +17,7 @@
   position: fixed;
   z-index: 1000;
   width: 100.5%;
+  color: white !important;
 }
 
 .ui.white.button {
@@ -32,6 +33,23 @@
   box-shadow: 0px 0px 0px 2px #00b5ad inset !important;
   color: white;
 }
+
+.ui.huge.home.button {
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+
+.ui.secondary.menu .item {
+  color: white;
+}
+
+.ui.secondary.menu.scrolled {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  transition: background-color 200ms linear;
+  color: black;
+}
+
 
 /*  --------------------------------
     ---- Login ad SignUp Styles ----
@@ -69,12 +87,3 @@
 /*  --------------------------------
     --------- Other Styles ---------
     --------------------------------  */
-
-.ui.secondary.menu.scrolled {
-  background-color: rgba(255, 255, 255, 0.93) !important;
-  transition: background-color 200ms linear;
-}
-
-/*.ui.secondary.menu.scrolled {
-  color: #00827c;
-}*/
