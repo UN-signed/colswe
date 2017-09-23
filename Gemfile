@@ -32,9 +32,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'webpacker'
-#Gemas de Boostrap
 
+#Boostrap gem
 gem 'boostrap-sass'
+#Semantic UI gem for cool front developers :P
+gem 'less-rails-semantic_ui'
+gem 'autoprefixer-rails'
+gem 'therubyracer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

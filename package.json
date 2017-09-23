@@ -3,8 +3,8 @@
   "private": true,
   "dependencies": {},
   "engines": {
-    "node": "6.5.0",
-    "yarn": "0.18.1"
+    "yarn": "0.18.1",
+    "node": "6.5.0"
   },
   "scripts": {
     "heroku-postbuild": "cd vendor && yarn"

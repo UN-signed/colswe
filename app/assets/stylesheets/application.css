@@ -1,17 +1,41 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
+ *= require semantic_ui/semantic_ui
  */
 /*@import "bootstrap-sporckets";*/
 @import "bootstrap";
+
+/*body {
+  padding: 0 100px!important;
+}*/
+
+.login {
+  margin-top: 100px !important;
+  width: 350px;
+  padding: 30px 30px !important;
+  margin-left: calc(50% - 170px) !important;
+}
+
+.login > .ui.heading {
+  margin-bottom: 20px !important;
+}
+
+.login > .links {
+  margin: 20px 0;
+}
+
+.login > .actions > .btn {
+  background-color: rgb(168, 168, 168) !important;
+}
+
+.socials {
+  /*margin-top: 100px !important;*/
+  /*padding: 30px 30px !important;*/
+  width: 500px;
+  margin-left: calc(50% - 200px) !important;
+}
+
+.socials > .ui.button {
+  margin-bottom: 10px;
+}
