@@ -5,6 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Boostrap gem
+gem 'boostrap-sass'
+# Semantic UI gem for cool front developers :P
+gem 'less-rails-semantic_ui'
+gem 'autoprefixer-rails'
+gem 'therubyracer'
+# jQuery gem
+gem 'jquery-rails'
+# Paperclip to upload files
+gem 'paperclip'
+
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
@@ -33,14 +44,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'webpacker'
 
-#Boostrap gem
-gem 'boostrap-sass'
-#Semantic UI gem for cool front developers :P
-gem 'less-rails-semantic_ui'
-gem 'autoprefixer-rails'
-gem 'therubyracer'
-#jQuery gem
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
