@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 	  post 'login' => 'users/sessions#create', as: :user_session
 	  delete 'logout' => 'users/sessions#destroy', as: :destroy_user_session
 		get 'register' => 'users/registrations#new'
+
 	end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
