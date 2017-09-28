@@ -8,7 +8,10 @@
 
     <% if user_signed_in? %>
     <div class="item">
-      Bienvenido <%= current_user.email %>
+      Bienvenido <%= current_user.name %>
+    </div>
+    <div class="item">
+      <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
     </div>
     <div class="item">
       <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">
