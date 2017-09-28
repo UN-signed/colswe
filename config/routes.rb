@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :research_areas
+  resources :research_lines
   resources :projects
   resources :members
   resources :research_groups

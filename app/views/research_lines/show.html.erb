@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @research_line.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @research_line.description %>
+</p>
+
+<%= link_to 'Edit', edit_research_line_path(@research_line) %> |
+<%= link_to 'Back', research_lines_path %>
