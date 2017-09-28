@@ -1,3 +1,21 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.create.article {
+  width: 70%;
+  margin-left: 15% !important;
+  margin-bottom: 100px;
+}
+
+.create.article > .ui.heading {
+  margin-bottom: 20px !important;
+}
+
+.create.article > .links {
+  margin: 20px 0;
+}
+
+.create.article > .actions > .btn {
+  background-color: rgb(168, 168, 168) !important;
+}
