@@ -1,3 +1,10 @@
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <h2 class="ui header">SmartHub</h2>
+  </div>
+</div>
+
 <div class="login" style="margin-top:100px;">
   <h1 class="section-heading text-center">Registrarse</h1>
   <hr class="primary">
@@ -14,18 +21,18 @@
     </div>
 
     <div class="field">
-      <% if @minimum_password_length %>
+      <!-- <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characteres mínimo)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", :placeholder => 'Tu contraseña para Colswe' %>
+      <% end %><br /> -->
+      <%= f.password_field :password, autocomplete: "off", :placeholder => 'Tu nueva contraseña' %>
     </div>
 
     <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'Repite tu contraseña' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'Repite tu nueva contraseña' %>
     </div>
 
     <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="field text-center">
       <div class="ui checkbox">
         <%= f.check_box :remember_me %>
         <%= f.label :recordarme %>
@@ -40,12 +47,12 @@
     </div>
   <% end %>
 
-  <div class="links text-center">
+  <!-- <div class="links text-center">
     ó
-  </div>
+  </div> -->
 </div>
 
-<div class="socials">
+<!-- <div class="socials">
   <button class="ui red button">
     <i class="google icon"></i>
     Registrarse con Google
@@ -54,4 +61,4 @@
     <i class="facebook icon"></i>
     Registrarse con Facebook
   </button>
-</div>
+</div> -->
