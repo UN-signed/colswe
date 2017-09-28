@@ -16,4 +16,5 @@
 
 class Article < ApplicationRecord
   belongs_to :user
+  #has_attached_file(file_path)
 end
