@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928054609) do
+ActiveRecord::Schema.define(version: 20170928071946) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,25 @@ ActiveRecord::Schema.define(version: 20170928054609) do
     t.text "bibliography"
     t.string "file_path"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "role"
+    t.integer "user_id"
+    t.integer "project_id"
+    t.string "research_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.boolean "state"
+    t.text "summary"
+    t.string "git"
+    t.integer "research_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170928054609) do
     t.string "github_username"
     t.string "photo"
     t.string "departament"
+    t.integer "research_group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
