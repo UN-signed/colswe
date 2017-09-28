@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscribers
   resources :tags
   resources :research_areas
   resources :research_lines
