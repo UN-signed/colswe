@@ -1,20 +1,49 @@
 
+<div class="ui secondary menu" id="main-menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <h2 class="ui inverted header" id="menu-name">SmartHub</h2>
+  </div>
+
+  <div class="right menu">
+
+    <% if user_signed_in? %>
+    <div class="item">
+      Bienvenido <%= current_user.email %>
+    </div>
+    <div class="item">
+      <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">
+        Cerrar Sesión
+      </a>
+    </div>
+
+    <% else %>
+    <div class="item">
+      <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+    </div>
+    <div class="item">
+      <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+    </div>
+    <% end %>
+  </div>
+</div>
+
 <header class="masthead">
   <div class="header-content">
     <div class="header-content-inner">
       <h1 class="ui inverted header">Avanza en tu investigación</h1>
-      <h2 class="ui inverted header">Haz parte del mundo de la investigación que se desarrolla en la Universidad Nacional</h3>
-        <br><br><br><br>
+      <h2 class="ui inverted header">Haz parte del mundo de la investigación que se desarrolla en la Universidad Nacional</h2>
+      <br><br><br><br>
 
       <% if user_signed_in? %>
-        <a class="ui teal huge home button">Crear Proyecto</a>
-        <a class="ui white huge home button">Publicar Artículo</a>
-        <a class="ui white huge button">Mis Proyectos</a>
+      <a class="ui teal huge home button">Crear Proyecto</a>
+      <a class="ui white huge home button">Publicar Artículo</a>
+      <a class="ui white huge button">Mis Proyectos</a>
       <% else %>
-        <a class="ui inverted huge home button">Ver Proyectos</a>
-        <a class="ui teal huge button" href="<%=new_user_registration_path%>">
-          Unirse a la Comunidad
-        </a>
+      <a class="ui inverted huge home button">Ver Proyectos</a>
+      <a class="ui teal huge button" href="<%=new_user_registration_path%>">
+        Unirse a la Comunidad
+      </a>
       <% end %>
 
     </div>

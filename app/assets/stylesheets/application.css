@@ -39,7 +39,6 @@
   margin-bottom: 20px;
 }
 
-
 .ui.secondary.menu .item {
   color: white;
 }
@@ -60,7 +59,7 @@
 
 .login {
   margin-top: 5% !important;
-  width: 350px;
+  width: 400px;
   padding: 30px 30px !important;
   margin-left: calc(50% - 170px) !important;
 }
