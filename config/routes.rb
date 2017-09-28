@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+	resources :articles
 	root to: 'home#index'
 	resources :home
   get "home/index"
 
-  get 'welcome/index'
+  # get 'welcome/index'
 
 	## devise controllers for users
 	devise_for :user, controllers: {
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
 		get 'register' => 'users/registrations#new'
 
 	end
+
+	# get "/articles"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
