@@ -1,0 +1,32 @@
+<%= form_with(model: research_group, local: true) do |form| %>
+  <% if research_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(research_group.errors.count, "error") %> prohibited this research_group from being saved:</h2>
+
+      <ul>
+      <% research_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :research_group_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :research_group_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :administrator %>
+    <%= form.number_field :administrator, id: :research_group_administrator %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
