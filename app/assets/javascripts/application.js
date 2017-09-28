@@ -28,4 +28,5 @@ $(function () {
 
 $(document).ready(function() {
   $('.ui.secondary.scrolled.menu').menu();
+  $('.ui.dropdown').dropdown();
 });

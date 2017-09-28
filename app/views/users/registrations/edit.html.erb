@@ -1,47 +1,66 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="right menu">
+    <div class="item">
+      Bienvenido <%= current_user.name %>
+    </div>
+    <div class="item">
+      <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">
+        Cerrar Sesión
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="edit user" style="margin-top:100px">
+  <h1 class="section-heading text-center">Editar perfil</h1>
+  <hr class="primary">
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'ui form', method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <br />
+    <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= link_to "Volver", :back, class: 'ui button' %>
+    <%= f.submit "Update", class: 'ui teal right floated button' %>
   </div>
-<% end %>
+  <% end %>
 
-<h3>Cancel my account</h3>
+  <div class="ui segment">
+    <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  </div>
 
-<%= link_to "Back", :back %>
+</div>

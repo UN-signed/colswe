@@ -22,6 +22,18 @@
     ---- Login ad SignUp Styles ----
     --------------------------------  */
 
+.edit.user {
+  width: 70%;
+  margin-left: 15%;
+  padding: 30px;
+}
+
+
+
+/*  --------------------------------
+    ---- Login ad SignUp Styles ----
+    --------------------------------  */
+
 .login {
   margin-top: 5% !important;
   width: 400px;
