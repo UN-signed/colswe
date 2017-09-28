@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 	## devise controllers for users
 	devise_for :user, controllers: {
-	  # confirmations: 'users/confirmations',
+	  confirmations: 'users/confirmations',
 	  passwords: 'users/passwords',
 	  registrations: 'users/registrations',
 	  sessions: 'users/sessions',

@@ -4,4 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
+
+	protected
+	def confirmation_required?
+	  false
+	end
 end
