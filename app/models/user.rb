@@ -35,4 +35,5 @@ class User < ApplicationRecord
 	  false
 	end
   has_many :articles
+  belongs_to :research_group
 end

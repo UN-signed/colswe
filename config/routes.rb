@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :research_groups
 	resources :articles
 	root to: 'home#index'
 	resources :home
