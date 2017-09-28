@@ -6,12 +6,14 @@
 #  name         :string
 #  key_words    :text
 #  description  :text
-#  lenguage     :string
+#  language     :string
 #  bibliography :text
 #  file_path    :string
+#  user_id      :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 
 class Article < ApplicationRecord
+  belongs_to :user
 end

@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 20170928045126) do
     t.string "name"
     t.text "key_words"
     t.text "description"
-    t.string "lenguage"
+    t.string "language"
     t.text "bibliography"
     t.string "file_path"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
