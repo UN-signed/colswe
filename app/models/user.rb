@@ -15,6 +15,12 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  description            :text
+#  degree                 :text
+#  github_username        :string
+#  photo                  :string
+#  departament            :string
 #
 
 class User < ApplicationRecord
@@ -28,4 +34,5 @@ class User < ApplicationRecord
 	def confirmation_required?
 	  false
 	end
+  has_many :articles
 end
