@@ -1,13 +1,24 @@
 <div class="ui secondary menu">
   <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
   <div class="item" style="margin-left:-15px;">
-    <h2 class="ui header">SmartHub</h2>
+    <%= link_to(raw('<h2 class="ui logo header">SmartHub</h2>'), '/home') %>
   </div>
 </div>
 
 <div class="login">
   <h1 class="text-center">Iniciar Sesión</h1>
   <hr class="primary">
+
+  <div class="socials text-center">
+    <button class="ui red button">
+      <i class="google icon"></i>
+      Iniciar con Google
+    </button>
+    <button class="ui grey button">
+      <i class="github icon"></i>
+      Iniciar con GitHub
+    </button>
+  </div>
 
   <div class="links text-center">
     ¿Nuevo en SmartHub?
@@ -43,14 +54,3 @@
     <%= render "users/shared/forgot_pass" %>
   </div>
 </div>
-
-<!-- <div class="socials">
-  <button class="ui red button">
-    <i class="google icon"></i>
-    Iniciar con Google
-  </button>
-  <button class="ui blue button">
-    <i class="facebook icon"></i>
-    Iniciar con Facebook
-  </button>
-</div> -->

@@ -28,10 +28,10 @@
 }
 
 .ui.white.button:hover {
-  background: #00b5ad;
-  -webkit-box-shadow: 0px 0px 0px 2px #00b5ad inset !important;
-  box-shadow: 0px 0px 0px 2px #00b5ad inset !important;
-  color: white;
+  background: #e3e3e3;
+  -webkit-box-shadow: 0px 0px 0px 2px #e3e3e3 inset !important;
+  box-shadow: 0px 0px 0px 2px #e3e3e3 inset !important;
+  color: black;
 }
 
 .ui.huge.home.button {
@@ -77,7 +77,7 @@
 }
 
 .socials {
-  width: 500px;
+  width: 400px;
   margin-left: calc(50% - 200px) !important;
 }
 
