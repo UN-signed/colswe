@@ -1,4 +1,4 @@
-<%= form_with(model: contact, local: true) do |form| %>
+<%= form_with(model: contact, local: true, class: 'ui form') do |form| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -12,26 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :contact_name %>
+    <%= form.text_field :name, id: :contact_name, placeholder: 'Nombre y Apellidos' %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :contact_email %>
+    <%= form.text_field :email, id: :contact_email, placeholder: 'Email' %>
   </div>
 
   <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, id: :contact_phone %>
+    <%= form.text_field :phone, id: :contact_phone, placeholder: 'Teléfono' %>
   </div>
 
   <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message, id: :contact_message %>
+    <%= form.text_area :message, id: :contact_message, placeholder: 'Escribe tu mensaje' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Enviar', class: 'ui teal button' %>
   </div>
 <% end %>

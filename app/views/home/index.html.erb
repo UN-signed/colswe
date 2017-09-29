@@ -3,14 +3,14 @@
   <div class="item" style="margin-left:-15px;">
     <%= link_to(raw('<h2 class="ui inverted logo header" id="menu-name">SmartHub</h2>'), '/home') %>
   </div>
-  
+
   <% if user_signed_in? %>
     <div class="item">
-      <a class="ui teal huge home button" href="<%=new_contact_path%>">Contacto</a>      
+      <a class="ui teal huge home button" href="<%=new_contact_path%>">Contacto</a>
     </div>
   <% end -%>
 
-  <div class="right menu">    
+  <div class="right menu">
     <% if user_signed_in? %>
       <div class="item">
         Bienvenido <%= current_user.name %>
@@ -42,11 +42,11 @@
       <% if user_signed_in? %>
         <a class="ui teal huge home button" href="<%=new_project_path%>">Crear Proyecto</a>
         <a class="ui white huge home button" href="<%=new_article_path%>">Publicar Artículo</a>
-        <a class="ui white huge button">Mis Proyectos</a>
+        <a class="ui white huge button" href="<%=projects_path%>">Ver Proyectos</a>
       <% else %>
-        <a class="ui inverted huge home button">Ver Proyectos</a>
-        <a class="ui teal huge button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>
-        <a class="ui teal huge button" href="<%=new_contact_path%>"> Contacto </a>
+        <a class="ui inverted huge home button" href="<%=projects_path%>">Ver Proyectos</a>
+        <a class="ui teal huge home button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>
+        <a class="ui inverted huge button" href="<%=new_contact_path%>"> Contacto </a>
       <% end %>
 
     </div>
@@ -55,7 +55,7 @@
 
 <% if user_signed_in? %>
 
-<section style="padding:30px 40px;">
+<!-- <section style="padding:30px 40px;">
   <div class="ui secondary menu">
     <div class="right menu">
       <div class="ui icon input">
@@ -110,11 +110,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <% else %>
 
-<section class="bg-primary" id="about">
+<!-- <section class="bg-primary" id="about">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">
@@ -125,6 +125,6 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <% end %>

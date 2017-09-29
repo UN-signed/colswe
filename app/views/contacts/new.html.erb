@@ -4,16 +4,31 @@
     <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
   </div>
 
+  <% if user_signed_in? %>
+    <div class="item">
+      <a class="ui teal huge home button" href="<%=new_contact_path%>">Contacto</a>
+    </div>
+  <% end -%>
+
   <div class="right menu">
-    <div class="item">
-      Bienvenido <%= current_user.name %>
-    </div>
-    <div class="item">
-      <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
-    </div>
-    <div class="item">
-      <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">Cerrar Sesión</a>
-    </div>
+    <% if user_signed_in? %>
+      <div class="item">
+        Bienvenido <%= current_user.name %>
+      </div>
+      <div class="item">
+        <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
+      </div>
+      <div class="item">
+        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>"> Cerrar Sesión </a>
+      </div>
+    <% else %>
+      <div class="item">
+        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+      </div>
+      <div class="item">
+        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -23,5 +38,5 @@
 
 	<%= render 'form', contact: @contact %>
 
-	<%= link_to 'Back', contacts_path %>
+	<%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
 </section>
