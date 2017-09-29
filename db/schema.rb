@@ -10,7 +10,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907202436) do
+ActiveRecord::Schema.define(version: 20170929014734) do
+
+  create_table "articles", force: :cascade do |t|
+    t.string "name"
+    t.text "key_words"
+    t.text "description"
+    t.string "language"
+    t.text "bibliography"
+    t.string "file_path"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "role"
+    t.integer "user_id"
+    t.integer "project_id"
+    t.string "research_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.boolean "state"
+    t.text "summary"
+    t.string "git"
+    t.integer "research_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "research_areas", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "research_groups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "administrator_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "research_lines", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "research_area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +102,13 @@ ActiveRecord::Schema.define(version: 20170907202436) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
+    t.text "degree"
+    t.string "github_username"
+    t.string "photo"
+    t.string "departament"
+    t.integer "research_group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

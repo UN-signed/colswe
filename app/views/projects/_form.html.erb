@@ -1,0 +1,63 @@
+<%= form_with(model: project, local: true, class: "ui form") do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style="margin-bottom:40px; width:70%; margin-left:15%;">
+    <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Proyecto' %>
+  </div>
+
+  <div class="ui two column scalable grid" style="margin-bottom:50px;">
+    <div class="column">
+      <div class="field">
+        <%= form.text_area :summary, id: :project_summary, autofocus: true, :placeholder => 'Resumen del proyecto'%>
+      </div>
+      <!-- <div class="field">
+        <div class="ui left icon input">
+          <%= form.text_field :git, id: :project_git, autofocus: true, :placeholder => 'Tags que describan al proyecto'%>
+          <i class="tag icon"></i>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="column">
+      <!--select class="ui dropdown" style="margin-bottom:15px;">
+        <option value="">Selecciona una línea de investigación</option>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+      </select-->
+      <%= select("post", "research_line_id", ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona una línea de investigación'}, class: "ui dropdown",style: "margin-bottom:15px") %>
+      <div class="field">
+        <!--div class="ui fluid search selection dropdown">
+          < form.hidden_field("post", "research_line_id")>
+          <i class="dropdown icon"> </i>
+          <div class="default text">Selecciona un participante para agregar al proyecto</div>
+          <div class="menu">
+
+        </div-->
+        <%= select("post", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui dropdown",style: "margin-bottom:15px") %>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <%= form.text_field :git, id: :project_git, autofocus: true, :placeholder => 'URL repositorio del proyecto'%>
+          <i class="github icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <center>
+      <%= form.submit "Crear proyecto", :class => 'ui teal button' %>
+    </center>
+  </div>
+
+<% end %>

@@ -1,55 +1,130 @@
+<div class="ui secondary menu" id="main-menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui inverted logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
 
-    <header class="masthead">
-      <div class="header-content">
-        <div class="header-content-inner">
-          <h1 id="homeHeading">COLSWE APP</h1>
+  <% if user_signed_in? %>
+    <div class="item">
+      <a class="ui teal huge home button" href="<%=new_contact_path%>">Contacto</a>
+    </div>
+  <% end -%>
 
+  <div class="right menu">
+    <% if user_signed_in? %>
+      <div class="item">
+        Bienvenido <%= current_user.name %>
+      </div>
+      <div class="item">
+        <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
+      </div>
+      <div class="item">
+        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>"> Cerrar Sesión </a>
+      </div>
+    <% else %>
+      <div class="item">
+        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+      </div>
+      <div class="item">
+        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="header-content">
+    <div class="header-content-inner">
+      <h1 class="ui inverted header">Avanza en tu investigación</h1>
+      <h2 class="ui inverted header">Haz parte del mundo de la investigación que se desarrolla en la Universidad Nacional</h2>
+      <br><br><br><br>
+
+      <% if user_signed_in? %>
+        <a class="ui teal huge home button" href="<%=new_project_path%>">Crear Proyecto</a>
+        <a class="ui white huge home button" href="<%=new_article_path%>">Publicar Artículo</a>
+        <a class="ui white huge button" href="<%=projects_path%>">Ver Proyectos</a>
+      <% else %>
+        <a class="ui inverted huge home button" href="<%=projects_path%>">Ver Proyectos</a>
+        <a class="ui teal huge home button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>
+        <a class="ui inverted huge button" href="<%=new_contact_path%>"> Contacto </a>
+      <% end %>
+
+    </div>
+  </div>
+</header>
+
+<% if user_signed_in? %>
+
+<!-- <section style="padding:30px 40px;">
+  <div class="ui secondary menu">
+    <div class="right menu">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui secondary scrolled menu">
+    <div class="right menu">
+      <a class="item text-center">Proyectos</a>
+      <a class="item text-center">Artículos</a>
+      <a class="item text-center">Investigadores</a>
+      <a class="item text-center">Preguntas</a>
+    </div>
+  </div>
+
+  <h6 class="ui heading" style="margin-bottom:30px">Resultados 2 de 2</h6>
+
+  <div class="ui four stackable link cards">
+    <div class="ui card" href="">
+      <div class="content">
+        <div class="header">Nombre del Proyecto</div>
+        <div class="meta">
+          <span class="category">Área de Investigación</span>
+        </div>
+        <div class="description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio.</p>
         </div>
       </div>
-    </header>
-
-    <section class="bg-primary" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">APP DESCRIPTION</h2>
-            <hr class="light">
-            <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio. Fusce purus sapien, varius non interdum varius, eleifend vel ex. Fusce gravida sagittis nisl a rhoncus. Cras eu commodo arcu. Nulla fermentum et risus vitae maximus. Etiam quis posuere ligula, et mattis nisi. Duis blandit orci ut feugiat mattis.</p>
-            <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-          </div>
+      <div class="extra content">
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/matt.jpg"> Matt
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/helen.jpg"> Helen
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg"> Elyse
+      </div>
+    </div>
+    <div class="ui card" href="">
+      <div class="content">
+        <div class="header">Nombre del Proyecto</div>
+        <div class="meta">
+          <span class="category">Área de Investigación</span>
+        </div>
+        <div class="description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio.</p>
         </div>
       </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">CONTACTANOS</h2>
-            <hr class="primary"><br>
-            <form>
-             <div class="form-group">
-               <label for="email">Email:</label>
-               <input type="email" class="form-control" id="email">
-             </div>
-             <div class="form-group">
-               <label for="pwd">Mensaje:</label>
-               <input type="password" class="form-control" id="pwd">
-             </div>
-             <button type="submit" class="btn btn-default">Enviar</button>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 ml-auto text-center">
-
-          </div>
-          <div class="col-lg-4 mr-auto text-center">
-
-          </div>
-        </div>
+      <div class="extra content">
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/matt.jpg"> Matt
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/helen.jpg"> Helen
+        <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg"> Elyse
       </div>
-    </section>
+    </div>
+  </div>
+</section> -->
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<% else %>
+
+<!-- <section class="bg-primary" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 class="section-heading text-white">APP DESCRIPTION</h2>
+        <hr class="light">
+        <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet elit odio. Fusce purus sapien, varius non interdum varius, eleifend vel ex. Fusce gravida sagittis nisl a rhoncus. Cras eu commodo arcu. Nulla fermentum et risus vitae maximus. Etiam quis posuere ligula, et mattis nisi. Duis blandit orci ut feugiat mattis.</p>
+        <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<% end %>

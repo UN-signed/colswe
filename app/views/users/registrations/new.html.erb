@@ -1,29 +1,79 @@
-<h2>edit Sign up</h2>
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header">SmartHub</h2>'), '/home') %>
+  </div>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="login" style="margin-top:100px;">
+  <h1 class="section-heading text-center">Registrarse</h1>
+  <hr class="primary">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <!-- <div class="socials text-center">
+    <button class="ui red button">
+      <i class="google icon"></i>
+      Registro con Google
+    </button>
+    <button class="ui grey button">
+      <i class="github icon"></i>
+      Registro con GitHub
+    </button>
+  </div> -->
+
+  <div class="links text-center">
+    ¿Has venido antes por aquí?
+    <%= render "users/shared/links" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "ui form"}) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="field">
+      <%= f.text_field :name, autofocus: true, :placeholder => 'Nombre' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, :placeholder => 'Email' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field">
+      <!-- <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characteres mínimo)</em>
+      <% end %><br /> -->
+      <%= f.password_field :password, autocomplete: "off", :placeholder => 'Tu nueva contraseña' %>
+    </div>
 
-<%= render "users/shared/links" %>
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'Repite tu nueva contraseña' %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+    <div class="field text-center">
+      <div class="ui checkbox">
+        <%= f.check_box :remember_me %>
+        <%= f.label :recordarme %>
+      </div>
+    </div>
+    <% end -%>
+
+    <div class="actions">
+      <center>
+        <%= f.submit "Registrarse", :class => 'ui teal button' %>
+      </center>
+    </div>
+  <% end %>
+
+  <!-- <div class="links text-center">
+    ó
+  </div> -->
+</div>
+
+<!-- <div class="socials">
+  <button class="ui red button">
+    <i class="google icon"></i>
+    Registrarse con Google
+  </button>
+  <button class="ui blue button">
+    <i class="facebook icon"></i>
+    Registrarse con Facebook
+  </button>
+</div> -->

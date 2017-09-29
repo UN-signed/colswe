@@ -12,6 +12,57 @@
  *
  *= require_tree .
  *= require_self
+ *= require semantic_ui/semantic_ui
  */
-@import "bootstrap-sporckets";
+/*@import "bootstrap-sporckets";*/
 @import "bootstrap";
+
+
+/*  --------------------------------
+    ---- Login ad SignUp Styles ----
+    --------------------------------  */
+
+.edit.user {
+  width: 70%;
+  margin-left: 15%;
+  padding: 30px;
+}
+
+
+
+/*  --------------------------------
+    ---- Login ad SignUp Styles ----
+    --------------------------------  */
+
+.login {
+  margin-top: 5% !important;
+  width: 400px;
+  padding: 30px 30px !important;
+  margin-left: calc(50% - 170px) !important;
+}
+
+.login > .ui.heading {
+  margin-bottom: 20px !important;
+}
+
+.login > .links {
+  margin: 20px 0;
+}
+
+.login > .actions > .btn {
+  background-color: rgb(168, 168, 168) !important;
+}
+
+.socials {
+  width: 400px;
+  margin-left: calc(50% - 200px) !important;
+}
+
+.socials > .ui.button {
+  margin-bottom: 10px;
+}
+
+
+/*  --------------------------------
+    --------- Other Styles ---------
+    --------------------------------  */

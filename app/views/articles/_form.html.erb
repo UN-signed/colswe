@@ -1,0 +1,45 @@
+<%= form_with(model: article, local: true, class: "ui form") do |form| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :título %>
+    <%= form.text_field :name, id: :article_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :palabras_clave %> (separadas por comas)
+    <%= form.text_area :key_words, id: :article_key_words %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripción %>
+    <%= form.text_area :description, id: :article_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Idioma %>
+    <%= form.text_field :lenguage, id: :article_lenguage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bibliografía %>
+    <%= form.text_area :bibliography, id: :article_bibliography %>
+  </div>
+
+  <div class="actions">
+    <%= link_to 'Volver', {controller: '/home'}, class: 'ui left floated button' %>
+    <%= form.submit "Crear Artículo", :class => 'ui right floated teal button' %>
+    <center>
+    </center>
+  </div>
+<% end %>

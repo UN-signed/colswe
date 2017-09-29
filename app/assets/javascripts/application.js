@@ -10,6 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require semantic_ui/semantic_ui
+
+$(function () {
+  $(document).scroll(function () {
+    var $nav = $("#main-menu");
+    var $name = $("#menu-name");
+    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    $name.toggleClass('inverted', $(this).scrollTop() < $nav.height());
+  });
+});
+
+$(document).ready(function() {
+  $('.ui.secondary.scrolled.menu').menu();
+  $('.ui.dropdown').dropdown();
+});

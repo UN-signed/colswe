@@ -1,0 +1,27 @@
+<%= form_with(model: research_line, local: true) do |form| %>
+  <% if research_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(research_line.errors.count, "error") %> prohibited this research_line from being saved:</h2>
+
+      <ul>
+      <% research_line.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :research_line_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :research_line_description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
