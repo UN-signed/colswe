@@ -26,40 +26,41 @@
   </div>
 </div>
 
-<!-- <p id="notice"><%= notice %></p> -->
+<br>
 <h1 class="section-heading text-center">Proyectos</h1>
-<hr class="primary">
-<!-- <h1 class="ui text-center header" style="margin-bottom:40px;">Proyectos</h1> -->
+<hr class="primary"><br>
 
-<div class="ui three cards" style="width:80%; margin-left:10%;">
-  <% @projects.each do |project| %>
-  <a class="ui link card" href="<%=project_path(project)%>">
+<div style="margin:10px 10%;">
+  <div class="ui three cards">
+    <% @projects.each do |project| %>
 
-    <div class="content">
-      <div class="header">
-        <%= project.name %>
+    <a class="ui link card" href="<%=project_path(project)%>">
+      <div class="content">
+        <div class="header">
+          <%= project.name %>
+        </div>
+        <div class="meta">
+          <%= project.created_at %></td>
+        </div>
+        <div class="description">
+          <%= project.summary %>
+        </div>
       </div>
-      <div class="meta">
-        <%= project.created_at %></td>
-      </div>
-      <div class="description">
-        <%= project.summary %>
-      </div>
-    </div>
 
-    <div class="extra content">
-      <i class="github icon"></i>
-      <%= project.git %>
+      <div class="extra content">
+        <i class="github icon"></i>
+        <%= project.git %>
 
-      <!-- <div class="ui three small buttons">
+        <!-- <div class="ui three small buttons">
         <%= link_to 'Editar', edit_project_path(project), class: 'ui button' %>
         <%= link_to 'Ver', project, class: 'ui teal button' %>
-        <%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %>
-      </div> -->
-    </div>
+        <%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %> -->
+      </div>
+    </a>
 
-  </a>
-  <% end %>
+    <% end %>
+  </div>
+
+  <br><br>
+  <%= will_paginate @projects, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
 </div>
-
-<br>
