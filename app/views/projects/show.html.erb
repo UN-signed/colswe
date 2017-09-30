@@ -1,24 +1,46 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
 
-<p>
-  <strong>State:</strong>
-  <%= @project.state %>
-</p>
+  <div class="right menu">
+    <% if user_signed_in? %>
+      <div class="item">
+        <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
+      </div>
+      <div class="item">
+        <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
+      </div>
+      <div class="item">
+        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>"> Cerrar Sesión </a>
+      </div>
+    <% else %>
+      <div class="item">
+        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+      </div>
+      <div class="item">
+        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @project.summary %>
-</p>
+<div class="create article" style="margin-top:60px;">
+  <h3 class="ui right floated header">Estado: <%= @project.state %></h3>
+  <h1 class="section-heading text-center"><%= @project.name %></h1>
 
-<p>
-  <strong>Git:</strong>
-  <%= @project.git %>
-</p>
+  <h3 class="ui header">Descripción:</h3>
+  <p><%= @project.summary %></p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+  <h3 class="ui header">Git:</h3>
+  <p><%= @project.git %></p>
+
+  <center>
+    <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
+  </center>
+
+  <%= link_to 'Atrás', projects_path, class: 'ui left floated button' %>
+</div>
