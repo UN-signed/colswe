@@ -1,53 +1,72 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true, method: :put }) do |f| %>
+  <div class="right menu">
+    <div class="item">
+      Bienvenido <%= current_user.name %>
+    </div>
+    <div class="item">
+      <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">
+        Cerrar Sesión
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="edit user" style="margin-top:50px">
+  <h1 class="section-heading text-center">Editar perfil</h1>
+  <hr class="primary">
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'ui form', method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= image_tag @user.photo.url %>
   <div class="field">
-    <%= f.label :photo %><br />
-    <%= f.file_field :photo%>
+    <%= f.text_field :name, autofocus: true, placeholder: 'Nombre' %>
   </div>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
   </div>
+  <br />
+
+  <div class="ui segment text-center">
+    <h3 class="ui header">Cambiar contraseña</h3>
+    <i>(Déjalos en blanco si no quieres cambiarla)</i>
+    <br />
+    <div class="field">
+      <% if @minimum_password_length %>
+      <em><%= @minimum_password_length %> caracteres mínimo</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: 'Nueva contraseña' %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirmar contraseña' %>
+    </div>
+  </div>
+  <br />
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <i>(Necesitamos tu contraseña actual para guardar los cambios)</i>
+    <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Contraseña Actual' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= link_to "Volver", :back, class: 'ui button' %>
+    <%= f.submit "Guardar cambios", class: 'ui teal right floated button' %>
   </div>
-<% end %>
+  <% end %>
+  <br />
+  <br />
 
-<h3>Cancel my account</h3>
+  <div class="ui segment text-center">
+    <h3 class="ui header">¿Cansado de hacer investigación?</h3>
+    <center>
+      <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'ui red button' %>
+    </center>
+  </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

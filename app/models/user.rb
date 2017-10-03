@@ -23,7 +23,6 @@
 #  description            :text
 #  degree                 :text
 #  github_username        :string
-#  photo                  :string
 #  departament            :string
 #  research_group_id      :integer
 #
@@ -43,6 +42,8 @@ class User < ApplicationRecord
   has_many :members
   # belongs_to :research_group
 
-  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+  has_attached_file :image, styles: { medium: "1280x720", thumb: "800x600" }
+  has_attached_file :photo, styles: { medium: "1280x720", thumb: "800x600" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
 end

@@ -1,33 +1,67 @@
-<p id="notice"><%= notice %></p>
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
 
-<h1>Projects</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>State</th>
-      <th>Summary</th>
-      <th>Git</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.state %></td>
-        <td><%= project.summary %></td>
-        <td><%= project.git %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="right menu">
+    <% if user_signed_in? %>
+      <div class="item">
+        <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
+      </div>
+      <div class="item">
+        <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
+      </div>
+      <div class="item">
+        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>"> Cerrar Sesión </a>
+      </div>
+    <% else %>
+      <div class="item">
+        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+      </div>
+      <div class="item">
+        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <br>
+<h1 class="section-heading text-center">Proyectos</h1>
+<hr class="primary"><br>
 
-<%= link_to 'New Project', new_project_path %>
+<div style="margin:10px 10%;">
+  <div class="ui three cards">
+    <% @projects.each do |project| %>
+
+    <a class="ui link card" href="<%=project_path(project)%>">
+      <div class="content">
+        <div class="header">
+          <%= project.name %>
+        </div>
+        <div class="meta">
+          <%= project.created_at %></td>
+        </div>
+        <div class="description">
+          <%= project.summary %>
+        </div>
+      </div>
+
+      <div class="extra content">
+        <i class="github icon"></i>
+        <%= project.git %>
+
+        <!-- <div class="ui three small buttons">
+        <%= link_to 'Editar', edit_project_path(project), class: 'ui button' %>
+        <%= link_to 'Ver', project, class: 'ui teal button' %>
+        <%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %> -->
+      </div>
+    </a>
+
+    <% end %>
+  </div>
+
+  <br><br>
+  <%= will_paginate @projects, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+  <br><br><br><br>
+</div>

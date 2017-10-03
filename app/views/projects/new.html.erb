@@ -1,5 +1,29 @@
-<h1>New Project</h1>
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
 
-<%= render 'form', project: @project %>
+  <div class="right menu">
+    <div class="item">
+      Bienvenido <%= current_user.name %>
+    </div>
+    <div class="item">
+      <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
+    </div>
+    <div class="item">
+      <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>">
+        Cerrar Sesión
+      </a>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', projects_path %>
+<section class="create article text-center">
+  <h1 class="section-heading text-center">Crear un Nuevo Proyecto</h1>
+  <hr class="primary">
+
+  <%= render 'form', project: @project %>
+
+  <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
+</section>

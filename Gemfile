@@ -13,8 +13,15 @@ gem 'autoprefixer-rails'
 gem 'therubyracer'
 # jQuery gem
 gem 'jquery-rails'
+
 # Paperclip to upload files
 gem 'paperclip'
+# will_paginate to paginate results
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+# paginate results with semantic style (semantic rocks!)
+gem "will_paginate_semantic_ui"
+
+gem 'sprockets'
 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,15 +1,19 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <div class="ui secondary menu">
   <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
   <div class="item" style="margin-left:-15px;">
     <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
   </div>
 
+  <% if user_signed_in? %>
+    <div class="item">
+      <a class="ui teal huge home button" href="<%=new_contact_path%>">Contacto</a>
+    </div>
+  <% end -%>
+
   <div class="right menu">
     <% if user_signed_in? %>
       <div class="item">
-        <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
+        Bienvenido <%= current_user.name %>
       </div>
       <div class="item">
         <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
@@ -28,19 +32,11 @@
   </div>
 </div>
 
-<div class="create article" style="margin-top:60px;">
-  <h3 class="ui right floated header">Estado: <%= @project.state %></h3>
-  <h1 class="section-heading text-center"><%= @project.name %></h1>
+<section class="create article text-center">
+  	<h1 class="section-heading text-center">¿Quieres dejarnos un mensaje?</h1>
+  	<hr class="primary">
 
-  <h3 class="ui header">Descripción:</h3>
-  <p><%= @project.summary %></p>
+	<%= render 'form', contact: @contact %>
 
-  <h3 class="ui header">Git:</h3>
-  <p><%= @project.git %></p>
-
-  <center>
-    <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
-  </center>
-
-  <%= link_to 'Atrás', projects_path, class: 'ui left floated button' %>
-</div>
+	<%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
+</section>

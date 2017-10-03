@@ -3,11 +3,17 @@
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'css/blackrockdigital', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-  <link href="https://blackrockdigital.github.io/startbootstrap-creative/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+  <!-- navbar -->
+
   <%= yield %>
+
+  <footer class="ui text-center inverted segment" style="margin:0;">
+    <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'ui avatar image'} %>
+    <strong>SmartHub - An UNsigned application</strong>
+  </footer>
 </body>
