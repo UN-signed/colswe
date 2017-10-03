@@ -4,3 +4,11 @@ Creamos 4 mockup iniciales
   Modal sign up
   Modal login
   welcome page
+
+  03/10/2017
+  Arreglar conflicto de ramas en github
+  Crear la vista de editar proyecto
+  Arreglar errores de la gema de paperclip
+  Agreglar el mailer del formulario de contacto
+  Arreglar error de editar perfil
+  Arreglar el error de editar proyecto
