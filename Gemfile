@@ -14,8 +14,6 @@ gem 'therubyracer'
 # jQuery gem
 gem 'jquery-rails'
 
-# Paperclip to upload files
-gem 'paperclip'
 # will_paginate to paginate results
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 # paginate results with semantic style (semantic rocks!)
