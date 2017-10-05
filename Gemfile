@@ -19,6 +19,11 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 # paginate results with semantic style (semantic rocks!)
 gem "will_paginate_semantic_ui"
 
+# PDF Builder
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
+
 gem 'sprockets'
 
 gem 'devise'
@@ -51,6 +56,7 @@ gem 'webpacker'
 
 gem 'annotate', require: false
 gem 'faker'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

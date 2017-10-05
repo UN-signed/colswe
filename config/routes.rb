@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     resources :members
     resources :research_groups
 	resources :articles
+	resources :projects
+
 	root to: 'home#index'
 	resources :home
     get "home/index"
-
+    
     #get 'welcome/index'
 
 	## devise controllers for users
