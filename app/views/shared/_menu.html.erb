@@ -1,0 +1,27 @@
+<div class="ui secondary menu">
+  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
+  <div class="item" style="margin-left:-15px;">
+    <%= link_to(raw('<h2 class="ui logo header" id="menu-name">SmartHub</h2>'), '/home') %>
+  </div>
+
+  <div class="right menu">
+    <% if user_signed_in? %>
+      <div class="item">
+        <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
+      </div>
+      <div class="item">
+        <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
+      </div>
+      <div class="item">
+        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>"> Cerrar Sesión </a>
+      </div>
+    <% else %>
+      <div class="item">
+        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+      </div>
+      <div class="item">
+        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+      </div>
+    <% end %>
+  </div>
+</div>
