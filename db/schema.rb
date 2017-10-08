@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930165545) do
+ActiveRecord::Schema.define(version: 20170930165432) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -100,31 +100,14 @@ ActiveRecord::Schema.define(version: 20170930165545) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-<<<<<<< HEAD
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-=======
->>>>>>> d714e0c0a4010cb10b65f81495fea60a456191a4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "description"
     t.text "degree"
     t.string "github_username"
-<<<<<<< HEAD
     t.string "departament"
     t.integer "research_group_id"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-=======
-    t.string "photo"
-    t.string "departament"
-    t.integer "research_group_id"
->>>>>>> d714e0c0a4010cb10b65f81495fea60a456191a4
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
