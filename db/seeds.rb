@@ -27,7 +27,8 @@ end
 # Create 100 users and 100 members
 for i in 0..100
   a = User.create(name:Faker::Name.name, description:Faker::Lovecraft.sentences, degree:Faker::Educator.course,
-    github_username:Faker::Twitter.screen_name, departament:Faker::Superhero.power, email:Faker::Internet.email,
+    github_username:Faker::Twitter.screen_name, departament:Faker::Superhero.power,
+    photo: Faker::File.file_name('images/photos/users'), email:Faker::Internet.email,
     research_group_id: rand(11)+1)
 
   #Member.create(role: Faker::Company.profession, user_id:i,research_group_id: a.research_group_id,

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 	root to: 'home#index'
 	resources :home
     get "home/index"
-    
+
     #get 'welcome/index'
 
 	## devise controllers for users

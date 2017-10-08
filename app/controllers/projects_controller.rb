@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.paginate(page: params[:page], per_page: 12)    
+    @projects = Project.all.paginate(page: params[:page], per_page: 12)
   end
 
   # GET /projects/1
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.pdf{render template: "projects/pdf", pdf: "pdf"}    
+      format.pdf{render template: "projects/pdf", pdf: "pdf"}
     end
   end
 
