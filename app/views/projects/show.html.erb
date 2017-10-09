@@ -12,7 +12,7 @@
 
   <center>
     <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
-    <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button' %>
+    <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>
   </center>
 
   <%= link_to 'Atrás', projects_path, class: 'ui left floated button' %>

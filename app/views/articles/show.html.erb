@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui red button') if @article.pdf? %>
+  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui red button', target: :_blank) if @article.pdf? %>
 </p>
 
 <p>
