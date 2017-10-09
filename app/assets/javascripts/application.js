@@ -27,6 +27,9 @@ $(function () {
 });
 
 $(document).ready(function() {
-  $('.ui.secondary.scrolled.menu').menu();
-  $('.ui.dropdown').dropdown();
+  $('.ui.dropdown').dropdown(
+    // action: 'nothing',
+    // direction: 'downward'
+  );
+  console.log( "ready!" );
 });

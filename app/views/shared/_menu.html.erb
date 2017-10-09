@@ -9,16 +9,23 @@
       <div class="item">
         <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
       </div>
+
       <div class="item">
-        <%= image_tag(current_user.photo.url, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
-        <%= current_user.name %>
+        <div class="ui dropdown">
+          <%= image_tag(current_user.photo.url, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
+          <div class="text"><%= current_user.name %></div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="<%=edit_user_registration_path%>">
+              Editar perfil
+            </a><br>
+            <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
+              Cerrar Sesión
+            </a>
+          </div>
+        </div>
       </div>
-      <!-- <div class="item">
-        <a class="ui button" href="<%=edit_user_registration_path%>">Editar perfil</a>
-      </div> -->
-      <!-- <div class="item">
-        <a class="ui button" data-method="delete" href="<%=destroy_user_session_path%>"> Cerrar Sesión </a>
-      </div> -->
+
     <% else %>
       <div class="item">
         <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
@@ -27,5 +34,6 @@
         <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
       </div>
     <% end %>
+
   </div>
 </div>
