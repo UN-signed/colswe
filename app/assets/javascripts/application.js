@@ -20,16 +20,11 @@
 $(function () {
   $(document).scroll(function () {
     var $nav = $("#main-menu");
-    var $name = $("#menu-name");
     $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-    $name.toggleClass('inverted', $(this).scrollTop() < $nav.height());
   });
 });
 
 $(document).ready(function() {
-  $('.ui.dropdown').dropdown(
-    // action: 'nothing',
-    // direction: 'downward'
-  );
+  $('.ui.dropdown').dropdown();
   console.log( "ready!" );
 });

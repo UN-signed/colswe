@@ -1,9 +1,22 @@
 <div class="dashboard">
-  <div class="ui four cards">
-    <%= render @projects %>
+  <div class="ui secondary pointing menu">
+    <a class="item active">Todos</a>
+    <a class="item">Proyectos</a>
+    <a class="item">Artículos</a>
+    <div class="right menu">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Buscar...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
   </div>
 
-  <br><br>
+  <div class="ui three cards">
+    <%= render @projects %>
+    <%= render @articles %>
+  </div>
+
+  <!-- <br><br>
   <%= will_paginate @projects, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
-  <br><br><br><br>
+  <br><br><br><br> -->
 </div>

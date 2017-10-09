@@ -1,23 +1,22 @@
-<a class="ui link card" href="<%=project_path(project)%>">
+<div class="ui link card" href="<%=project_path(project)%>">
   <div class="content">
     <div class="header">
+      <a class="ui project horizontal right floated label">Proyecto</a>
       <%= project.name %>
     </div>
     <div class="meta">
-      <%= project.created_at %></td>
+      Creado el
+      <%= format_time(project.created_at, :short, "N/A") %></td>
     </div>
     <div class="description">
       <%= project.summary %>
     </div>
   </div>
 
-  <div class="extra content">
-    <i class="github icon"></i>
-    <%= project.git %>
-
-    <!-- <div class="ui three small buttons">
-    <%= link_to 'Editar', edit_project_path(project), class: 'ui button' %>
-    <%= link_to 'Ver', project, class: 'ui teal button' %>
-    <%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui button' %> -->
+  <div class="content">
+    <center>
+      <%= link_to raw('<i class="github icon"></i> Repo'), project.git, target: :_blank, class: 'ui teal button' %>
+      <%= link_to 'Detalles', project, class: 'ui button' %>
+    </center>
   </div>
-</a>
+</div>

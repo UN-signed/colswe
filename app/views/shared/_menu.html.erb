@@ -1,7 +1,7 @@
 <div class="ui secondary menu" id="main-menu">
   <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
   <div class="item" style="margin-left:-15px;">
-    <%= link_to(raw('<h2 class="ui inverted header" id="menu-name">SmartHub</h2>'), '/home') %>
+    <%= link_to(raw('<h2 class="ui header" id="menu-name">SmartHub</h2>'), '/home') %>
   </div>
 
   <div class="right menu">
@@ -11,19 +11,15 @@
       </div>
 
       <div class="item">
-        <div class="ui dropdown">
-          <%= image_tag(current_user.photo.url, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
-          <div class="text"><%= current_user.name %></div>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <a class="item" href="<%=edit_user_registration_path%>">
-              Editar perfil
-            </a><br>
-            <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
-              Cerrar Sesión
-            </a>
-          </div>
-        </div>
+        <a class="item" href="<%=edit_user_registration_path%>">
+          <h4 class="ui header">
+            <%= image_tag(current_user.photo.url, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
+            <%= current_user.name %>
+          </h4>
+        </a>
+        <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
+          Cerrar Sesión
+        </a>
       </div>
 
     <% else %>
