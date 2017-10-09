@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui red button') if @article.pdf? %>
+</p>
+
+<p>
   <strong>Key words:</strong>
   <%= @article.key_words %>
 </p>
@@ -16,8 +20,8 @@
 </p>
 
 <p>
-  <strong>Lenguage:</strong>
-  <%= @article.lenguage %>
+  <strong>Language:</strong>
+  <%= @article.language %>
 </p>
 
 <p>

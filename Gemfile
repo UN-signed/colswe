@@ -22,11 +22,15 @@ gem "will_paginate_semantic_ui"
 # PDF Builder
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-
-
+# Sprockets
 gem 'sprockets'
 
+# Carrierwave
+gem 'carrierwave'
+
+# Devise
 gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use Puma as the app server

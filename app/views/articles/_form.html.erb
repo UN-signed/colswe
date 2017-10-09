@@ -10,30 +10,29 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= form.label :título %>
-    <%= form.text_field :name, id: :article_name %>
+    Sube el artículo en pdf:
+    <%= form.file_field :pdf %>
   </div>
 
   <div class="field">
-    <%= form.label :palabras_clave %> (separadas por comas)
-    <%= form.text_area :key_words, id: :article_key_words %>
+    <%= form.text_field :name, id: :article_name, placeholder: 'Título' %>
   </div>
 
   <div class="field">
-    <%= form.label :descripción %>
-    <%= form.text_area :description, id: :article_description %>
+    <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
   </div>
 
   <div class="field">
-    <%= form.label :Idioma %>
-    <%= form.text_field :lenguage, id: :article_lenguage %>
+    <%= form.text_area :description, id: :article_description, placeholder: 'Descripción' %>
   </div>
 
   <div class="field">
-    <%= form.label :bibliografía %>
-    <%= form.text_area :bibliography, id: :article_bibliography %>
+    <%= form.text_field :language, id: :article_lenguage, placeholder: 'Idioma' %>
+  </div>
+
+  <div class="field">
+    <%= form.text_area :bibliography, id: :article_bibliography, placeholder: 'Bibliografía' %>
   </div>
 
   <div class="actions">

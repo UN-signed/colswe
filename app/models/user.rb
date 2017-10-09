@@ -42,4 +42,6 @@ class User < ApplicationRecord
   has_many :members
   # belongs_to :research_group
 
+  mount_uploader :photo, PhotoUploader
+
 end

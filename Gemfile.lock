@@ -62,6 +62,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.2.1)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.2.2)
@@ -241,6 +245,7 @@ DEPENDENCIES
   boostrap-sass
   byebug
   capybara (~> 2.13)
+  carrierwave
   coffee-rails (~> 4.2)
   devise
   faker
@@ -270,4 +275,4 @@ DEPENDENCIES
   wkhtmltopdf-binary
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3

@@ -15,6 +15,6 @@
 #
 
 class Article < ApplicationRecord
-  belongs_to :user
-  #has_attached_file(file_path)
+  # belongs_to :user
+  mount_uploader :pdf, PdfUploader
 end
