@@ -1,14 +1,33 @@
 <%= render "shared/menu" %>
-
+<br>
+<br>
 <div class="create article" style="margin-top:60px;">
-  <h3 class="ui right floated header">Estado: <%= @project.state %></h3>
+
   <h1 class="section-heading text-center"><%= @project.name %></h1>
+  <br>
+  <div class="ui grid">
+    <div class="five wide column"></div>
+    <div class="four wide column">
+      <div>
+        <p><i class="github icon"></i>  Repo: <%= @project.git %></p>
+      </div>
+    </div>
+    <div class="four wide column">
+      <h3 class="ui green label">Estado: <%= @project.state %></h3>
+    </div>
+    <div class="three wide column"></div>
+  </div>
 
-  <h3 class="ui header">Descripción:</h3>
-  <p><%= @project.summary %></p>
+  <div class="ui grid">
+    <div class="two wide column"></div>
+    <div class="eight wide column">
+      <h3 class="ui header">Descripción:</h3>
+      <p><%= @project.summary %></p>
+    </div>
+  </div>
 
-  <h3 class="ui header">Git:</h3>
-  <p><%= @project.git %></p>
+  <h1 class="section-heading text-center">Integrantes</h1>
+  <%= ResearchGroup.where(project_id: @project.id)%>
 
   <center>
     <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
