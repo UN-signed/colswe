@@ -27,7 +27,7 @@
   </div>
 
   <h1 class="section-heading text-center">Integrantes</h1>
-  <%= ResearchGroup.where(project_id: @project.id)%>
+  <h3 class="section-heading text-center"> <%= ResearchGroup.find(@project.research_group_id).name%> </h3>
 
   <center>
     <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
