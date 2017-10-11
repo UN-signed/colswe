@@ -29,3 +29,7 @@
 /public/uploads
 
 \.env
+
+log/
+
+tmp/
