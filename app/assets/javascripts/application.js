@@ -22,6 +22,30 @@ $(function () {
     var $nav = $("#main-menu");
     $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
   });
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#avatar-upload").change(function(){
+    readURL(this);
+  });
+  
+  var items = '.ui.menu a.item, .ui.menu .link.item';
+  var $menuItem = $(items);
+
+  $menuItem.on('click', function() {
+    $(items).removeClass('active');
+    $(this).addClass('active');
+  });
+  console.log('iusahiuas');
 });
 
 $(document).ready(function() {
