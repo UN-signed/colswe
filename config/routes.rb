@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 	  registrations: 'users/registrations',
 	  sessions: 'users/sessions',
 	  # unlocks: 'users/unlocks',
+    
+    :omniauth_callbacks => "users/omniauth_callbacks",
 	}, skip: [:sessions]
 
 	## custom routes for users

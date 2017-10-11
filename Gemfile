@@ -30,6 +30,14 @@ gem 'carrierwave'
 
 # Devise
 gem 'devise'
+# Dotenv gem
+gem 'dotenv-rails', groups: [:development, :test] 
+# Use Omniauth Facebook plugin
+gem 'omniauth-facebook'#, '~> 4.0'
+# Use Omniauth Github plugin
+gem 'omniauth-github'#, '~> 1.1', '>= 1.1.2'
+# Use Omniauth Google plugin
+gem 'omniauth-google-oauth2'#, '~> 0.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
@@ -60,6 +68,7 @@ gem 'webpacker'
 
 gem 'annotate', require: false
 gem 'faker'
+#gem 'ui_faces'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

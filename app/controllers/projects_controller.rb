@@ -10,6 +10,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project = Project.find(params[:id])
+    @group = ResearchGroup.find(@project.research_group_id)
+    @members = Member.where(research_group_id: @group.id )
     respond_to do |format|
       format.html
       format.pdf{render template: "projects/pdf", pdf: "pdf"}
