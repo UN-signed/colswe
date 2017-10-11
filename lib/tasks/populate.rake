@@ -28,17 +28,18 @@ namespace :db do
   #       # project.project_tag_id=
   #     end
   #   end
-
-
-    #User.create(:id => i, :name => Faker::Name.name, :email => Faker::Internet.email, :password => 'password', :research_group_id => rand(20))
-
-    150.times do
-      Member.create do |member|
-        member.role = 'Member'
-        member.user_id = rand(100)
-        member.project_id = rand(100)
-        member.research_group_id = rand(20)
-      end
-    end
+  #
+  #   for i in 0..99
+  #     User.create(:id => i, :name => Faker::Name.name, :email => Faker::Internet.email, :password => 'password', :research_group_id => rand(20))
+  #   end
+  #
+  #   150.times do
+  #     Member.create do |member|
+  #       member.role = 'Member'
+  #       member.user_id = rand(100)
+  #       member.project_id = rand(100)
+  #       member.research_group_id = rand(20)
+  #     end
+  #   end
   end
 end

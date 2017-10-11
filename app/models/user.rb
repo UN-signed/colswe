@@ -28,6 +28,12 @@
 #
 
 class User < ApplicationRecord
+  has_many :articles
+  has_many :members
+  belongs_to :research_group
+
+  mount_uploader :photo, PhotoUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -38,10 +44,5 @@ class User < ApplicationRecord
 	def confirmation_required?
 	  false
 	end
-  has_many :articles
-  has_many :members
-  belongs_to :research_group
-
-  mount_uploader :photo, PhotoUploader
 
 end
