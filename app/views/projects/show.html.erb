@@ -27,7 +27,13 @@
   </div>
 
   <h1 class="section-heading text-center">Integrantes</h1>
-  <h3 class="section-heading text-center"> <%= ResearchGroup.find(@project.research_group_id).name%> </h3>
+  <h3 class="section-heading text-center"> <%= @group.name %> </h3>
+
+  <% @members.each do |member| %>
+    <%= member.user_id %>
+    <%= User.find(member.user_id).name %>
+    <br>
+  <% end %>
 
   <center>
     <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>

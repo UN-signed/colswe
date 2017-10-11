@@ -40,7 +40,7 @@ class User < ApplicationRecord
 	end
   has_many :articles
   has_many :members
-  # belongs_to :research_group
+  belongs_to :research_group
 
   mount_uploader :photo, PhotoUploader
 
