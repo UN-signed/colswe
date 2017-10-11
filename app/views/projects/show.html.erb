@@ -19,21 +19,24 @@
   </div>
 
   <div class="ui grid">
-    <div class="two wide column"></div>
-    <div class="eight wide column">
+    <div class="three wide column"></div>
+    <div class="ten wide column">
       <h3 class="ui header">Descripción:</h3>
       <p><%= @project.summary %></p>
     </div>
   </div>
 
-  <h1 class="section-heading text-center">Integrantes</h1>
-  <h3 class="section-heading text-center"> <%= @group.name %> </h3>
-
-  <% @members.each do |member| %>
-    <%= member.user_id %>
-    <%= User.find(member.user_id).name %>
-    <br>
-  <% end %>
+  <br>
+  <h1 class="section-heading text-center"> <%= @group.name %> </h1>
+  <h2 class="section-heading text-center">Integrantes</h2>
+  <br>
+  <div class="ui three cards">
+    <% @members.each do |member| %>
+      <% @user = User.find(member.user_id) %>
+      <%= render partial: "users/shared/single", locals: {user: @user, group: @group, member: member} %>
+    <% end %>
+  </div>
+  <br>
 
   <center>
     <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
