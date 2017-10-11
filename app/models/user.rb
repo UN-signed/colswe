@@ -51,9 +51,12 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+  def self.old_user_from_omniauth(auth)
+    find_by(email: auth.info.email).provider
+  end
   has_many :articles
   has_many :members
-  belongs_to :research_group
+  # belongs_to :research_group
 
   mount_uploader :photo, PhotoUploader
 

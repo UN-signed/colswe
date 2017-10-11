@@ -45,6 +45,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts @user.persisted?
     puts @user.save
     puts @user.persisted? || @user.save
+    puts @user.errors.full_messages
     puts     "\n-------------------------------------------------------\n\n\n"
 
 
@@ -54,6 +55,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
     else
       # session["devise.facebook_data"] = request.env["omniauth.auth"]
+      puts "in else"
+      # session["devise.provider"] = request.env["omniauth.auth"].provider
+      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"])
+      session["devise.email"] = request.env["omniauth.auth"].info.email
+      puts "lo que sea"
+      puts session["devise.email"]
+      puts session["devise.provider"]
       redirect_to new_user_registration_url
     end
   end
@@ -78,6 +86,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts @user.persisted?
     puts @user.save
     puts @user.persisted? || @user.save
+    puts @user.errors.full_messages
     puts     "\n-------------------------------------------------------\n\n\n"
 
     if @user.persisted? || @user.save
@@ -86,6 +95,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, :kind => "Github") if is_navigational_format?
     else
       # session["devise.github_data"] = request.env["omniauth.auth"]
+      puts "in else"
+      # session["devise.provider"] = request.env["omniauth.auth"].provider
+      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"])
+      session["devise.email"] = request.env["omniauth.auth"].info.email
+      puts "lo que sea"
+      puts session["devise.email"]
+      puts session["devise.provider"]
       redirect_to new_user_registration_url
     end
   end
@@ -110,14 +126,26 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts @user.persisted?
     puts @user.save
     puts @user.persisted? || @user.save
+    # puts @user.errors.full_messages
     puts     "\n-------------------------------------------------------\n\n\n"
 
     if @user.persisted? || @user.save
+      puts "in if"
       sign_in_and_redirect @user #this will throw if @user is not activated
       # sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "Google") if is_navigational_format?
+      # set_flash_message(:notice, :success, :kind => "Google") if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => "Google")
+
     else
-      # session["devise.google_oauth2_data"] = request.env["omniauth.auth"]
+      puts "in else"
+      # session["devise.provider"] = request.env["omniauth.auth"].provider
+      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"])
+      session["devise.email"] = request.env["omniauth.auth"].info.email
+      puts "lo que sea"
+      puts session["devise.email"]
+      puts session["devise.provider"]
+      set_flash_message(:notice, :success, :kind => "Google")
+      # set_flash_message(:notice, :success, :kind => "Google") if is_navigational_format?
       redirect_to new_user_registration_url
     end
   end
