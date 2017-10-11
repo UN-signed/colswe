@@ -50,6 +50,6 @@ for i in 0..100
 
   #Member.create(role: Faker::Company.profession, user_id:i,research_group_id: a.research_group_id,
     #project_id: Project.find(a.research_group_id)[0].project_id)
-    Member.create(role: Faker::Company.profession, user_id:i,research_group_id: a.research_group_id,
+    Member.create(role: Faker::Company.profession, user_id:i ,research_group_id: rand(10),
       project_id: rand(25)+1)
 end
