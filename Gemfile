@@ -59,8 +59,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'webpacker'
 
 gem 'annotate', require: false
+# Fakers
 gem 'faker'
-#gem 'ui_faces'
+gem 'ui_faces'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
