@@ -10,15 +10,26 @@ require 'faker'
 
 # Create 10 research_groups and research_areas
 for i in 0..10
-  ResearchGroup.create(name:Faker::Company.name, description:Faker::Hipster.sentence, administrator_id:rand(11))
+  ResearchGroup.create(
+    name:Faker::Company.name,
+    description:Faker::Hipster.sentence,
+    administrator_id:rand(11)
+  )
 
-  ResearchArea.create(name:Faker::Superhero.name,description:Faker::Lovecraft.sentences)
+  ResearchArea.create(
+    name:Faker::Superhero.name,
+    description:Faker::Lovecraft.sentences
+  )
 end
 
 # Create 25 projects and 50 research_lines
 for i in 0..25
-  p = Project.create(name:Faker::Company.name, summary:Faker::Hipster.sentence, state:Faker::Boolean.boolean,
-  research_group_id:rand(11), git:Faker::Internet.url('github.com'))
+  Project.create(
+    name:Faker::Company.name,
+    summary:Faker::Hipster.sentence,
+    state:Faker::Boolean.boolean,
+    research_group_id:rand(11),
+    git:Faker::Internet.url('github.com'))
 
   ResearchLine.create(name:Faker::Superhero.power,description:Faker::Lovecraft.sentences, research_area_id: rand(25)+1)
   ResearchLine.create(name:Faker::Superhero.power,description:Faker::Lovecraft.sentences, research_area_id: rand(25)+1)
@@ -26,10 +37,16 @@ end
 
 # Create 100 users and 100 members
 for i in 0..100
-  a = User.create(name:Faker::Name.name, description:Faker::Lovecraft.sentences, degree:Faker::Educator.course,
-    github_username:Faker::Twitter.screen_name, departament:Faker::Superhero.power,
-    photo: Faker::File.file_name('images/photos/users'), email:Faker::Internet.email,
-    research_group_id: rand(11)+1)
+  User.create(
+      :name => Faker::Name.name,
+      :description => Faker::Lovecraft.sentences,
+      :degree => Faker::Educator.course,
+      :email => Faker::Internet.email,
+      :password => 'password',
+      :photo => UiFaces.face,
+      :github_username => Twitter.screen_name,
+      #:departament => Faker::Superhero.power
+    )
 
   #Member.create(role: Faker::Company.profession, user_id:i,research_group_id: a.research_group_id,
     #project_id: Project.find(a.research_group_id)[0].project_id)

@@ -30,7 +30,7 @@
 class User < ApplicationRecord
   has_many :articles
   has_many :members
-  belongs_to :research_group
+  #belongs_to :research_group
 
   mount_uploader :photo, PhotoUploader
 
@@ -44,8 +44,6 @@ class User < ApplicationRecord
 	def confirmation_required?
 	  false
 	end
-<<<<<<< HEAD
-=======
 
   def self.from_omniauth(auth)
     puts "in self.from_omniauth"
@@ -59,11 +57,5 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
-  has_many :articles
-  has_many :members
-  belongs_to :research_group
-
-  mount_uploader :photo, PhotoUploader
->>>>>>> 8ca2672343c6ad82d7d9a283715d4c1a10297b4c
 
 end

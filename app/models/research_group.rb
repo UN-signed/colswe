@@ -8,7 +8,7 @@
 #  administrator_id :integer          default(0), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  project_id       :integer
+#  
 
 class ResearchGroup < ApplicationRecord
   has_many :users

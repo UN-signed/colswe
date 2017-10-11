@@ -15,7 +15,7 @@
         </h3>
         <div class="field four wide left floated column">
           <center><br>
-            <%= image_tag current_user.photo.url, id:'img_prev', class:'ui tiny circular image' %><br>
+            <%= image_tag current_user.photo.url, id:'img_prev', class:'ui tiny circular image' if current_user.photo?%><br>
             <label for="avatar-upload" class="ui icon button">
               <!-- <i class="camera icon" style="margin-right:5px!important;"></i> -->
               Subir foto
