@@ -28,6 +28,12 @@
 #
 
 class User < ApplicationRecord
+  has_many :articles
+  has_many :members
+  belongs_to :research_group
+
+  mount_uploader :photo, PhotoUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -38,6 +44,8 @@ class User < ApplicationRecord
 	def confirmation_required?
 	  false
 	end
+<<<<<<< HEAD
+=======
 
   def self.from_omniauth(auth)
     puts "in self.from_omniauth"
@@ -51,10 +59,14 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+  def self.old_user_from_omniauth(auth)
+    find_by(email: auth.info.email).provider
+  end
   has_many :articles
   has_many :members
-  belongs_to :research_group
+  # belongs_to :research_group
 
   mount_uploader :photo, PhotoUploader
+>>>>>>> 8ca2672343c6ad82d7d9a283715d4c1a10297b4c
 
 end
