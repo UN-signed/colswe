@@ -37,15 +37,15 @@ end
 
 # Create 100 users and 100 members
 for i in 0..100
-  User.create(
+  a = User.create(
       :name => Faker::Name.name,
       :description => Faker::Lovecraft.sentences,
       :degree => Faker::Educator.course,
       :email => Faker::Internet.email,
       :password => 'password',
       :photo => UiFaces.face,
-      :github_username => Twitter.screen_name,
-      #:departament => Faker::Superhero.power
+      :github_username => Faker::GameOfThrones.character,
+      :departament => Faker::Superhero.power
     )
 
   #Member.create(role: Faker::Company.profession, user_id:i,research_group_id: a.research_group_id,
