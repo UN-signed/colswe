@@ -30,7 +30,11 @@
 class User < ApplicationRecord
   has_many :articles
   has_many :members
+<<<<<<< HEAD
   #belongs_to :research_group
+=======
+  # belongs_to :research_group
+>>>>>>> 1cb823794e7ca7d08ec0a30a93a570959c2be9dc
 
   mount_uploader :photo, PhotoUploader
 
@@ -57,5 +61,16 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+<<<<<<< HEAD
+=======
+  def self.old_user_from_omniauth(auth)
+    find_by(email: auth.info.email)
+  end
+  has_many :articles
+  has_many :members
+  # belongs_to :research_group
+
+  mount_uploader :photo, PhotoUploader
+>>>>>>> 1cb823794e7ca7d08ec0a30a93a570959c2be9dc
 
 end
