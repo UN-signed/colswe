@@ -57,12 +57,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # session["devise.facebook_data"] = request.env["omniauth.auth"]
       puts "in else"
       # session["devise.provider"] = request.env["omniauth.auth"].provider
-      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"])
+      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"]).provider
       session["devise.email"] = request.env["omniauth.auth"].info.email
       puts "lo que sea"
       puts session["devise.email"]
       puts session["devise.provider"]
-      redirect_to new_user_registration_url
+      redirect_to new_user_session_url
     end
   end
   def github
@@ -97,12 +97,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # session["devise.github_data"] = request.env["omniauth.auth"]
       puts "in else"
       # session["devise.provider"] = request.env["omniauth.auth"].provider
-      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"])
+      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"]).provider
       session["devise.email"] = request.env["omniauth.auth"].info.email
       puts "lo que sea"
       puts session["devise.email"]
       puts session["devise.provider"]
-      redirect_to new_user_registration_url
+      redirect_to new_user_session_url
     end
   end
   def google_oauth2
@@ -139,14 +139,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       puts "in else"
       # session["devise.provider"] = request.env["omniauth.auth"].provider
-      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"])
+      session["devise.provider"] = User.old_user_from_omniauth(request.env["omniauth.auth"]).provider
       session["devise.email"] = request.env["omniauth.auth"].info.email
       puts "lo que sea"
       puts session["devise.email"]
       puts session["devise.provider"]
       set_flash_message(:notice, :success, :kind => "Google")
       # set_flash_message(:notice, :success, :kind => "Google") if is_navigational_format?
-      redirect_to new_user_registration_url
+      redirect_to new_user_session_url
     end
   end
 
