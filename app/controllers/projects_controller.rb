@@ -12,7 +12,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @group = ResearchGroup.find(@project.research_group_id)
-    @members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)#.paginate(:page => params[:page]).per_page(6)
+    #@members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)#.paginate(:page => params[:page]).per_page(6)
+    @members = Member.where(research_group_id: @group.id, project_id: params[:id].to_i)
     puts
     respond_to do |format|
       format.html
@@ -44,7 +45,6 @@ class ProjectsController < ApplicationController
             m.research_group_id = params[:project][:research_group_id]
             m.user_id = x
             m.save!
-            puts x#m.project_id
           end
         end
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -62,6 +62,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     respond_to do |format|
       if @project.update(project_params)
+        params[:project][:user_id].each do |x|
+          if x != "" and not Member.find_by project_id: @project.id, research_group_id: params[:project][:research_group_id], user_id: x
+            m = Member.new
+            m.project_id = @project.id
+            m.research_group_id = params[:project][:research_group_id]
+            m.user_id = x
+            m.save!
+          end
+        end
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else

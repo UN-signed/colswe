@@ -9,8 +9,8 @@
   * Implementación de WickedPdf para generar PDFs con la información de los proyectos
 
 ## Funcionalidades desarrolladas:
-* Crear, ver, editar y eliminar proyecto. Agregar una lista de participantes, un líder, un grupo al que pertenece el proyecto y descargar su información en un archivo pdf hacen parte de esta funcionalidad.
-* Crear, ver, editar y eliminar atículos. Subir un pdf que corresponde al artículo y definir el autor hacen parte de esta funcionalidad.
+* Crear, ver y editar proyecto. Agregar una lista de participantes, un líder, un grupo al que pertenece el proyecto y descargar su información en un archivo pdf hacen parte de esta funcionalidad.
+* Crear, ver, editar y eliminar artículos. Subir un pdf que corresponde al artículo y definir el autor hacen parte de esta funcionalidad.
 
 ## Propuesta para el Sprint 4:
 * Implementar el api de Trello para que el líder gestione las tareas y asignaciones de cada proyecto
