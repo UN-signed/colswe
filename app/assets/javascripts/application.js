@@ -17,10 +17,9 @@
 //= require_tree .
 //= require semantic_ui/semantic_ui
 
-$(function () {
-  $(document).scroll(function () {
-    var $nav = $("#main-menu");
-    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+$( document ).on('turbolinks:load', function() {
+  $("#avatar-upload").change('turbolinks:load', function(){
+    readURL(this);
   });
 
   function readURL(input) {
@@ -33,11 +32,14 @@ $(function () {
       reader.readAsDataURL(input.files[0]);
     }
   }
+})
 
-  $("#avatar-upload").change(function(){
-    readURL(this);
+$(function () {
+  $(document).scroll(function () {
+    var $nav = $("#main-menu");
+    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
   });
-  
+
   var items = '.ui.menu a.item, .ui.menu .link.item';
   var $menuItem = $(items);
 
