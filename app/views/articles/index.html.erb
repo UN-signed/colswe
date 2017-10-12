@@ -1,37 +1,15 @@
-<%=render "shared/menu"%>
+<%= render "shared/menu" %>
 
-<p id="notice"><%= notice %></p>
+<br><br><br><br>
+<div class="dashboard">
+  <h1 class="section-heading text-center">Artículos</h1>
+  <hr class="primary"><br>
 
-<h1>Articles</h1>
+  <div class="ui three cards">
+    <%= render @articles %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Palabras clave</th>
-      <th>Descripción</th>
-      <th>Idioma</th>
-      <th>Bibliografía</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.name %></td>
-        <td><%= article.key_words %></td>
-        <td><%= article.description %></td>
-        <td><%= article.language %></td>
-        <td><%= article.bibliography %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+  <br><br>
+  <%= will_paginate @articles, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+  <br><br><br><br>
+</div>
