@@ -3,34 +3,26 @@
 <br>
 <div class="create article" style="margin-top:60px;">
 
-  <h1 class="section-heading text-center"><%= @project.name %></h1>
-  <br>
-  <div class="ui grid">
-    <div class="five wide column"></div>
-    <div class="four wide column">
-      <div>
-        <p><i class="github icon"></i>  Repo: <%= @project.git %></p>
+  <div class="ui segment" style="padding:30px;">
+    <h3 class="ui green label" style="float:right;">Estado: <%= @project.state %></h3>
+    <h1 class="section-heading text-center">Proyecto: <%= @project.name %></h1><br>
+
+    <div class="ui grid">
+      <div class="eleven wide column">
+        <h3 class="ui header">Descripción:</h3>
+        <p><%= @project.summary %></p>
+      </div>
+      <div class="five wide column">
+        <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
       </div>
     </div>
-    <div class="four wide column">
-      <h3 class="ui green label">Estado: <%= @project.state %></h3>
-    </div>
-    <div class="three wide column"></div>
-  </div>
-
-  <div class="ui grid">
-    <div class="three wide column"></div>
-    <div class="ten wide column">
-      <h3 class="ui header">Descripción:</h3>
-      <p><%= @project.summary %></p>
-    </div>
   </div>
 
   <br>
-  <h1 class="section-heading text-center"> <%= @group.name %> </h1>
+  <h1 class="section-heading text-center">Grupo: <%= @group.name %> </h1>
   <h2 class="section-heading text-center">Integrantes</h2>
   <br>
-  <div class="ui three cards">
+  <div class="ui six cards">
     <% @members.each do |member| %>
       <% @user = User.find(member.user_id) %>
       <%= render partial: "users/shared/single", locals: {user: @user, group: @group, member: member} %>
