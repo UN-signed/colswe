@@ -1,6 +1,11 @@
-<h1>Editing Research Group</h1>
+<%= render "shared/menu" %>
 
-<%= render 'form', research_group: @research_group %>
+<br><br><br><br>
+<div class="create article">
+  <h1 class="section-heading text-center">Editar Grupo</h1>
+  <hr class="primary">
+  <%= render 'form', research_group: @research_group %>
 
-<%= link_to 'Show', @research_group %> |
-<%= link_to 'Back', research_groups_path %>
+  <%= link_to 'Atrás', research_groups_path, class:'ui button' %>
+  <%= link_to 'Ver Proyecto', @research_group, class:'ui teal button' %>
+</div>
