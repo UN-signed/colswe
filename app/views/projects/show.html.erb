@@ -13,23 +13,14 @@
         <p><%= @project.summary %></p>
       </div>
       <div class="five wide column">
-<<<<<<< HEAD
         <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
         <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
-=======
-        <%= link_to(raw('<i class="github icon"></i> Ver repo en Git'), @project.git, target: :_blank, class: 'ui labeled icon button') %>
-        <!-- <%= link_to @project.git, target: :_blank, class: 'ui button' %> -->
->>>>>>> 2b4cedb04c89a18265e3b11731627a37fe5d812b
       </div>
     </div>
   </div>
 
   <br>
-<<<<<<< HEAD
   <h1 class="section-heading text-center"> <%= link_to @group.name, research_group_url(@group.id) %> </h1>
-=======
-  <h1 class="section-heading text-center"><b>Grupo:</b> <%= @group.name %> </h1>
->>>>>>> 2b4cedb04c89a18265e3b11731627a37fe5d812b
   <h2 class="section-heading text-center">Integrantes</h2>
   <br>
   <div class="ui six cards">
