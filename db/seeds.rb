@@ -29,10 +29,9 @@ for i in 0..25
     name:Faker::Company.name,
     summary:Faker::Hipster.sentence,
     state:Faker::Boolean.boolean,
-    research_group_id:rand(11),
+    research_group_id:rand(11)+1,
     git:Faker::Internet.url('github.com'))
 
-  ResearchLine.create(name:Faker::Superhero.power,description:Faker::Lovecraft.sentences, research_area_id: rand(25)+1)
   ResearchLine.create(name:Faker::Superhero.power,description:Faker::Lovecraft.sentences, research_area_id: rand(25)+1)
 end
 
