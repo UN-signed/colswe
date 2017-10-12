@@ -1,4 +1,4 @@
-<%= form_with(model: project, local: true, class: "ui form") do |form| %>
+<%= form_with(model: project, local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -31,7 +31,6 @@
       </div>
       <div class="field">
         <%= form.select( :research_group_id, ResearchGroup.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un grupo al que pertenece proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px") %>
-        <!-- <%= form.collection_select(:research_group_id, ResearchGroup.all, :id, :name) %> -->
       </div>
       <div class="field">
         <div class="ui left icon input">
