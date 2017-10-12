@@ -107,6 +107,11 @@
   color: #864a23 !important;
 }
 
+.ui.group.label {
+  background-color: rgb(192, 255, 182) !important;
+  color: #378623 !important;
+}
+
 
 
 

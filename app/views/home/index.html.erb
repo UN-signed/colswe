@@ -41,19 +41,22 @@
       <br><br><br><br>
 
       <% if user_signed_in? %>
+      <div class="">
         <a class="ui green huge home icon button" href="<%=new_research_group_path%>">
-          <i class="users icon" style="margin-right:10px!important;"></i>
-          Crear Grupo
+          <i class="users icon" style="margin-right:10px!important;"></i>Crear Grupo
         </a>
         <a class="ui teal huge home icon button" href="<%=new_project_path%>">
-          <i class="idea icon" style="margin-right:10px!important;"></i>
-          Crear Proyecto
+          <i class="idea icon" style="margin-right:10px!important;"></i>Crear Proyecto
         </a>
-        <a class="ui red huge home icon button" href="<%=new_article_path%>">
-          <i class="file icon" style="margin-right:10px!important;"></i>
-          Publicar Artículo
+        <a class="ui red huge icon button" href="<%=new_article_path%>">
+          <i class="file icon" style="margin-right:10px!important;"></i>Publicar Artículo
         </a>
-        <a class="ui white huge button" href="<%=projects_path%>">Ver Proyectos</a>
+      </div>
+      <div class="">
+        <a class="ui white huge home button" href="<%=research_groups_path%>">Ver Grupos</a>
+        <a class="ui white huge home button" href="<%=projects_path%>">Ver Proyectos</a>
+        <a class="ui white huge button" href="<%=articles_path%>">Ver Artículos</a>
+      </div>
       <% else %>
         <a class="ui inverted huge home button" href="<%=projects_path%>">Ver Proyectos</a>
         <a class="ui teal huge home button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>

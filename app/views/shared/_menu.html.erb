@@ -11,6 +11,10 @@
       </div>
 
       <div class="item">
+        <%= link_to(raw('<i class="plus icon"></i> Nuevo Grupo'), new_research_group_path, target: :_blank, class: 'ui labeled icon teal button') %>
+      </div>
+
+      <div class="item">
         <a class="item" href="<%=edit_user_registration_path%>">
           <h4 class="ui header">
             <%= image_tag(current_user.photo, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
