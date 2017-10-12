@@ -45,7 +45,6 @@ class ProjectsController < ApplicationController
             m.research_group_id = params[:project][:research_group_id]
             m.user_id = x
             m.save!
-            puts x#m.project_id
           end
         end
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -63,6 +62,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     respond_to do |format|
       if @project.update(project_params)
+        params[:project][:user_id].each do |x|
+          if x != "" and not Member.find_by project_id: @project.id, research_group_id: params[:project][:research_group_id], user_id: x
+            m = Member.new
+            m.project_id = @project.id
+            m.research_group_id = params[:project][:research_group_id]
+            m.user_id = x
+            m.save!
+          end
+        end
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
