@@ -32,7 +32,9 @@ $( document ).on('turbolinks:load', function() {
       reader.readAsDataURL(input.files[0]);
     }
   }
-})
+
+  $('.ui.dropdown').dropdown();
+});
 
 $(function () {
   $(document).scroll(function () {
@@ -40,17 +42,11 @@ $(function () {
     $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
   });
 
-  var items = '.ui.menu a.item, .ui.menu .link.item';
-  var $menuItem = $(items);
-
-  $menuItem.on('click', function() {
-    $(items).removeClass('active');
-    $(this).addClass('active');
-  });
-  console.log('iusahiuas');
-});
-
-$(document).ready(function() {
-  $('.ui.dropdown').dropdown();
-  console.log( "ready!" );
+  // var items = '.ui.menu a.item, .ui.menu .link.item';
+  // var $menuItem = $(items);
+  //
+  // $menuItem.on('click', function() {
+  //   $(items).removeClass('active');
+  //   $(this).addClass('active');
+  // });
 });
