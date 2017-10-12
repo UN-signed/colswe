@@ -1,11 +1,7 @@
-<div class="ui secondary menu">
-  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
-  <div class="item" style="margin-left:-15px;">
-    <%= link_to(raw('<h2 class="ui logo header">SmartHub</h2>'), '/home') %>
-  </div>
-</div>
+<%= render 'shared/menu' %>
 
-<div class="create article">
+<br><br><br><br>
+<div class="dashboard">
   <h1 class="text-center">Nuevo artículo</h1>
   <hr class="primary">
 

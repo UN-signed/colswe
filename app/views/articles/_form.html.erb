@@ -12,18 +12,20 @@
   <% end %>
 
   <center>
-    <label for="avatar-upload" class="ui huge icon red button" style="margin:20px;">
+    <label for="avatar-upload" class="ui big icon red button" style="margin:20px;">
       <i class="file pdf outline icon" style="margin-right:5px!important;"></i>
       Subir PDF
     </label>
     <%= form.file_field :pdf, id: 'avatar-upload' %>
+
+    <%= link_to('Ver pdf actual', @article.pdf.url, class: 'ui big button', target: :_blank) if @article.pdf? %>
   </center>
 
   <div class="field">
     <h4 class="ui header">Nombre</h4>
     <%= form.text_field :name, id: :article_name, placeholder: 'Título' %>
   </div>
-  
+
   <div class="field">
     <h4 class="ui header">Descripción</h4>
     <%= form.text_area :description, id: :article_description, placeholder: 'Descripción' %>

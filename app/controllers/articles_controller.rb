@@ -69,6 +69,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :pdf, :key_words, :description, :language, :bibliography)
+      params.require(:article).permit(:name, :pdf, :key_words, :description, :language, :bibliography).merge(user_id: current_user.id)
     end
 end

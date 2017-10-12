@@ -36,9 +36,9 @@
 .login {
   margin-top: 5% !important;
   margin-bottom: 5% !important;
-  width: 600px;
+  width: 700px;
   padding: 30px 30px !important;
-  margin-left: calc(50% - 270px) !important;
+  margin-left: calc(50% - 320px) !important;
 }
 
 .login > .ui.heading {
@@ -51,6 +51,11 @@
 
 .login > .actions > .btn {
   background-color: rgb(168, 168, 168) !important;
+}
+
+.login .ui.grid > .column:not(.row), .ui.grid > .row > .column {
+  padding-left: 3rem;
+  padding-right: 3em;
 }
 
 .socials {
