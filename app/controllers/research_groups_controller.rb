@@ -24,6 +24,7 @@ class ResearchGroupsController < ApplicationController
   # POST /research_groups
   # POST /research_groups.json
   def create
+    research_group_params[:administrator_id] = 204
     @research_group = ResearchGroup.new(research_group_params)
 
     respond_to do |format|
@@ -69,6 +70,6 @@ class ResearchGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_group_params
-      params.require(:research_group).permit(:name, :description, :administrator)
+      params.require(:research_group).permit(:name, :description, :administrator_id)
     end
 end

@@ -13,7 +13,8 @@
         <p><%= @project.summary %></p>
       </div>
       <div class="five wide column">
-        <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
+        <!-- <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
+        <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %>
       </div>
     </div>
   </div>
