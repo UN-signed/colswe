@@ -1,27 +1,62 @@
-<%= form_with(model: research_group, local: true, class: "ui form") do |form| %>
-  <% if research_group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(research_group.errors.count, "error") %> prohibited this research_group from being saved:</h2>
+<div class="edit user">
+  <%= form_with(model: research_group, local: true, class: "ui form") do |form| %>
+    <% if research_group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(research_group.errors.count, "error") %> prohibited this research_group from being saved:</h2>
 
-      <ul>
-      <% research_group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% research_group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="ui grid">
+      <div class="seven wide column">
+        <div class="ui row segment">
+          <h3 class="ui teal header column" style="width: 100%">
+            1. Datos Básicos
+          </h3>
+          <div class="field four wide left floated column">
+          </div>
+          <div class="field ten wide right floated column">
+            <h4 class="ui header">Nombre del grupo</h4>
+            <%= form.text_field :name, autofocus: true, placeholder: 'Nombre del grupo' %>
+            <h4 class="ui header">Administrador</h4>
+            <%= current_user.name %>
+          </div>
+        </div>
+
+        <div class="ui row segment">
+          <%= form.text_area :description, autofocus: true, placeholder: 'Describe en un párrafo breve para que la gente sepa de lo que hace tu equipo', class: 'big text area' %>
+        </div>
+        <h4 class="ui left floated header">Descripción</h4>
+      </div>
+
+      <div class="nine wide column">
+        <div class="ui two column row segment">
+          <h3 class="ui teal header column" style="width: 100%">
+            Integrantes
+          </h3>
+          <div class="field column">
+          </div>
+          <div class="field right floated column">
+            <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px", multiple: "") %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $('.ui.dropdown').dropdown();
+    </script>
+
+    <div class="actions">
+      <center>
+        <%= form.submit "Guardar proyecto", :class => 'ui teal button' %>
+      </center>
     </div>
   <% end %>
-
-  <div class="field" style="margin-bottom:40px; width:70%; margin-left:15%;">
-    <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Grupo' %>
-  </div>
-
-  <div class="field">
-    <%= form.text_area :description, :placeholder => 'Descripción del Grupo' %>
-  </div>
-
-  <div class="actions">
-    <center>
-      <%= form.submit "Guardar Grupo", :class => 'ui teal button'%>
-    </center>
-  </div>
-<% end %>
+</div>
+<!-- ########################################################################################## -->
