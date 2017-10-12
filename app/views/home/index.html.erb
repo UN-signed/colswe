@@ -1,4 +1,4 @@
-<div class="ui secondary menu" id="main-menu">
+<div class="ui secondary menu" id="main-menu" style="height: 70px;">
   <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
   <div class="item" style="margin-left:-15px;">
     <%= link_to(raw('<h2 class="ui header" id="menu-name">SmartHub</h2>'), '/home') %>
@@ -6,9 +6,9 @@
 
   <div class="right menu">
     <% if user_signed_in? %>
-      <div class="item">
+      <!-- <div class="item">
         <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
-      </div>
+      </div> -->
 
       <div class="item">
         <a class="item" href="<%=edit_user_registration_path%>">
@@ -33,9 +33,10 @@
 
   </div>
 </div>
+
 <header class="masthead">
   <div class="header-content">
-    <div class="header-content-inner">
+    <div class="header-content-inner"><br><br><br><br>
       <h1 class="ui inverted header">Avanza en tu investigación</h1>
       <h2 class="ui inverted header">Haz parte del mundo de la investigación que se desarrolla en la Universidad Nacional</h2>
       <br><br><br><br>

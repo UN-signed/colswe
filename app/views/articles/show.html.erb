@@ -1,34 +1,35 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/menu' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @article.name %>
-</p>
+<br><br><br><br>
+<div class="dashboard">
+  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated red button', target: :_blank) if @article.pdf? %>
+  <h1 class="section-heading text-center"><b><%= @article.name %></b></h1>
 
-<p>
-  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui red button', target: :_blank) if @article.pdf? %>
-</p>
+  <p>
+  </p>
 
-<p>
-  <strong>Key words:</strong>
-  <%= @article.key_words %>
-</p>
+  <p>
+    <strong>Key words:</strong>
+    <%= @article.key_words %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @article.description %>
+  </p>
 
-<p>
-  <strong>Language:</strong>
-  <%= @article.language %>
-</p>
+  <p>
+    <strong>Language:</strong>
+    <%= @article.language %>
+  </p>
 
-<p>
-  <strong>Bibliography:</strong>
-  <%= @article.bibliography %>
-</p>
+  <p>
+    <strong>Bibliography:</strong>
+    <%= @article.bibliography %>
+  </p>
 
-<td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+  <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %>
+
+</div>
