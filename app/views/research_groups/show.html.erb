@@ -9,7 +9,6 @@
 <br><br>
 <div class="create article" style="margin-top:60px;">
 
-<<<<<<< HEAD
   <div class="ui segment" style="padding:30px;">
     <h1 class="section-heading text-center">Grupo: <%= @research_group.name %></h1><br>
 
@@ -26,10 +25,14 @@
   <br>
   <br>
   <div class="ui four cards">
-    <% @members = Member.where(research_group_id: @research_group.id)%>
+    <% @admin = User.find(@research_group.administrator_id) %>
+    <%= render partial: "users/shared/single", locals: {user: @admin, group: @research_group} %>
+    <% @members = Member.select(:user_id).where(research_group_id: @research_group.id).distinct%>
     <% @members.each do |member| %>
       <% @user = User.find(member.user_id) %>
-      <%= render partial: "users/shared/single", locals: {user: @user, group: @research_group, member: member} %>
+      <%-if member.user_id != @research_group.administrator_id%>
+        <%= render partial: "users/shared/single", locals: {user: @user, group: @research_group} %>
+      <% end -%>
     <% end %>
   </div>
   <br>
@@ -37,12 +40,6 @@
   <center>
     <!-- <%= link_to 'Editar', research_groups_path(@project), class: 'ui teal button' %> -->
   </center>
-=======
-<p>
-  <strong>Administrator:</strong>
-  <%= @research_group.administrator_id %>
-</p>
->>>>>>> 28d879b3558d9a144620f14d779d0172d1976828
 
   <%= link_to 'Atrás', research_groups_path, class: 'ui left floated button' %>
 </div>

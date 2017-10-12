@@ -4,15 +4,12 @@
   </div>
   <div class="content">
     <div class="header"><%= user.name %></div>
-    <div class="header"><%= user.id %></div>
-    <div class="header"><%= group.administrator_id %></div>
 
     <div class="meta">
-      <a><%= member.role %></a>
       <%-if user.id == group.administrator_id%>
-        <a class="ui green horizontal right floated label">Líder de equipo</a>
+        <a class="ui green floated label">Líder de equipo</a>
       <%else%>
-        <a class="ui orange horizontal right floated label">Participante</a>
+        <a class="ui orange floated label">Participante</a>
       <%end-%>
     </div>
   </div>
