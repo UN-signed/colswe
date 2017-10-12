@@ -17,7 +17,7 @@
           <center><br>
             <%= image_tag current_user.photo.url, id:'img_prev', class:'ui tiny circular image' if current_user.photo?%><br>
             <label for="avatar-upload" class="ui icon button">
-              <!-- <i class="camera icon" style="margin-right:5px!important;"></i> -->
+              <i class="camera icon" style="margin-right:5px!important;"></i>
               Subir foto
             </label>
             <%= f.file_field :photo, id: 'avatar-upload', accept: 'image/png,image/jpeg' %>

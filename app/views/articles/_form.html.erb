@@ -10,28 +10,37 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    Sube el artículo en pdf:
-    <%= form.file_field :pdf %>
-  </div>
+
+  <center>
+    <label for="avatar-upload" class="ui huge icon red button" style="margin:20px;">
+      <i class="file pdf outline icon" style="margin-right:5px!important;"></i>
+      Subir PDF
+    </label>
+    <%= form.file_field :pdf, id: 'avatar-upload' %>
+  </center>
 
   <div class="field">
+    <h4 class="ui header">Nombre</h4>
     <%= form.text_field :name, id: :article_name, placeholder: 'Título' %>
   </div>
-
+  
   <div class="field">
-    <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
-  </div>
-
-  <div class="field">
+    <h4 class="ui header">Descripción</h4>
     <%= form.text_area :description, id: :article_description, placeholder: 'Descripción' %>
   </div>
 
   <div class="field">
+    <h4 class="ui header">Palabras Clave (Separadas por comas)</h4>
+    <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
+  </div>
+
+  <div class="field">
+    <h4 class="ui header">Idioma</h4>
     <%= form.text_field :language, id: :article_lenguage, placeholder: 'Idioma' %>
   </div>
 
   <div class="field">
+    <h4 class="ui header">Bibliografía</h4>
     <%= form.text_area :bibliography, id: :article_bibliography, placeholder: 'Bibliografía' %>
   </div>
 
