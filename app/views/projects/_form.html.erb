@@ -24,13 +24,14 @@
 
     <div class="column">
       <div class="field">
-        <!-- <%= select("post", "research_line_id", ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona una línea de investigación'}, class: "ui dropdown",style: "margin-bottom:15px") %> -->
+        <%= form.select("research_line_id", ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona una línea de investigación'}, class: "ui dropdown",style: "margin-bottom:15px") %>
       </div>
       <div class="field">
-        <!-- <%= select("post", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui dropdown",style: "margin-bottom:15px") %> -->
+        <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui dropdown",style: "margin-bottom:15px", multiple: "") %>
       </div>
       <div class="field">
-        <%= select("post", "research_group_id", ResearchGroup.all.collect {|p| [ p.id, p.id ] }, {prompt: 'Selecciona un grupo al que pertenece proyecto'}, class: "ui dropdown",style: "margin-bottom:15px") %>
+        <%= form.select( :research_group_id, ResearchGroup.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un grupo al que pertenece proyecto'}, class: "ui dropdown",style: "margin-bottom:15px") %>
+        <!-- <%= form.collection_select(:research_group_id, ResearchGroup.all, :id, :name) %> -->
       </div>
       <div class="field">
         <div class="ui left icon input">
