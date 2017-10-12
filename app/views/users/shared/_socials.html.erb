@@ -1,0 +1,10 @@
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+  <% end -%>
+  <%- if session["devise.email"] %>
+    <p>El correo <%= session["devise.email"] %> ya ha sido registrado <%- if session["devise.provider"] %>con el proveedor <%= session["devise.provider"] %><% else %> con contraseña<% end -%></p>
+  <% end -%>
+  <a href="<%= user_facebook_omniauth_authorize_path %>" class='ui labeled icon button facebook'><i class='facebook icon'></i>Ingresa con Facebook</a>
+  <a href="<%= user_github_omniauth_authorize_path %>" class='ui labeled icon button'><i class='github icon'></i>Ingresa con Github</a>
+  <a href="<%= user_google_oauth2_omniauth_authorize_path %>" class='ui labeled icon button google plus'><i class='google icon'></i>Ingresa con Google</a>
+<% end -%>

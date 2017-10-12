@@ -1,7 +1,42 @@
+/*  --------------------------------
+    ---- Login ad SignUp Styles ----
+    --------------------------------  */
+
+.login {
+  margin-top: 5% !important;
+  margin-bottom: 5% !important;
+  width: 600px;
+  padding: 30px 30px !important;
+  margin-left: calc(50% - 270px) !important;
+}
+
+.login > .ui.heading {
+  margin-bottom: 20px !important;
+}
+
+.login > .links.text-center {
+  margin: 20px;
+}
+
+.login > .actions > .btn {
+  background-color: rgb(168, 168, 168) !important;
+}
+
+.socials {
+  margin-top: 30px;
+}
+
+.socials > .ui.button {
+  margin-bottom: 10px;
+}
+
+
+
+/*  --------------------------------
+    ------- Edit User Styles -------
+    --------------------------------  */
+
 .edit.user {
-  // padding-top: 160px !important;
-  // width: 700px;
-  // margin-left: calc(50% - 350px);
   padding: 160px 10%;
 }
 

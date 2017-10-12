@@ -29,38 +29,5 @@
 
 
 /*  --------------------------------
-    ---- Login ad SignUp Styles ----
-    --------------------------------  */
-
-.login {
-  margin-top: 5% !important;
-  width: 400px;
-  padding: 30px 30px !important;
-  margin-left: calc(50% - 170px) !important;
-}
-
-.login > .ui.heading {
-  margin-bottom: 20px !important;
-}
-
-.login > .links {
-  margin: 20px 0;
-}
-
-.login > .actions > .btn {
-  background-color: rgb(168, 168, 168) !important;
-}
-
-.socials {
-  width: 400px;
-  margin-left: calc(50% - 200px) !important;
-}
-
-.socials > .ui.button {
-  margin-bottom: 10px;
-}
-
-
-/*  --------------------------------
     --------- Other Styles ---------
     --------------------------------  */
