@@ -1,0 +1,24 @@
+<%= form_with(model: project, local: true, class: "ui form") do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= select("post", "user_id", User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui dropdown",style: "margin-bottom:15px") %>
+  </div>
+
+  <div class="actions">
+    <center>
+      <%= form.submit "Agregar integrante", :class => 'ui teal button' %>
+    </center>
+  </div>
+
+<% end %>

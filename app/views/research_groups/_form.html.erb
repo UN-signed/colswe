@@ -1,4 +1,4 @@
-<%= form_with(model: research_group, local: true) do |form| %>
+<%= form_with(model: research_group, local: true, class: "ui form") do |form| %>
   <% if research_group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(research_group.errors.count, "error") %> prohibited this research_group from being saved:</h2>
@@ -11,22 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :research_group_name %>
+  <div class="field" style="margin-bottom:40px; width:70%; margin-left:15%;">
+    <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Grupo' %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :research_group_description %>
+    <%= form.text_area :description, :placeholder => 'Descripción del Grupo' %>
   </div>
-
-  <div class="field">
-    <%= form.label :administrator %>
-    <%= form.number_field :administrator, id: :research_group_administrator %>
+.
+  <div class="field" style="display:none">
+    <%= form.number_field :administrator_id, :value => current_user.id %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <center>
+      <%= form.submit "Guardar Grupo", :class => 'ui teal button'%>
+    </center>
   </div>
 <% end %>

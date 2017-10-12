@@ -1,4 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
+
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -13,7 +14,7 @@ for i in 0..10
   ResearchGroup.create(
     name:Faker::Company.name,
     description:Faker::Hipster.sentence,
-    administrator_id:rand(11)
+    administrator_id:rand(10)+1
   )
 
   ResearchArea.create(
@@ -36,7 +37,7 @@ for i in 0..25
 end
 
 # Create 100 users and 100 members
-for i in 0..100
+for i in 1..100
   a = User.create(
       :name => Faker::Name.name,
       :description => Faker::Lovecraft.sentences,
