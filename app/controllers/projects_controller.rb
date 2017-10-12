@@ -54,6 +54,13 @@ class ProjectsController < ApplicationController
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
+
+    @member = Member.create(
+      role: "Lider",
+      user_id: current_user.id,
+      research_group_id: @project.research_group_id,
+      project_id: @project.id
+    )
   end
 
   # PATCH/PUT /projects/1
