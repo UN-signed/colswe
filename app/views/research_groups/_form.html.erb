@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  $('.ui.dropdown').dropdown();
+</script>
 <div class="create article">
   <%= form_with(model: research_group, local: true, class: "ui form") do |form| %>
     <% if research_group.errors.any? %>
@@ -29,15 +32,13 @@
         <div class="nine wide column">
           <div class="ui two column row segment">
             <h3 class="ui teal header column" style="width: 100%">Integrantes</h3>
-            <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, placeholder: 'Selecciona un participante para agregar al proyecto', class: "ui search selection dropdown",style: "margin-bottom:15px", multiple: "") %>
+            <div class="field" style="width:100%">
+              <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante'}, class: "ui search selection dropdown",style: "margin-bottom:15px; width:100%", multiple: "") %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <script type="text/javascript">
-      $('.ui.dropdown').dropdown();
-    </script>
 
     <div class="actions">
       <center>

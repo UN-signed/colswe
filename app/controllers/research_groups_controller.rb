@@ -27,6 +27,15 @@ class ResearchGroupsController < ApplicationController
     @research_group = ResearchGroup.new(research_group_params)
     respond_to do |format|
       if @research_group.save
+        params[:research_group][:user_id].each do |x|
+          if x != ""
+            m = Member.new
+            m.project_id = 1
+            m.research_group_id = @research_group.id
+            m.user_id = x
+            m.save!
+          end
+        end
         format.html { redirect_to @research_group, notice: 'Research group was successfully created.' }
         format.json { render :show, status: :created, location: @research_group }
       else
@@ -41,6 +50,15 @@ class ResearchGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @research_group.update(research_group_params)
+        params[:research_group][:user_id].each do |x|
+          if x != "" and not Member.find_by research_group_id: @research_group.id, user_id: x
+            m = Member.new
+            m.project_id = 1
+            m.research_group_id = @research_group.id
+            m.user_id = x
+            m.save!
+          end
+        end
         format.html { redirect_to @research_group, notice: 'Research group was successfully updated.' }
         format.json { render :show, status: :ok, location: @research_group }
       else
