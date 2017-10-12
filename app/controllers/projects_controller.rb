@@ -12,7 +12,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @group = ResearchGroup.find(@project.research_group_id)
-    @members = Member.where(research_group_id: @group.id )
+    @members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)
+    puts
     respond_to do |format|
       format.html
       format.pdf{render template: "projects/pdf", pdf: "pdf"}
@@ -36,6 +37,16 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        params[:project][:user_id].each do |x|
+          if x != ""
+            m = Member.new
+            m.project_id = @project.id
+            m.research_group_id = params[:project][:research_group_id]
+            m.user_id = x
+            m.save!
+            puts x#m.project_id
+          end
+        end
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
