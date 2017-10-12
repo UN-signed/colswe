@@ -24,6 +24,7 @@ class ResearchGroupsController < ApplicationController
   # POST /research_groups
   # POST /research_groups.json
   def create
+    research_group_params[:administrator_id] = 204
     @research_group = ResearchGroup.new(research_group_params)
 
     respond_to do |format|

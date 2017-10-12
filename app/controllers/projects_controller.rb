@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @group = ResearchGroup.find(@project.research_group_id)
-    @members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)
+    @members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)#.paginate(:page => params[:page]).per_page(6)
     puts
     respond_to do |format|
       format.html

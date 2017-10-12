@@ -17,10 +17,9 @@
 //= require_tree .
 //= require semantic_ui/semantic_ui
 
-$(function () {
-  $(document).scroll(function () {
-    var $nav = $("#main-menu");
-    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+$( document ).on('turbolinks:load', function() {
+  $("#avatar-upload").change('turbolinks:load', function(){
+    readURL(this);
   });
 
   function readURL(input) {
@@ -34,21 +33,20 @@ $(function () {
     }
   }
 
-  $("#avatar-upload").change(function(){
-    readURL(this);
-  });
-  
-  var items = '.ui.menu a.item, .ui.menu .link.item';
-  var $menuItem = $(items);
-
-  $menuItem.on('click', function() {
-    $(items).removeClass('active');
-    $(this).addClass('active');
-  });
-  console.log('iusahiuas');
+  $('.ui.dropdown').dropdown();
 });
 
-$(document).ready(function() {
-  $('.ui.dropdown').dropdown();
-  console.log( "ready!" );
+$(function () {
+  $(document).scroll(function () {
+    var $nav = $("#main-menu");
+    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+  });
+
+  // var items = '.ui.menu a.item, .ui.menu .link.item';
+  // var $menuItem = $(items);
+  //
+  // $menuItem.on('click', function() {
+  //   $(items).removeClass('active');
+  //   $(this).addClass('active');
+  // });
 });
