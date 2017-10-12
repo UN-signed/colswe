@@ -24,9 +24,7 @@ class ResearchGroupsController < ApplicationController
   # POST /research_groups
   # POST /research_groups.json
   def create
-    research_group_params[:administrator_id] = 204
     @research_group = ResearchGroup.new(research_group_params)
-
     respond_to do |format|
       if @research_group.save
         format.html { redirect_to @research_group, notice: 'Research group was successfully created.' }
@@ -70,6 +68,6 @@ class ResearchGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_group_params
-      params.require(:research_group).permit(:name, :description, :administrator_id)
+      params.require(:research_group).permit(:name, :description).merge(administrator_id: current_user.id)
     end
 end

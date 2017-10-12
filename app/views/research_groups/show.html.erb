@@ -1,11 +1,5 @@
 <%=render "shared/menu"%>
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Administrator:</strong>
-  <%= @research_group.administrator_id %>
-</p>
-
-<!-- ############################################################################### -->
 <br><br>
 <div class="create article" style="margin-top:60px;">
 
@@ -13,11 +7,17 @@
     <h1 class="section-heading text-center">Grupo: <%= @research_group.name %></h1><br>
 
     <div class="ui grid">
-      <div class="eleven wide column">
+      <div class="nine wide column">
         <h3 class="ui header">Descripción:</h3>
         <p>  <%= @research_group.description %></p>
       </div>
-      <div class="five wide column">
+      <div class="seven wide column">
+        <h3>Proyectos:</h3>
+        <% @projects = Project.where(research_group_id: @research_group.id)%>
+        <% @projects.each do |project| %>
+        <%= link_to project.name, project_url(project.id) %> </h1>
+          <br>
+        <%end%>
       </div>
     </div>
   </div>
@@ -35,7 +35,10 @@
       <% end -%>
     <% end %>
   </div>
+
+
   <br>
+
 
   <center>
     <!-- <%= link_to 'Editar', research_groups_path(@project), class: 'ui teal button' %> -->
