@@ -1,5 +1,4 @@
 <%=render "shared/menu"%>
-<p id="notice"><%= notice %></p>
 <br><br>
 <div class="create article" style="margin-top:60px;">
 
@@ -36,13 +35,12 @@
     <% end %>
   </div>
 
-
   <br>
-
-
   <center>
-    <!-- <%= link_to 'Editar', research_groups_path(@project), class: 'ui teal button' %> -->
+    <% if current_user.id == @research_group.administrator_id%>
+      <%= link_to 'Editar', edit_research_group_path(@research_group.id), class: 'ui teal button' %>
+    <%end%>
+    <!-- <%= link_to 'Eliminar', @project, method: :delete, data: { confirm: 'Estás seguro que quieres borrar el atículo?' }, class: 'ui red button' %> -->
   </center>
-
   <%= link_to 'Atrás', research_groups_path, class: 'ui left floated button' %>
 </div>
