@@ -6,11 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 # Ruby gem
-<<<<<<< HEAD
-ruby '2.4.0'
-=======
 # ruby '2.3.3'
->>>>>>> 7ae7af1963a7efa0701ab2ff265ff19373963376
+
 # Boostrap gem
 gem 'boostrap-sass'
 # Semantic UI gem for cool front developers :P
