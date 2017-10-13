@@ -1,19 +1,41 @@
-<p id="notice"><%= notice %></p>
+<%=render "shared/menu"%>
+<br><br>
+<div class="create article" style="margin-top:60px;">
 
-<p>
-  <strong>Name:</strong>
-  <%= @research_group.name %>
-</p>
+  <div class="ui segment" style="padding:30px;">
+    <h1 class="section-heading text-center">Grupo: <%= @research_group.name %></h1><br>
 
-<p>
-  <strong>Description:</strong>
-  <%= @research_group.description %>
-</p>
+    <div class="ui grid">
+      <div class="nine wide column">
+        <% if current_user.id == @research_group.administrator_id%>
+        <%= link_to 'Editar grupo', edit_research_group_path(@research_group), class: 'ui floated button' %>
+        <%end%>
+        <h3 class="ui header">Descripción:</h3>
+        <p>  <%= @research_group.description %></p>
+      </div>
+      <div class="seven wide column">
+        <h3>Proyectos:</h3>
+        <% @projects = Project.where(research_group_id: @research_group.id)%>
+        <% @projects.each do |project| %>
+        <%= link_to project.name, project_url(project.id) %> </h1>
+          <br>
+        <%end%>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Administrator:</strong>
-  <%= @research_group.administrator %>
-</p>
-
-<%= link_to 'Edit', edit_research_group_path(@research_group) %> |
-<%= link_to 'Back', research_groups_path %>
+  <br>
+  <br>
+  <div class="ui four cards">
+    <% @admin = User.find(@research_group.administrator_id) %>
+    <%= render partial: "users/shared/single", locals: {user: @admin, group: @research_group} %>
+    <% @members = Member.select(:user_id).where(research_group_id: @research_group.id).distinct%>
+    <% @members.each do |member| %>
+      <% @user = User.find(member.user_id) %>
+      <%-if member.user_id != @research_group.administrator_id%>
+        <%= render partial: "users/shared/single", locals: {user: @user, group: @research_group} %>
+      <% end -%>
+    <% end %>
+  </div>
+  <%= link_to 'Atrás', research_groups_path, class: 'ui left floated button' %>
+</div>

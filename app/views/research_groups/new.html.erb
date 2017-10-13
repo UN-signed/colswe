@@ -1,5 +1,10 @@
-<h1>New Research Group</h1>
+<%= render "shared/menu" %>
 
-<%= render 'form', research_group: @research_group %>
+<section class="create article text-center">
+  <h1 class="section-heading text-center">Crear un Nuevo Grupo</h1>
+  <hr class="primary">
 
-<%= link_to 'Back', research_groups_path %>
+  <%= render 'form', research_group: @research_group %>
+
+  <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
+</section>

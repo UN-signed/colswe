@@ -4,7 +4,7 @@ class ResearchGroupsController < ApplicationController
   # GET /research_groups
   # GET /research_groups.json
   def index
-    @research_groups = ResearchGroup.all
+    @research_groups = ResearchGroup.all.paginate(page: params[:page], per_page: 12)
   end
 
   # GET /research_groups/1
@@ -25,9 +25,17 @@ class ResearchGroupsController < ApplicationController
   # POST /research_groups.json
   def create
     @research_group = ResearchGroup.new(research_group_params)
-
     respond_to do |format|
       if @research_group.save
+        params[:research_group][:user_id].each do |x|
+          if x != ""
+            m = Member.new
+            m.project_id = 1
+            m.research_group_id = @research_group.id
+            m.user_id = x
+            m.save!
+          end
+        end
         format.html { redirect_to @research_group, notice: 'Research group was successfully created.' }
         format.json { render :show, status: :created, location: @research_group }
       else
@@ -42,6 +50,15 @@ class ResearchGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @research_group.update(research_group_params)
+        params[:research_group][:user_id].each do |x|
+          if x != "" and not Member.find_by research_group_id: @research_group.id, user_id: x
+            m = Member.new
+            m.project_id = 1
+            m.research_group_id = @research_group.id
+            m.user_id = x
+            m.save!
+          end
+        end
         format.html { redirect_to @research_group, notice: 'Research group was successfully updated.' }
         format.json { render :show, status: :ok, location: @research_group }
       else
@@ -69,6 +86,6 @@ class ResearchGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_group_params
-      params.require(:research_group).permit(:name, :description, :administrator)
+      params.require(:research_group).permit(:name, :description).merge(administrator_id: current_user.id)
     end
 end

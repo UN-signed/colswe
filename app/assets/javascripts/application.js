@@ -17,16 +17,36 @@
 //= require_tree .
 //= require semantic_ui/semantic_ui
 
+$( document ).on('turbolinks:load', function() {
+  $("#avatar-upload").change('turbolinks:load', function(){
+    readURL(this);
+  });
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $('.ui.dropdown').dropdown();
+});
+
 $(function () {
   $(document).scroll(function () {
     var $nav = $("#main-menu");
-    var $name = $("#menu-name");
     $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-    $name.toggleClass('inverted', $(this).scrollTop() < $nav.height());
   });
-});
 
-$(document).ready(function() {
-  $('.ui.secondary.scrolled.menu').menu();
-  $('.ui.dropdown').dropdown();
+  // var items = '.ui.menu a.item, .ui.menu .link.item';
+  // var $menuItem = $(items);
+  //
+  // $menuItem.on('click', function() {
+  //   $(items).removeClass('active');
+  //   $(this).addClass('active');
+  // });
 });

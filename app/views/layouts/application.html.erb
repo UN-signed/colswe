@@ -8,11 +8,9 @@
 </head>
 
 <body>
-  <!-- navbar -->
-
   <%= yield %>
 
-  <footer class="ui text-center inverted segment" style="margin:0;">
+  <footer class="ui text-center inverted segment" id="footer">
     <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'ui avatar image'} %>
     <strong>SmartHub - An UNsigned application</strong>
   </footer>

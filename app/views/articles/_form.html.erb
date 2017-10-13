@@ -11,29 +11,39 @@
     </div>
   <% end %>
 
+  <center>
+    <label for="avatar-upload" class="ui big icon red button" style="margin:20px;">
+      <i class="file pdf outline icon" style="margin-right:5px!important;"></i>
+      Subir PDF
+    </label>
+    <%= form.file_field :pdf, id: 'avatar-upload' %>
+
+    <%= link_to('Ver pdf actual', @article.pdf.url, class: 'ui big button', target: :_blank) if @article.pdf? %>
+  </center>
+
   <div class="field">
-    <%= form.label :título %>
-    <%= form.text_field :name, id: :article_name %>
+    <h4 class="ui header">Nombre</h4>
+    <%= form.text_field :name, id: :article_name, placeholder: 'Título' %>
   </div>
 
   <div class="field">
-    <%= form.label :palabras_clave %> (separadas por comas)
-    <%= form.text_area :key_words, id: :article_key_words %>
+    <h4 class="ui header">Descripción</h4>
+    <%= form.text_area :description, id: :article_description, placeholder: 'Descripción' %>
   </div>
 
   <div class="field">
-    <%= form.label :descripción %>
-    <%= form.text_area :description, id: :article_description %>
+    <h4 class="ui header">Palabras Clave (Separadas por comas)</h4>
+    <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
   </div>
 
   <div class="field">
-    <%= form.label :Idioma %>
-    <%= form.text_field :lenguage, id: :article_lenguage %>
+    <h4 class="ui header">Idioma</h4>
+    <%= form.text_field :language, id: :article_lenguage, placeholder: 'Idioma' %>
   </div>
 
   <div class="field">
-    <%= form.label :bibliografía %>
-    <%= form.text_area :bibliography, id: :article_bibliography %>
+    <h4 class="ui header">Bibliografía</h4>
+    <%= form.text_area :bibliography, id: :article_bibliography, placeholder: 'Bibliografía' %>
   </div>
 
   <div class="actions">

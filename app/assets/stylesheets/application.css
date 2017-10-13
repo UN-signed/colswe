@@ -14,18 +14,17 @@
  *= require_self
  *= require semantic_ui/semantic_ui
  */
-/*@import "bootstrap-sporckets";*/
-@import "bootstrap";
-
 
 /*  --------------------------------
-    ---- Login ad SignUp Styles ----
+    ---------- Main Styles ---------
     --------------------------------  */
 
-.edit.user {
-  width: 70%;
-  margin-left: 15%;
-  padding: 30px;
+#footer{
+  margin: 0;
+  position: relative;
+  bottom: 0 !important;
+  width: 100%;
+  border-radius: initial;
 }
 
 
@@ -36,31 +35,89 @@
 
 .login {
   margin-top: 5% !important;
-  width: 400px;
+  margin-bottom: 5% !important;
+  width: 700px;
   padding: 30px 30px !important;
-  margin-left: calc(50% - 170px) !important;
+  margin-left: calc(50% - 320px) !important;
 }
 
 .login > .ui.heading {
   margin-bottom: 20px !important;
 }
 
-.login > .links {
-  margin: 20px 0;
+.login > .links.text-center {
+  margin: 20px;
 }
 
 .login > .actions > .btn {
   background-color: rgb(168, 168, 168) !important;
 }
 
+.login .ui.grid > .column:not(.row), .ui.grid > .row > .column {
+  padding-left: 3rem;
+  padding-right: 3em;
+}
+
 .socials {
-  width: 400px;
-  margin-left: calc(50% - 200px) !important;
+  margin-top: 30px;
 }
 
 .socials > .ui.button {
   margin-bottom: 10px;
 }
+
+
+
+/*  --------------------------------
+    ------- Edit User Styles -------
+    --------------------------------  */
+
+.edit.user {
+  padding: 160px 10%;
+}
+
+#avatar-upload {
+  display: none;
+}
+
+.edit.user .ui.segment {
+  padding:30px;
+}
+
+
+
+/*  --------------------------------
+    ------- Dashboard Styles -------
+    --------------------------------  */
+
+.dashboard {
+  padding: 50px 10%;
+}
+
+.dashboard .ui.menu {
+  margin-bottom: 40px !important;
+}
+
+.ui.basic.horizontal.label {
+  margin-left: 10px;
+}
+
+.ui.project.label {
+  background-color: #C5E8E5;
+  color: #007478;
+}
+
+.ui.article.label {
+  background-color: rgb(255, 211, 182) !important;
+  color: #864a23 !important;
+}
+
+.ui.group.label {
+  background-color: rgb(192, 255, 182) !important;
+  color: #378623 !important;
+}
+
+
 
 
 /*  --------------------------------

@@ -1,0 +1,47 @@
+<div class="dashboard">
+  <div class="ui secondary pointing menu">
+    <a class="item active" data-items="projects, .articles">Todos</a>
+    <a class="item" data-items="projects">Proyectos</a>
+    <a class="item" data-items="articles">Artículos</a>
+    <div class="right menu">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Buscar...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="holder articles">
+    <div class="ui three cards">
+    <%= render @articles %>
+    </div>
+    <br>
+    <br>
+
+    <%= will_paginate @articles, :param_name => 'article_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+
+  </div>
+
+  <div class="holder projects">
+    <div class="ui three cards">
+      <%= render @projects %>
+    </div>
+    <br>
+    <br>
+
+    <%= will_paginate @projects, :param_name => 'project_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+  </div>
+</div>
+<script>
+  $( document ).on('turbolinks:load', function() {
+  var items = '.ui.menu a.item, .ui.menu .link.item';
+  var $menuItem = $(items);
+
+  $menuItem.on('click', function() {
+    var tmp = $(this).data("items");
+    $("div.holder").css("display", "none");
+    $("div.holder." + tmp).css("display", "initial");
+  });
+});
+
+</script>

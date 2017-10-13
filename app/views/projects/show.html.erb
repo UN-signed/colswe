@@ -1,18 +1,42 @@
 <%= render "shared/menu" %>
-
+<br>
+<br>
 <div class="create article" style="margin-top:60px;">
-  <h3 class="ui right floated header">Estado: <%= @project.state %></h3>
-  <h1 class="section-heading text-center"><%= @project.name %></h1>
 
-  <h3 class="ui header">Descripción:</h3>
-  <p><%= @project.summary %></p>
+  <div class="ui segment" style="padding:30px;">
+    <h3 class="ui green label" style="float:right;">Estado: <%= @project.state %></h3>
+    <h1 class="section-heading text-center"><b>Proyecto:</b> <%= @project.name %></h1><br>
 
-  <h3 class="ui header">Git:</h3>
-  <p><%= @project.git %></p>
+    <div class="ui grid">
+      <div class="eleven wide column">
+        <h3 class="ui header">Descripción:</h3>
+        <p><%= @project.summary %></p>
+      </div>
+      <div class="five wide column">
+        <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
+        <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <h1 class="section-heading text-center"> <%= link_to @group.name, research_group_url(@group.id) %> </h1>
+  <h2 class="section-heading text-center">Integrantes</h2>
+  <br>
+  <div class="ui six cards">
+    <% @members.each do |member| %>
+      <% @user = User.find(member.user_id) %>
+      <%= render partial: "users/shared/single", locals: {user: @user, group: @group, member: member} %>
+    <% end %>
+  </div>
+  <br>
 
   <center>
+    <% if current_user%>
     <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
-    <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button' %>
+    <%end%>
+    <!-- <%= link_to 'Eliminar', @project, method: :delete, data: { confirm: 'Estás seguro que quieres borrar el atículo?' }, class: 'ui red button' %> -->
+    <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>
   </center>
 
   <%= link_to 'Atrás', projects_path, class: 'ui left floated button' %>

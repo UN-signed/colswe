@@ -7,7 +7,8 @@
   position: fixed;
   z-index: 1000;
   width: 100.5%;
-  color: white !important;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .ui.white.button {
@@ -29,13 +30,11 @@
   margin-bottom: 20px;
 }
 
-.ui.secondary.menu .item {
-  color: white;
-}
-
 .ui.secondary.menu.scrolled {
   background-color: rgba(255, 255, 255, 0.97) !important;
   transition: background-color 200ms linear;
+  border-bottom: 2px solid #00b5ad;
+  height: 60px !important;
 }
 
 .ui.secondary.menu.scrolled .item {
