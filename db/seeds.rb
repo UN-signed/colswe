@@ -24,11 +24,12 @@ for i in 0..10
 end
 
 # Create 25 projects and 50 research_lines
+states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
 for i in 0..25
   Project.create(
     name:Faker::Company.name,
     summary:Faker::Hipster.sentence,
-    state:Faker::Boolean.boolean,
+    state:states[rand(3)],
     research_group_id:rand(11)+1,
     git:Faker::Internet.url('github.com'))
 
