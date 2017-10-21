@@ -4,7 +4,6 @@
 <div class="create article" style="margin-top:60px;">
 
   <div class="ui segment" style="padding:30px;">
-    <h3 class="ui green label" style="float:right;">Estado: <%= @project.state %></h3>
     <h1 class="section-heading text-center"><b>Proyecto:</b> <%= @project.name %></h1><br>
 
     <div class="ui grid">
@@ -13,6 +12,8 @@
         <p><%= @project.summary %></p>
       </div>
       <div class="five wide column">
+          <h3 class="ui big label <%= @project.state %>">Activo - <%= @project.state %></h3>
+        <br><br>
         <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
         <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
       </div>
