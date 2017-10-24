@@ -17,7 +17,7 @@
         <h3>Proyectos:</h3>
         <% @projects = Project.where(research_group_id: @research_group.id)%>
         <% @projects.each do |project| %>
-        <%= link_to project.name, project_url(project.id) %> </h1>
+        <%= link_to project.name, research_group_project_url(@research_group, project) %> </h1>
           <br>
         <%end%>
         <%= link_to 'Añadir proyecto', new_research_group_project_path(@research_group), class: 'ui floated button' %>

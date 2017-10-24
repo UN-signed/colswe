@@ -7,10 +7,6 @@
   <div class="right menu">
     <% if user_signed_in? %>
       <div class="item">
-        <%= link_to(raw('<i class="plus icon"></i> Nuevo Proyecto'), new_project_path, target: :_blank, class: 'ui labeled icon teal button') %>
-      </div>
-
-      <div class="item">
         <%= link_to(raw('<i class="plus icon"></i> Nuevo Grupo'), new_research_group_path, target: :_blank, class: 'ui labeled icon teal button') %>
       </div>
 

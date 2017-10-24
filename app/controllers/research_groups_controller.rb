@@ -10,6 +10,7 @@ class ResearchGroupsController < ApplicationController
   # GET /research_groups/1
   # GET /research_groups/1.json
   def show
+    @research_group = ResearchGroup.find(params[:id])
   end
 
   # GET /research_groups/new
