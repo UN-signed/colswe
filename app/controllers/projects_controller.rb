@@ -4,16 +4,14 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.paginate(page: params[:page], per_page: 12)
+    @projects = Project.all.paginate(page: params[:page], per_page: 12).reverse_order
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @group = ResearchGroup.find(@project.research_group_id)
-    #@members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)#.paginate(:page => params[:page]).per_page(6)
-    @members = Member.where(research_group_id: @group.id, project_id: params[:id].to_i)
+    @group = ResearchGroup.find(@project.research_group_id)    
     puts
     respond_to do |format|
       format.html
@@ -29,6 +27,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    @group = ResearchGroup.find(@project.research_group_id)
   end
 
   # POST /projects

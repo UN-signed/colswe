@@ -13,4 +13,17 @@
 class ResearchGroup < ApplicationRecord
   has_many :members
   has_many :projects
+
+  def self.getUsers(group_id)
+    @members = Member.select('members.research_group_id, members.user_id, users.id')
+                     .joins(:user)
+                     .where(:research_group_id => group_id)
+
+    users = []
+    @members.each do |m|
+      user = User.find(m.user_id)
+      users.push(user)
+    end
+    return users
+  end
 end
