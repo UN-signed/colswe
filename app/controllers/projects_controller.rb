@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @group = ResearchGroup.find(@project.research_group_id)    
+    @group = ResearchGroup.find(@project.research_group_id)
     puts
     respond_to do |format|
       format.html
@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @research_group = ResearchGroup.find(params[:research_group_id])
   end
 
   # GET /projects/1/edit

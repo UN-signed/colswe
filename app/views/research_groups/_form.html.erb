@@ -33,6 +33,7 @@
             <% @members = ResearchGroup.getUsers(@research_group.id)%>
             <% @members.each do |member| %>
               <div class="item">
+                  <% member = User.find(member.id) %>
                   <%= image_tag(member.photo, alt: 'Image', class: 'ui avatar image') if member.photo? %>
                   <div class="ui label">
                     <a class="header" style="display: inline"><%= member.name %></a> <%# TODO: Enlace al perfil %>

@@ -20,6 +20,7 @@
         <%= link_to project.name, project_url(project.id) %> </h1>
           <br>
         <%end%>
+        <%= link_to 'Añadir proyecto', new_research_group_project_path(@research_group), class: 'ui floated button' %>
       </div>
     </div>
   </div>
