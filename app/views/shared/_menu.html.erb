@@ -15,15 +15,17 @@
       </div>
 
       <div class="item">
-        <a class="item" href="<%=edit_user_registration_path%>">
-          <h4 class="ui header">
+        <div class="ui dropdown">
+          <h4 class="ui header" style="display:inline;">
             <%= image_tag(current_user.photo, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
             <%= current_user.name %>
           </h4>
-        </a>
-        <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
-          Cerrar Sesión
-        </a>
+          <i class="dropdown icon"></i>
+          <div class="menu" id="menu-dropdown">
+            <a class="item" href="<%=edit_user_registration_path%>">Mi Perfil</a>
+            <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">Cerrar Sesión</a>
+          </div>
+        </div>
       </div>
 
     <% else %>
