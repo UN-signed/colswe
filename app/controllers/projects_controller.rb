@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.paginate(page: params[:page], per_page: 12).reverse_order
+    @projects = Project.load_projects(page: params[:page])
   end
 
   # GET /projects/1

@@ -26,4 +26,7 @@ class ResearchGroup < ApplicationRecord
     end
     return users
   end
+  def self.load_researh_groups(**args)
+    paginate(page: args[:page] || 1, per_page: 12).reverse_order
+  end
 end

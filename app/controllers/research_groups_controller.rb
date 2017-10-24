@@ -4,7 +4,7 @@ class ResearchGroupsController < ApplicationController
   # GET /research_groups
   # GET /research_groups.json
   def index
-    @research_groups = ResearchGroup.all.paginate(page: params[:page], per_page: 12)
+    @research_groups = ResearchGroup.load_researh_groups(page: params[:page])
   end
 
   # GET /research_groups/1
