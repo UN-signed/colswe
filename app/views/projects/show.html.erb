@@ -12,7 +12,7 @@
         <p><%= @project.summary %></p>
       </div>
       <div class="five wide column">
-          <h3 class="ui big label <%= @project.state %>">Activo - <%= @project.state %></h3>
+          <h3 class="ui big label <%= @project.state %>"> <%= @project.state %></h3>
         <br><br>
         <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
         <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
@@ -34,7 +34,7 @@
 
   <center>
     <% if current_user%>
-    <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
+    <%= link_to 'Editar', edit_research_group_project_path(@project), class: 'ui teal button' %>
     <%end%>
     <!-- <%= link_to 'Eliminar', @project, method: :delete, data: { confirm: 'Estás seguro que quieres borrar el atículo?' }, class: 'ui red button' %> -->
     <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>

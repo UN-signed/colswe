@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.paginate(page: params[:page], per_page: 12)
+    @projects = Project.all.paginate(page: params[:page], per_page: 12).reverse_order
   end
 
   # GET /projects/1
@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    @group = ResearchGroup.find(@project.research_group_id)  
   end
 
   # POST /projects
