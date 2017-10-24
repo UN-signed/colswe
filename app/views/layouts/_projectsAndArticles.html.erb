@@ -1,0 +1,23 @@
+<div class="ui card">
+  <div class="content">
+    <div class="header">
+      <a class="ui article horizontal right floated label"><%=projectsAndArticles.class == "Article" ? "Articulo" : "Proyecto" %></a>
+      <%= article.name %>
+    </div>
+    <div class="meta">
+      Subido el <%= format_time(article.created_at, :short, "N/A") %></td>
+    </div>
+    <div class="description">
+      <%= article.description %>
+    </div>
+  </div>
+
+  <div class="content">
+    <center>
+      <a class="ui red button" href="<%= article.pdf.url %>" target="_blank">
+        <i class="icon file pdf outline"></i> PDF
+      </a>
+      <%= link_to 'Detalles', article, class: 'ui button' %>
+    </center>
+  </div>
+</div>
