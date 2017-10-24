@@ -25,9 +25,10 @@
   <h2 class="section-heading text-center">Integrantes</h2>
   <br>
   <div class="ui six cards">
-    <% @members.each do |member| %>
-      <% @user = User.find(member.user_id) %>
-      <%= render partial: "users/shared/single", locals: {user: @user, group: @group, member: member} %>
+    <% @users = Project.getUsers(@project.id) %>
+    <% @users.each do |u| %>
+      <% @user = User.find(u.id) %>
+      <%= render partial: "users/shared/single", locals: {user: @user, group: @group} %>
     <% end %>
   </div>
   <br>
