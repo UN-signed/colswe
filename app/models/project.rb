@@ -21,8 +21,6 @@ class Project < ApplicationRecord
 
   def self.getUsers(project_id)
     project = Project.find(project_id)
-    group = ResearchGroup.find(project.research_group_id)
-    usersGroup = ResearchGroup.getUsers(group.id)
     membersProject = Member.select('members.project_id, members.user_id, users.id')
                      .joins(:user)
                      .where(:project_id => project_id)
@@ -34,4 +32,5 @@ class Project < ApplicationRecord
     end
     return usersProject
   end
+
 end
