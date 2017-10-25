@@ -13,22 +13,22 @@
 
   <div class="holder articles">
     <div class="ui three cards">
-    <%= render @articles %>
+    <%= render @projectsAndArticles %>
     </div>
     <br>
     <br>
 
-    <%= will_paginate @articles, :param_name => 'article_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+    <%= will_paginate @projectsAndArticles, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
 
   </div>
 
-  <div class="holder projects">
+  <!-- <div class="holder projects">
     <div class="ui three cards">
       <%= render @projects %>
     </div>
     <br>
     <br>
 
-    <%= will_paginate @projects, :param_name => 'project_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
-  </div>
+    <= will_paginate @projects, :param_name => 'project_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+  </div> -->
 </div>
