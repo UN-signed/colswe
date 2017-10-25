@@ -32,16 +32,3 @@
     <%= will_paginate @projects, :param_name => 'project_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
   </div>
 </div>
-<script>
-  $( document ).on('turbolinks:load', function() {
-  var items = '.ui.menu a.item, .ui.menu .link.item';
-  var $menuItem = $(items);
-
-  $menuItem.on('click', function() {
-    var tmp = $(this).data("items");
-    $("div.holder").css("display", "none");
-    $("div.holder." + tmp).css("display", "initial");
-  });
-});
-
-</script>

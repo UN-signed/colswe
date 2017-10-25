@@ -33,4 +33,8 @@ class Project < ApplicationRecord
     return usersProject
   end
 
+  def self.load_projects(**args)
+    paginate(page: args[:page] || 1, per_page: 12).reverse_order
+  end
+
 end
