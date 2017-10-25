@@ -57,5 +57,8 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+  def self.old_user_from_omniauth(auth)
+    find_by(email: auth.info.email)
+  end
 
 end

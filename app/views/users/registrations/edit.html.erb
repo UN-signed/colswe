@@ -8,72 +8,85 @@
   <%= devise_error_messages! %>
 
   <div class="ui grid">
-    <div class="seven wide column">
-      <div class="ui row segment">
-        <h3 class="ui teal header column" style="width: 100%">
-          1. Datos Básicos
-        </h3>
-        <div class="field four wide left floated column">
-          <center><br>
-            <%= image_tag current_user.photo.url, id:'img_prev', class:'ui tiny circular image' if current_user.photo?%><br>
-            <label for="avatar-upload" class="ui icon button">
-              <i class="camera icon" style="margin-right:5px!important;"></i>
-              Subir foto
-            </label>
-            <%= f.file_field :photo, id: 'avatar-upload', accept: 'image/png,image/jpeg' %>
+    <div class="six wide column">
+      <div class="ui secondary vertical pointing menu" id="profile-menu">
+        <a class="item active" data-items="basic-info">Información básica</a>
+        <a class="item" data-items="academic-info">Información académica</a>
+        <a class="item" data-items="change-pass">Cambiar contraseña</a>
+        <a class="item" data-items="delete">Eliminar cuenta</a>
+      </div>
+    </div>
+
+    <div class="ten wide column">
+      <div class="holder basic-info">
+        <div class="ui row segment">
+          <h3 class="ui teal header column" style="width: 100%">Datos Básicos</h3>
+          <div class="field four wide left floated column">
+            <center><br>
+              <%= image_tag current_user.photo.url, id:'img_prev', class:'ui tiny circular image' if current_user.photo?%><br>
+              <label for="avatar-upload" class="ui icon button">
+                <i class="camera icon" style="margin-right:5px!important;"></i>
+                Subir foto
+              </label>
+              <%= f.file_field :photo, id: 'avatar-upload', accept: 'image/png,image/jpeg' %>
+            </center>
+          </div>
+          <div class="field ten wide right floated column">
+            <h4 class="ui header">Nombre y Apellidos</h4>
+            <%= f.text_field :name, autofocus: true, placeholder: 'Nombre' %>
+            <h4 class="ui header">Correo Electrónico</h4>
+            <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="holder academic-info">
+        <div class="ui two column row segment">
+          <h3 class="ui teal header column" style="width: 100%">Datos Académicos</h3>
+          <div class="field column">
+            <h4 class="ui left floated header">Descripción</h4>
+            <%= f.text_area :description, autofocus: true, placeholder: 'Descríbete en un párrafo breve para que la gente sepa de lo que haces', class: 'big text area' %>
+          </div>
+          <div class="field right floated column">
+            <h4 class="ui header">Estudios (separados por comas)</h4>
+            <%= f.text_area :degree, autofocus: true, placeholder: 'Ej: Pregrado en ingeniería de sitemas, maestría en Machine Learning, ...', class: 'small text area' %>
+            <h4 class="ui header">Departamento</h4>
+            <%= select("post", "research_line_id", ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un departamento'}, class: "ui dropdown",style: "margin-bottom:15px") %>
+          </div>
+        </div>
+      </div>
+
+      <div class="holder change-pass">
+        <div class="ui segment text-center">
+          <h3 class="ui header">Cambiar contraseña</h3>
+          <i>(Déjalos en blanco si no quieres cambiarla)</i>
+          <br />
+          <div class="field">
+            <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> caracteres mínimo</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: 'Nueva contraseña' %>
+          </div>
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirmar contraseña' %>
+          </div>
+
+          <div class="field">
+            <i>(Necesitamos tu contraseña actual para guardar los cambios)</i>
+            <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Contraseña Actual' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="holder delete">
+        <div class="ui segment text-center">
+          <h3 class="ui header">¿Cansado de hacer investigación?</h3>
+          <center>
+            <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'ui red button' %>
           </center>
         </div>
-        <div class="field ten wide right floated column">
-          <h4 class="ui header">Nombre y Apellidos</h4>
-          <%= f.text_field :name, autofocus: true, placeholder: 'Nombre' %>
-          <h4 class="ui header">Correo Electrónico</h4>
-          <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
-        </div>
       </div>
     </div>
-
-    <div class="nine wide column">
-      <div class="ui two column row segment">
-        <h3 class="ui teal header column" style="width: 100%">
-          2. Datos Académicos
-        </h3>
-        <div class="field column">
-          <h4 class="ui left floated header">Descripción</h4>
-          <%= f.text_area :description, autofocus: true, placeholder: 'Descríbete en un párrafo breve para que la gente sepa de lo que haces', class: 'big text area' %>
-        </div>
-        <div class="field right floated column">
-          <h4 class="ui header">Estudios (separados por comas)</h4>
-          <%= f.text_area :degree, autofocus: true, placeholder: 'Ej: Pregrado en ingeniería de sitemas, maestría en Machine Learning, ...', class: 'small text area' %>
-          <h4 class="ui header">Departamento</h4>
-          <%= select("post", "research_line_id", ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un departamento'}, class: "ui dropdown",style: "margin-bottom:15px") %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <br />
-
-
-  <div class="ui segment text-center">
-    <h3 class="ui header">Cambiar contraseña</h3>
-    <i>(Déjalos en blanco si no quieres cambiarla)</i>
-    <br />
-    <div class="field">
-      <% if @minimum_password_length %>
-      <em><%= @minimum_password_length %> caracteres mínimo</em>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "off", placeholder: 'Nueva contraseña' %>
-    </div>
-    <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirmar contraseña' %>
-    </div>
-  </div>
-  <br />
-
-  <div class="field">
-    <i>(Necesitamos tu contraseña actual para guardar los cambios)</i>
-    <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Contraseña Actual' %>
   </div>
 
   <div class="actions">
@@ -81,14 +94,5 @@
     <%= f.submit "Guardar cambios", class: 'ui teal right floated button' %>
   </div>
   <% end %>
-  <br />
-  <br />
-
-  <div class="ui segment text-center">
-    <h3 class="ui header">¿Cansado de hacer investigación?</h3>
-    <center>
-      <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'ui red button' %>
-    </center>
-  </div>
 
 </div>

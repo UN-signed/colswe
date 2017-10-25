@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.paginate(page: params[:page], per_page: 12)
+    @projects = Project.load_projects(page: params[:page])
   end
 
   # GET /projects/1
@@ -12,8 +12,6 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @group = ResearchGroup.find(@project.research_group_id)
-    #@members = Member.where("research_group_id = ? AND project_id = ?", @group.id, params[:id].to_i)#.paginate(:page => params[:page]).per_page(6)
-    @members = Member.where(research_group_id: @group.id, project_id: params[:id].to_i)
     puts
     respond_to do |format|
       format.html
@@ -24,6 +22,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @group = ResearchGroup.find(params[:research_group_id])
   end
 
   # GET /projects/1/edit
@@ -35,14 +34,14 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
+    puts @project.research_group_id
     respond_to do |format|
       if @project.save
         params[:project][:user_id].each do |x|
           if x != ""
             m = Member.new
             m.project_id = @project.id
-            m.research_group_id = params[:project][:research_group_id]
+            m.research_group_id = @project.research_group_id
             m.user_id = x
             m.save!
           end
@@ -73,7 +72,7 @@ class ProjectsController < ApplicationController
           if x != "" and not Member.find_by project_id: @project.id, research_group_id: params[:project][:research_group_id], user_id: x
             m = Member.new
             m.project_id = @project.id
-            m.research_group_id = params[:project][:research_group_id]
+            m.research_group_id = @project.research_group_id
             m.user_id = x
             m.save!
           end
@@ -105,6 +104,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :state, :summary, :git, :research_group_id)
+      params.require(:project).permit(:name, :state, :summary, :git).merge(research_group_id: params[:research_group_id])
     end
 end

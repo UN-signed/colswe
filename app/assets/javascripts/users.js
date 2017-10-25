@@ -1,6 +1,9 @@
 $( document ).on('turbolinks:load', function() {
-  var items = '#dashboard-menu a.item, #dashboard-menu .link.item';
+  var items = '#profile-menu a.item, #profile-menu .link.item';
   var $menuItem = $(items);
+
+  $("div.holder").css("display", "none");
+  $("div.holder.basic-info").css("display", "initial");
 
   $menuItem.on('click', function() {
     $(items).removeClass('active');
