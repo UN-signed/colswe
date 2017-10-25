@@ -5,3 +5,21 @@
 .ui.link.card:hover {
   text-decoration: none;
 }
+
+.ui.big.label.Activo {
+    background-color: rgb(33, 186, 69);
+    color: rgb(255, 255, 255);
+    border-color: rgb(33, 186, 69) !important;
+}
+
+.ui.big.label.Rechazado {
+    background-color: #db2828 !important;
+    border-color: #db2828 !important;
+    color: #ffffff !important;
+}
+
+.ui.big.label.Potato {
+    background-color: #db2828 !important;
+    border-color: #db2828 !important;
+    color: #ffffff !important;
+}

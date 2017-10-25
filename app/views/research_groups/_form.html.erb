@@ -1,7 +1,4 @@
-<script type="text/javascript">
-  $('.ui.dropdown').dropdown();
-</script>
-<div class="create article">
+<div class="edit user group">
   <%= form_with(model: research_group, local: true, class: "ui form") do |form| %>
     <% if research_group.errors.any? %>
       <div id="error_explanation">
@@ -14,8 +11,8 @@
       </div>
     <% end %>
     <br>
-    <div class="ui two column scalable grid" style="margin-bottom:50px;">
-      <div class="column">
+    <div class="ui grid" style="margin-bottom:50px;">
+      <div class="nine wide column">
         <div class="ui row segment">
           <h3 class="ui teal header column" style="width: 100%">Datos Básicos</h3>
           <h4 class="ui header">Nombre del grupo</h4>
@@ -28,24 +25,43 @@
         </div>
       </div>
 
-      <div class="column">
-        <div class="nine wide column">
-          <div class="ui two column row segment">
-            <h3 class="ui teal header column" style="width: 100%">Integrantes</h3>
-            <div class="field" style="width:100%">
-              <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante'}, class: "ui search selection dropdown",style: "margin-bottom:15px; width:100%", multiple: "") %>
-            </div>
+      <div class="seven wide column">
+        <div class="ui two column row segment">
+          <h3 class="ui teal header column" style="width: 100%">Integrantes</h3>
+
+          <div class="ui list">
+            <% @members = ResearchGroup.getUsers(@research_group.id)%>
+            <% @members.each do |member| %>
+              <div class="item">
+                  <% member = User.find(member.id) %>
+                  <%= image_tag(member.photo, alt: 'Image', class: 'ui avatar image') if member.photo? %>
+                  <div class="ui label">
+                    <a class="header" style="display: inline"><%= member.name %></a> <%# TODO: Enlace al perfil %>
+                    <div class="description">
+                      <%= member.degree %>
+                    </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="field" style="width:100%">
+            <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante'}, class: "ui search selection dropdown",style: "margin-bottom:15px; width:100%", multiple: "") %>
           </div>
         </div>
       </div>
+
     </div>
 
     <div class="actions">
       <center>
         <%= link_to 'Atrás', research_groups_path, class:'ui button' %>
-        <%= link_to 'Ver Proyecto', @research_group, class:'ui teal button' %>
-        <%= form.submit "Guardar proyecto", :class => 'ui teal button' %>
+        <%= link_to 'Ver', @research_group, class:'ui teal button' %>
+        <%= form.submit "Guardar", :class => 'ui teal button' %>
       </center>
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+$('.ui.dropdown').dropdown();
+</script>
