@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
-//= stub dashboard.js
-//= stub users.js
+//stub dashboard.js
+//stub users.js
 //= require_tree .
 //= require semantic_ui/semantic_ui
 
