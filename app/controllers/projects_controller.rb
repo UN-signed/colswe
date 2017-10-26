@@ -5,9 +5,6 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.load_projects(page: params[:page])
-    respond_to do |format|
-      format.json {render :json => Project.all.to_json }
-    end
   end
 
   # GET /projects/1

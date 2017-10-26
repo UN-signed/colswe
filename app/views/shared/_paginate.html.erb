@@ -1,0 +1,9 @@
+<div class="holder">
+  <div class="ui three cards">
+  <%= render @items %>
+  </div>
+  <br>
+  <br>
+
+  <%= will_paginate @items, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+</div>

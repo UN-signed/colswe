@@ -11,17 +11,8 @@
     </div>
   </div>
 
-  <div class="holder articles">
-    <div class="ui three cards">
-    <%= render @projectsAndArticles %>
-    </div>
-    <br>
-    <br>
-
-    <%= will_paginate @projectsAndArticles, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
-
-  </div>
-
+  <%= render "shared/paginate" %>
+  <%= @items%>
   <!-- <div class="holder projects">
     <div class="ui three cards">
       <%= render @projects %>

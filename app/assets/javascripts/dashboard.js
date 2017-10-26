@@ -10,6 +10,7 @@ $( document ).on('turbolinks:load', function() {
     $("div.holder." + tmp).css("display", "initial");
   });
 
+
   // $('#demo').pagination({
   //   dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 100],
   //   pageSize: 5,
