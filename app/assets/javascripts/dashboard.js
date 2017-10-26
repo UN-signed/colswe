@@ -8,7 +8,7 @@ $( document ).on('turbolinks:load', function() {
           return false;
         });
 
-  $('body').on('click', '.menu a',function(e) {
+  $('body').on('click', '#dashboard-menu a',function(e) {
     e.preventDefault();
     $(".menu a").removeClass('active');
     $(this).addClass('active');
