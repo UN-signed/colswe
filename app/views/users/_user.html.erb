@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="image">
+    <%= image_tag(user.photo.url, alt: 'Image') if user.photo? %>
+  </div>
+  <div class="content">
+    <div class="header"><%= user.name %></div>
+
+    <div class="meta">
+      <a class="ui orange floated label">Persona</a>
+    </div>
+  </div>
+  <div class="extra content">
+    <span class="right floated" style="max-width: 100%;">
+      <%= user.email %>
+    </span>
+    <div class="ui button">Ver perfil</div>
+  </div>
+</div>

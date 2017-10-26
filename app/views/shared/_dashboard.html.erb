@@ -1,8 +1,10 @@
 <div class="dashboard">
   <div class="ui secondary pointing menu" id="dashboard-menu">
-    <a class="item active">Todos</a>
-    <a class="item">Proyectos</a>
-    <a class="item">Artículos</a>
+    <a class="item active" data-items="all">Todos</a>
+    <a class="item" data-items="projects">Proyectos</a>
+    <a class="item" data-items="articles">Artículos</a>
+    <a class="item" data-items="groups">Grupos</a>
+    <a class="item" data-items="people">Personas</a>
     <div class="right menu">
       <div class="ui transparent icon input">
         <input type="text" placeholder="Buscar...">
@@ -14,4 +16,3 @@
   <%= render "shared/paginate" %>
 
 </div>
-<!-- <= javascript_include_tag "dashboard.js" %> -->

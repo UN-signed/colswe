@@ -28,7 +28,7 @@
     <% @users = Project.getUsers(@project.id) %>
     <% @users.each do |u| %>
       <% @user = User.find(u.id) %>
-      <%= render partial: "users/shared/single", locals: {user: @user, group: @group} %>
+      <%= render partial: "users/shared/user", locals: {user: @user, group: @group} %>
     <% end %>
   </div>
   <br>
