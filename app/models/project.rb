@@ -34,7 +34,7 @@ class Project < ApplicationRecord
   end
 
   def self.load_projects(**args)
-    paginate(page: args[:page] || 1, per_page: 12).reverse_order
+    where(research_group_id: args[:research_group_id]).paginate(page: args[:page] || 1, per_page: 12).reverse_order
   end
 
 end
