@@ -1,8 +1,8 @@
 <div class="dashboard">
   <div class="ui secondary pointing menu" id="dashboard-menu">
-    <a class="item active" data-items="projects, .articles">Todos</a>
-    <a class="item" data-items="projects">Proyectos</a>
-    <a class="item" data-items="articles">Artículos</a>
+    <a class="item active">Todos</a>
+    <a class="item">Proyectos</a>
+    <a class="item">Artículos</a>
     <div class="right menu">
       <div class="ui transparent icon input">
         <input type="text" placeholder="Buscar...">
@@ -12,14 +12,6 @@
   </div>
 
   <%= render "shared/paginate" %>
-  <%= @items%>
-  <!-- <div class="holder projects">
-    <div class="ui three cards">
-      <%= render @projects %>
-    </div>
-    <br>
-    <br>
 
-    <= will_paginate @projects, :param_name => 'project_page', previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
-  </div> -->
 </div>
+<%= javascript_include_tag "dashboard.js" %>
