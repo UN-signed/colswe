@@ -20,7 +20,7 @@
         <h3 class="ui teal header column" style="width: 100%">Grupos de <%= @user.name%></h3>
         <div class="ui three cards">
           <%@research_groups.each do |g|%>
-            <%= render partial: "shared/research_group", locals: {research_group: g} %>
+            <%= render partial: "research_groups/research_group", locals: {research_group: g} %>
           <%end%>
         </div>
       </div>
