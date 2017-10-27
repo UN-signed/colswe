@@ -10,7 +10,7 @@ class HomeController < ApplicationController
       when "3"
         @items = ResearchGroup.order('created_at DESC')
       when "4"
-        @items = Member.select(:user_id).order('created_at DESC')
+        @items = User.order('created_at DESC')
       else
         @items = Article.order('created_at DESC')
         @items += Project.order('created_at DESC')
