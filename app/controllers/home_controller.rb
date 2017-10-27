@@ -12,10 +12,10 @@ class HomeController < ApplicationController
       when "4"
         @items = User.order('created_at DESC')
       else
-        @items = Project.all
-        @items += Article.all
-        @items += ResearchGroup.all
-        @items += User.all
+        @items = Project.order('created_at DESC')
+        @items += Article.order('created_at DESC')
+        @items += ResearchGroup.order('created_at DESC')
+        @items += User.order('created_at DESC')
     end
 
     @items = @items.paginate(page: params[:page], per_page: 8)
