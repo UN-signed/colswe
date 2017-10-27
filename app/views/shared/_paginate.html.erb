@@ -1,43 +1,7 @@
 <div class="holder all">
-  <div class="ui three cards">
-  <%= render @items %>
-  </div>
-  <br>
-  <br>
+  <div class="ui four cards">
+    <%= render @items %>
+  </div><br><br>
 
   <%= will_paginate @items, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
 </div>
-
-<!--<div class="holder projects">-->
-<!--  <div class="ui three cards">-->
-<!--  <= render @projects %>-->
-<!--  </div>-->
-<!--  <br>-->
-<!--  <br>-->
-
-<!--</div>-->
-
-<!--<div class="holder articles">-->
-<!--  <div class="ui three cards">-->
-<!--  <= render @articles %>-->
-<!--  </div>-->
-<!--  <br>-->
-<!--  <br>-->
-
-<!--</div>-->
-
-<!--<div class="holder groups">-->
-<!--  <div class="ui three cards">-->
-<!--  <= render @research_groups %>-->
-<!--  </div>-->
-<!--  <br>-->
-<!--  <br>-->
-<!--</div>-->
-
-<!--<div class="holder people">-->
-<!--  <div class="ui three cards">-->
-<!--  <= render @users %>-->
-<!--  </div>-->
-<!--  <br>-->
-<!--  <br>-->
-<!--</div>-->

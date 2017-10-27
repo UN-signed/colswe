@@ -27,6 +27,14 @@
   border-radius: initial;
 }
 
+.ui.bottom.line.header {
+  /*margin-bottom: 40px;*/
+  padding-bottom: 3px;
+  border-bottom: 3px solid #00b5ad;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
 
 
 /*  --------------------------------
