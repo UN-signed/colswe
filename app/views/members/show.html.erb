@@ -1,4 +1,39 @@
+<%= render 'shared/menu' %>
+<br><br><br>
 <p id="notice"><%= notice %></p>
+
+<div class="ui grid">
+  <div class="six wide column">
+    <%# TODO: Imagen de perfil y nombre %>
+    <%= image_tag @user.photo.url, class:'ui small circular image' if @user.photo?%><br>
+    <span><%= @user.name%></span>
+    <div class="ui secondary vertical pointing menu" id="profile-menu">
+      <a class="item" data-items="groups">Grupos</a>
+      <a class="item" data-items="projects">Proyectos</a>
+    </div>
+  </div>
+
+  <div class="ten wide column">
+    <div class="holder groups">
+      <div class="ui two column row segment">
+        <h3 class="ui teal header column" style="width: 100%">Grupos de <%= @user.name%></h3>
+        <div class="ui three cards">
+          <%@research_groups.each do |g|%>
+            <%= render partial: "groups", locals: {group: g} %>            
+          <%end%>
+        </div>
+      </div>
+    </div>
+
+    <div class="holder projects">
+      <div class="ui segment text-center">
+        <h3 class="ui header">Cambiar contraseña</h3>
+        <i>(Déjalos en blanco si no quieres cambiarla)</i>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
 
 <p>
   <strong>Role:</strong>
