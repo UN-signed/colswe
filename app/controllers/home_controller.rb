@@ -7,10 +7,7 @@ class HomeController < ApplicationController
     research_groups = ResearchGroup.all
     users = User.all
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     case params[:item]
       when "1"
         @items = Project.order('created_at DESC')
@@ -24,11 +21,7 @@ class HomeController < ApplicationController
         @items = (articles + projects + research_groups + users)
     end
 
-<<<<<<< Updated upstream
-    @items = @items.paginate(page: params[:page], per_page: 8)
-=======
 
->>>>>>> Stashed changes
 
     respond_to do |format|
       format.html
