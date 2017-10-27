@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :projects
   end
 
+  resources :research_groups do
+    resources :members
+  end
+
 	## devise controllers for users
 	devise_for :user, controllers: {
 	  confirmations: 'users/confirmations',
