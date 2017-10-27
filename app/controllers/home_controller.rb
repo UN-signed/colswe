@@ -7,7 +7,6 @@ class HomeController < ApplicationController
     research_groups = ResearchGroup.all
     users = User.all
 
-
     case params[:item]
       when "1"
         @items = Project.order('created_at DESC')
