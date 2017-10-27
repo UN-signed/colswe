@@ -4,7 +4,6 @@
 
 <div class="ui grid">
   <div class="six wide column">
-    <%# TODO: Imagen de perfil y nombre %>
     <%= image_tag(@user.photo.url, class:'ui small circular image')%>
     <br>
     <span><%= @user.name%></span>
@@ -27,34 +26,18 @@
     </div>
 
     <div class="holder projects">
-      <div class="ui segment text-center">
-        <h3 class="ui header">Cambiar contraseña</h3>
-        <i>(Déjalos en blanco si no quieres cambiarla)</i>
-        <br />
+      <div class="ui two column row segment">
+        <h3 class="ui teal header column" style="width: 100%">Grupos de <%= @user.name%></h3>
+        <div class="ui three cards">
+          <%@projects.each do |project|%>
+            <%= render partial: "projects/project", locals: {project: project} %>
+          <%end%>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
-
-<p>
-  <strong>Role:</strong>
-  <%= @member.role %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @member.user_id %>
-</p>
-
-<p>
-  <strong>Project:</strong>
-  <%= @member.project_id %>
-</p>
-
-<p>
-  <strong>Research group:</strong>
-  <%= @member.research_group_id %>
-</p>
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
