@@ -2,24 +2,22 @@ require 'will_paginate/array'
 
 class HomeController < ApplicationController
   def index
-    projects = Project.all
-    articles = Article.all
-    research_groups = ResearchGroup.all
-    users = User.all
-
     case params[:item]
       when "1"
-        @items = Project.order('created_at DESC')
+        @items = Project.order('created_at DESC').paginate(page: params[:page], per_page: 6)
       when "2"
-        @items = Article.order('created_at DESC')
+        @items = Article.order('created_at DESC').paginate(page: params[:page], per_page: 6)
       when "3"
-        @items = ResearchGroup.order('created_at DESC')
+        @items = ResearchGroup.order('created_at DESC').paginate(page: params[:page], per_page: 6)
       when "4"
-        @items = User.order('created_at DESC')
+        @items = User.order('created_at DESC').paginate(page: params[:page], per_page: 6)
       else
-        @items = (articles + projects + research_groups + users)
+        projects = Project.all
+        articles = Article.all
+        research_groups = ResearchGroup.all
+        users = User.all
+        @items = (articles + projects + research_groups + users).paginate(page: params[:page], per_page: 6)
     end
-
 
 
     respond_to do |format|
