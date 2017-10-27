@@ -10,7 +10,7 @@ $( document ).on('turbolinks:load', function() {
           return false;
         });
 
-  var items = '#dashboard-menu a.item, #dashboard-menu .link.item';
+  var items = '.ui.menu a.item, .ui.menu .link.item';
   var $menuItem = $(items);
 
   $menuItem.on('click', function() {

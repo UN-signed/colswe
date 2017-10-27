@@ -1,14 +1,10 @@
 <div class="card">
   <div class="image">
+    <% user = User.find(member.user_id) %>
     <%= image_tag(user.photo.url, alt: 'Avatar') %>
   </div>
   <div class="content">
     <a class="header">
-      <%-if user.id == group.administrator_id%>
-      <a class="ui green right floated label">Líder de equipo</a>
-      <%else%>
-      <a class="ui person right horizontal right floated label">Participante</a>
-      <%end-%>
       <%= user.name %>
     </a>
     <div class="meta">
@@ -16,8 +12,5 @@
     </div>
   </div>
   <div class="extra content">
-    <center>
-      <%=link_to 'Ver perfil', research_group_member_url(group, member), class: 'ui button'%>
-    </center>
   </div>
 </div>

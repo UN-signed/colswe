@@ -28,7 +28,7 @@
     <% @members = Member.select(:id, :user_id).where(project_id: @project.id)%>
     <% @members.each do |m| %>
       <% @user = User.find(m.user_id) %>
-      <%= render partial: "users/shared/user", locals: {user: @user, group: @group, member: m.id, project: @project} %>      
+      <%= render partial: "users/shared/user", locals: {user: @user, group: @group, member: m.id, project: @project} %>
     <% end %>
   </div>
   <br>
@@ -41,5 +41,5 @@
     <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>
   </center>
 
-  <%= link_to 'Atrás', research_group_url, class: 'ui left floated button' %>
+  <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
 </div>

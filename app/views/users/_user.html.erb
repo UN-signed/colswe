@@ -9,12 +9,8 @@
     <div class="meta">
       <span class="date">Miembro desde el <%= format_time(user.created_at, :short, "N/A") %></span>
     </div>
-    <!-- <div class="description">
-      <i class="mail icon"></i><%= user.email %>
-    </div> -->
   </div>
   <div class="extra content">
-    <!-- <a><i class="idea icon"></i>22 Proyectos</a> -->
-    <center><button class="ui button">Ver perfil</button></center>
+    <!-- <%=link_to 'Ver perfil', research_group_member_url(1, member), class: 'ui button'%> -->
   </div>
 </div>

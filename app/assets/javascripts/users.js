@@ -6,8 +6,8 @@ $( document ).on('turbolinks:load', function() {
   $("div.holder").first().css("display", "initial");
 
   $menuItem.on('click', function() {
-    $(items).removeClass('active');
-    $(this).addClass('active');
+    // $(items).removeClass('active');
+    // $(this).addClass('active');
      var tmp = $(this).data("items");
     $("div.holder").css("display", "none");
     $("div.holder." + tmp).css("display", "initial");
