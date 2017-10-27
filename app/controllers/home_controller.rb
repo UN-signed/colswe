@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     
 
-    
+
     case params[:item]
       when "1"
         @items = Project.paginate(page: params[:page], per_page: 6)
@@ -22,8 +22,8 @@ class HomeController < ApplicationController
         @items = (articles + projects + research_groups + users).paginate(page: params[:page], per_page: 6)
     end
 
-   
-    
+
+
     respond_to do |format|
       format.html
       format.js

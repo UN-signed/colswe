@@ -1,18 +1,20 @@
 <div class="card">
   <div class="image">
-    <%= image_tag(user.photo.url, alt: 'Image') if user.photo? %>
+    <%= image_tag(user.photo.url, alt: 'Avatar') %>
   </div>
   <div class="content">
-    <div class="header"><%= user.name %></div>
-
+    <a class="header">
+      <%= user.name %>
+    </a>
     <div class="meta">
-      <a class="ui orange floated label">Persona</a>
+      <span class="date">Miembro desde el <%= format_time(user.created_at, :short, "N/A") %></span>
     </div>
+    <!-- <div class="description">
+      <i class="mail icon"></i><%= user.email %>
+    </div> -->
   </div>
   <div class="extra content">
-    <span class="right floated" style="max-width: 100%;">
-      <%= user.email %>
-    </span>
-    <div class="ui button">Ver perfil</div>
+    <!-- <a><i class="idea icon"></i>22 Proyectos</a> -->
+    <center><button class="ui button">Ver perfil</button></center>
   </div>
 </div>
