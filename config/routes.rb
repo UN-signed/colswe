@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
+  resources :home
+  get "home/index"
+
   resources :contacts
 	resources :subscribers
   resources :tags
   resources :research_areas
   resources :research_lines
-  resources :projects
   resources :members
   resources :research_groups
-	resources :articles
-	resources :projects
-
-	root to: 'home#index'
-	resources :home
-    get "home/index"
+  resources :articles
+  resources :projects
 
   resources :research_groups do
     resources :projects

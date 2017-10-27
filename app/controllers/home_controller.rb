@@ -20,7 +20,7 @@ class HomeController < ApplicationController
         @items = (articles + projects + research_groups + users)
     end
 
-
+    @items = @items.paginate(page: params[:page], per_page: 8) 
 
     respond_to do |format|
       format.html

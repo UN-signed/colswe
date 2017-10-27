@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20171019195558) do
   create_table "research_groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "administrator_id", default: 0, null: false
+    t.integer "administrator_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20171019195558) do
     t.text "degree"
     t.string "github_username"
     t.string "departament"
-    t.integer "research_group_id"
     t.string "photo"
     t.string "provider"
     t.string "uid"

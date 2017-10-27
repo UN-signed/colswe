@@ -21,9 +21,9 @@
           <a class="item" href="<%= edit_user_registration_path %>">
             <i class="setting icon"></i>Configuración
           </a>
-          <a class="item" href="">
-            <i class="spy icon"></i>Panel de Administrador
-          </a>
+          <!-- <a class="item" href="">
+            <i class="spy icon"></i>Panel Admin
+          </a> -->
           <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
             <i class="sign out icon"></i>Cerrar Sesión
           </a>
@@ -51,18 +51,12 @@
       <br><br><br><br>
 
       <% if user_signed_in? %>
-      <div class="">
-        <a class="ui green huge home icon button" href="<%=new_research_group_path%>">
-          <i class="users icon" style="margin-right:10px!important;"></i>Crear Grupo
-        </a>
-        <a class="ui red huge icon button" href="<%=new_article_path%>">
-          <i class="file icon" style="margin-right:10px!important;"></i>Publicar Artículo
-        </a>
-      </div>
-      <div class="">
-        <a class="ui white huge home button" href="<%=research_groups_path%>">Ver Grupos</a>
-        <a class="ui white huge button" href="<%=articles_path%>">Ver Artículos</a>
-      </div>
+      <a class="ui green huge home icon button" href="<%=new_research_group_path%>">
+        <i class="users icon" style="margin-right:10px!important;"></i>Crear Grupo
+      </a>
+      <a class="ui red huge icon button" href="<%=new_article_path%>">
+        <i class="file icon" style="margin-right:10px!important;"></i>Publicar Artículo
+      </a>
       <% else %>
         <a class="ui inverted huge home button" href="<%=projects_path%>">Ver Proyectos</a>
         <a class="ui teal huge home button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>
