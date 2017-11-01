@@ -34,9 +34,11 @@ Rails.application.routes.draw do
 	  # unlocks: 'users/unlocks',
 
     :omniauth_callbacks => "users/omniauth_callbacks",
+    users: 'users/users',
 	}, skip: [:sessions]
 
 	## custom routes for users
+  get 'users/:id' => 'users/users#show', as: :user_profile
 	as :user do
 	  get 'login' => 'users/sessions#new', as: :new_user_session
 	  post 'login' => 'users/sessions#create', as: :user_session
