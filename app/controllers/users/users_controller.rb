@@ -14,7 +14,7 @@ class Users::UsersController < ApplicationController
       end
     end
     @projects = []
-    projects = Member.select(:project_id).where(user_id: @user).distinct
+    projects = Member.select(:project_id).where(user_id: params[:id]).distinct
     projects.each do |m|
       @projects.push(Project.find(m.project_id))
     end

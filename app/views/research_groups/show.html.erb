@@ -17,10 +17,12 @@
         <h3>Proyectos:</h3>
         <% @projects = Project.where(research_group_id: @research_group.id)%>
         <% @projects.each do |project| %>
-        <%= link_to project.name, research_group_project_url(@research_group, project) %> </h1>
+          <%= link_to project.name, research_group_project_url(@research_group, project) %> </h1>
           <br>
         <%end%>
-        <%= link_to 'Añadir proyecto', new_research_group_project_path(@research_group), class: 'ui floated button' %>
+        <%-if current_user.id == @research_group.administrator_id%>
+          <%= link_to 'Añadir proyecto', new_research_group_project_path(@research_group), class: 'ui floated button' %>
+        <% end -%>
       </div>
     </div>
   </div>
@@ -39,7 +41,7 @@
       <% end -%>
     <% end %>
   </div>
-  javascript_include_tag "https://d3js.org/d3.v3.min.js"
+  <!-- javascript_include_tag "https://d3js.org/d3.v3.min.js" -->
   <div class="ui segment">
 
   </div>

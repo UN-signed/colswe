@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019195558) do
+ActiveRecord::Schema.define(version: 20171102235019) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20171019195558) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "state"
+    t.string "state", default: "Pendiente"
     t.text "summary"
     t.string "git"
     t.integer "research_group_id"
