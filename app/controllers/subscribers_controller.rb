@@ -2,7 +2,8 @@ class SubscribersController < ApplicationController
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
 
   # GET /subscribers
-  # GET /subscribers.json
+  # GET /subscribers.json  
+
   def index
     @subscribers = Subscriber.all
   end
@@ -69,6 +70,6 @@ class SubscribersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params.require(:subscriber).permit(:name, :email)
+      params.require(:subscriber).permit(:name, :email, :project_id, :member_id)
     end
 end

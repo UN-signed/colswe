@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :members
   end
 
+  post 'projects/:id/add_subscriber' => 'projects#add_subscriber', as: 'add_subscriber'
+
 	## devise controllers for users
 	devise_for :user, controllers: {
 	  confirmations: 'users/confirmations',
