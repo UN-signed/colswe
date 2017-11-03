@@ -3,7 +3,6 @@
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
       <% project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,8 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field" style="margin-bottom:40px; width:70%; margin-left:15%;">
-    <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Proyecto' %>
+  <div class="ui grid" style="margin-bottom:40px; width:70%; margin-left:15%;">
+    <div class="ten wide column">
+      <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Proyecto' %>
+    </div>
+    <div class="six wide column">
+      <div class="ui compact menu">
+          <%= form.select(:state, @states, {prompt: 'Pendiente'}, class: "ui simple dropdown item") %>
+      </div>
+    </div>
   </div>
 
   <div class="ui two column scalable grid" style="margin-bottom:50px;">
