@@ -15,7 +15,9 @@
 #
 
 class Article < ApplicationRecord
-  # belongs_to :user
+  belongs_to :project
+  belongs_to :user
+  
   mount_uploader :pdf, PdfUploader
 
   def self.load_articles(**args)

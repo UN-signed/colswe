@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :members
   end
 
+  resources :projects do
+    resources :articles
+  end
+
   post 'projects/:id/add_subscriber' => 'subscribers#add_subscriber', as: 'add_subscriber'
   delete 'projects/:id/add_subscriber' => 'subscribers#delete_subscriber', as: 'delete_subscriber'
 

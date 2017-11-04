@@ -16,7 +16,7 @@
       <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Proyecto' %>
     </div>
     <div class="six wide column">
-      <div class="ui compact menu">
+      <div class="ui compact menu"> <%# TODO: Dejar solo para administrador %>
           <%= form.select(:state, @states, {prompt: 'Pendiente'}, class: "ui simple dropdown item") %>
       </div>
     </div>

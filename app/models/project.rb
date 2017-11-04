@@ -18,6 +18,7 @@ class Project < ApplicationRecord
   has_many :members
   #has_and_belongs_to_many :tags
   has_many :subscribers
+  has_many :articles
 
   def self.getUsers(project_id)
     project = Project.find(project_id)

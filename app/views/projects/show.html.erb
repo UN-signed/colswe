@@ -13,6 +13,9 @@
         <%-else%>
           <%= button_to "Cancelar Subscripcion", delete_subscriber_path(@project), method: :delete, class: 'ui red button' %>
         <% end -%>
+        <%-if @group.has_key? current_user.id %>
+          <%= link_to(raw('<i class="file icon"></i> Publicar Artículo'), new_project_article_path(@project), class: 'ui labeled icon basic red button') %>
+        <% end -%>
         <h3 class="ui header">Descripción:</h3>
         <p><%= @project.summary %></p>
       </div>
