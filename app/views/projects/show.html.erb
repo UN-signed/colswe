@@ -8,6 +8,11 @@
   <div class="ui segment" style="padding:30px;">
     <div class="ui grid">
       <div class="eleven wide column">
+        <%-if !@subscriber %>
+          <%= button_to "Subscribirse", add_subscriber_path(@project), method: :post, class: 'ui red button' %>
+        <%-else%>
+          <%= button_to "Cancelar Subscripcion", delete_subscriber_path(@project), method: :delete, class: 'ui red button' %>
+        <% end -%>
         <h3 class="ui header">Descripción:</h3>
         <p><%= @project.summary %></p>
       </div>
@@ -18,7 +23,6 @@
         <br><br>
         <%-if current_user.id == @group.administrator_id%>
           <%= button_to "Eliminar Proyecto", project_path(@project), data: { confirm: "¿Estás seguro de eliminar este proyecto?" }, method: :delete, class: 'ui red button' %>
-          <%= button_to "Subscribirse", add_subscriber_path(@project), method: :post, class: 'ui red button' %>
         <% end -%>
         <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
       </div>

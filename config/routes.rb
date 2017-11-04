@@ -25,7 +25,8 @@ Rails.application.routes.draw do
     resources :members
   end
 
-  post 'projects/:id/add_subscriber' => 'projects#add_subscriber', as: 'add_subscriber'
+  post 'projects/:id/add_subscriber' => 'subscribers#add_subscriber', as: 'add_subscriber'
+  delete 'projects/:id/add_subscriber' => 'subscribers#delete_subscriber', as: 'delete_subscriber'
 
 	## devise controllers for users
 	devise_for :user, controllers: {

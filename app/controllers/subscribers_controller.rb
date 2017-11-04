@@ -2,7 +2,7 @@ class SubscribersController < ApplicationController
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
 
   # GET /subscribers
-  # GET /subscribers.json  
+  # GET /subscribers.json
 
   def index
     @subscribers = Subscriber.all
@@ -60,6 +60,20 @@ class SubscribersController < ApplicationController
       format.html { redirect_to subscribers_url, notice: 'Subscriber was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_subscriber
+    @project = Project.find(params[:id])
+    @user = User.find(current_user.id)
+    @subscriber = Subscriber.create(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    NewSubscriberMailer.welcome_email(@user, @project).deliver_now
+  end
+
+  def delete_subscriber
+    @project = Project.find(params[:id])
+    @user = User.find(current_user.id)
+    @subscriber = Subscriber.where(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    Subscriber.destroy(@subscriber[0].id)
   end
 
   private

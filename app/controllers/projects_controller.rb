@@ -9,18 +9,16 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1
-  # GET /projects/1.json
-
-  def add_subscriber
-    @project = Project.find(params[:id])
-    @user = User.find(current_user.id)
-    @subscriber = Subscriber.create(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
-  end
+  # GET /projects/1.json  
 
   def show
     @project = Project.find(params[:id])
     @group = ResearchGroup.find(@project.research_group_id)
     @user = User.find(current_user.id)
+    @subscriber = true
+    if Subscriber.where(:project_id => params[:id], :user_id => current_user.id).blank?
+      @subscriber = false
+    end
     puts
     respond_to do |format|
       format.html
