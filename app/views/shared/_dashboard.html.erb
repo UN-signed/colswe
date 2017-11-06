@@ -1,30 +1,35 @@
-<div class="dashboard">
-  <div class="ui secondary menu">
-    <div class="ui bottom line header">¿Qué estás buscando?</div>
+<div class="ui bottom line principal header">¿Qué estás buscando?</div>
 
-    <div class="right menu">
-      <div class="ui search">
-        <%= form_tag({:controller => "home", :action => "index"}, :method => :get) do %>
-          <div class="ui icon input">
-            <%= text_field_tag "searchbox", params[:searchbox], class: 'prompt', placeholder: 'Buscar en SmartHub...'%>
-            <i class="search icon"></i>
-          </div>
-          <!-- <%= submit_tag "Buscar", :name => nil, class: 'ui button'%> -->
-        <% end %>
-      </div>
+<%= form_tag({:controller => "home", :action => "index"}, :method => :get) do %>
+<div class="ui secondary menu" id="dashboard-menu">
+  <% if @items.length == 1 %>
+  Se ha encontrado <%= @results %> resultado
+  <% else %>
+  Se han encontrado <%= @results %> resultados
+  <% end %>
+  <div class="right menu">
+    <div class="ui right labeled input">
+      <%= text_field_tag "searchbox", params[:searchbox], class: 'prompt', placeholder: 'Busca por palabras ...'%>
+      <%= select_tag "category", options_for_select([ "Todo", "Proyectos", "Grupos", "Artículos" ], params[:category]), class:"ui teal label compact dropdown", onchange: "this.form.submit();" %>
     </div>
   </div>
+</div>
+<% end %>
 
-  <!-- <center>
-    <div class="ui secondary pointing compact menu" id="dashboard-menu">
-      <a class="item active" href="/?item=0">Todo</a>
-      <a class="item" href="/?item=1">Proyectos</a>
-      <a class="item" href="/?item=2">Artículos</a>
-      <a class="item" href="/?item=3">Grupos</a>
-      <a class="item" href="/?item=4">Miembros</a>
-    </div>
-  </center> -->
+<div class="dashboard">
+  <% if @items.length != 0 %>
+  <div class="ui one cards">
+    <%= render @items %>
+  </div>
 
-  <%= render "shared/paginate" %>
-
+  <div class="pagination">
+    <%= will_paginate @items, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+  </div>
+  <% else %>
+  <div class="no-results">
+    <%= image_tag "sad.png", class:'ui centered small image' %>
+    <h1 class="ui text-center header">¡Ups!</h1>
+    <h4 class="ui text-center header">No encontramos resultados para tu búsqueda, intenta de nuevo</h4>
+  </div>
+  <% end %>
 </div>

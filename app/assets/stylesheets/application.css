@@ -41,6 +41,46 @@
   display: inline-block;
 }
 
+#main-menu {
+  margin-bottom: 0;
+  position: fixed;
+  z-index: 1000;
+  width: 100.5%;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#main-menu.scrolled {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  transition: background-color 200ms linear;
+  border-bottom: 2px solid #00b5ad;
+  height: 60px !important;
+}
+
+.ui.white.button {
+  background: #ffffff;
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+  box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.ui.white.button:hover {
+  background: #e3e3e3;
+  -webkit-box-shadow: 0px 0px 0px 2px #e3e3e3 inset !important;
+  box-shadow: 0px 0px 0px 2px #e3e3e3 inset !important;
+  color: black;
+}
+
+.ui.huge.home.button {
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.ui.principal.header {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 
 
 /*  --------------------------------
@@ -98,14 +138,52 @@
     ------- Dashboard Styles -------
     --------------------------------  */
 
+#dashboard-menu {
+  padding: 0 10%;
+  z-index: 900;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+#dashboard-menu div:not(:last-child), #dashboard-menu .right.menu div:not(:last-child) {
+  margin-right: 15px;
+}
+
+#dashboard-menu.scrolled {
+  height: 60px !important;
+  position: fixed;
+  margin-top: -110px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: rgb(242, 242, 242) !important;
+  transition: background-color 200ms linear;
+  border-bottom: 2px solid #c1c1c1;
+}
+
 .dashboard {
-  padding: 0 10% 100px 10%;
+  padding: 0 10%;
 }
 
 .dashboard .ui.menu {
   margin-bottom: 40px !important;
 }
 
+.pagination {
+  margin-top: 30px;
+}
+
+.no-results {
+  width: 250px;
+  margin-left: calc(50% - 125px);
+}
+
+.no-results p {
+  font-size: 1.1em;
+}
+
+
+/*  Dashboard Labels  */
 .ui.basic.horizontal.label {
   margin-left: 10px;
 }

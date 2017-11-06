@@ -17,7 +17,10 @@
 //= require_tree .
 //= require semantic_ui/semantic_ui
 
+
 $( document ).on('turbolinks:load', function() {
+
+  // Show profile photo preview when it is uploaded
   $("#avatar-upload").change('turbolinks:load', function(){
     readURL(this);
   });
@@ -25,7 +28,6 @@ $( document ).on('turbolinks:load', function() {
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
-
       reader.onload = function (e) {
         $('#img_prev').attr('src', e.target.result);
       }
@@ -33,12 +35,18 @@ $( document ).on('turbolinks:load', function() {
     }
   }
 
+  // Activate semantic dropdowns
   $('.ui.dropdown').dropdown();
 });
 
+
 $(function () {
+
+  // Fix the menus when the page is scrolled
   $(document).scroll(function () {
-    var $nav = $("#main-menu");
-    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    var $main = $("#main-menu");
+    var $dash = $("#dashboard-menu");
+    $main.toggleClass('scrolled', $(this).scrollTop() > $main.height());
+    $dash.toggleClass('scrolled', $(this).scrollTop() > $dash.height());
   });
 });
