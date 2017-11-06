@@ -27,6 +27,12 @@
   border-radius: initial;
 }
 
+.main {
+  padding-top: 130px;
+  /*padding-bottom: 80px;*/
+  min-height: calc(100% - 42px);
+}
+
 .ui.bottom.line.header {
   /*margin-bottom: 40px;*/
   padding-bottom: 3px;
@@ -38,40 +44,34 @@
 
 
 /*  --------------------------------
-    ---- Login ad SignUp Styles ----
+    ---- Login and SignUp Styles ----
     --------------------------------  */
 
 .login {
-  margin-top: 5% !important;
-  margin-bottom: 5% !important;
   width: 700px;
-  padding: 30px 30px !important;
-  margin-left: calc(50% - 320px) !important;
+  margin: 0 calc(50% - 320px) !important;
 }
 
-.login > .ui.heading {
-  margin-bottom: 20px !important;
+.login > .ui.header {
+  margin-bottom: 40px !important;
 }
 
 .login > .links.text-center {
   margin: 20px;
 }
 
-.login > .actions > .btn {
-  background-color: rgb(168, 168, 168) !important;
-}
-
 .login .ui.grid > .column:not(.row), .ui.grid > .row > .column {
-  padding-left: 3rem;
-  padding-right: 3em;
+  padding: 3rem 3rem 1rem 3rem;
 }
 
-.socials {
-  margin-top: 30px;
+.socials.column {
+  margin-top: 20px;
+  width: 300px !important;
 }
 
 .socials > .ui.button {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 
@@ -99,7 +99,7 @@
     --------------------------------  */
 
 .dashboard {
-  padding: 50px 10%;
+  padding: 0 10% 100px 10%;
 }
 
 .dashboard .ui.menu {

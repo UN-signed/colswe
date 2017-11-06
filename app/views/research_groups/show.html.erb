@@ -1,7 +1,4 @@
-<%=render "shared/menu"%>
-<br><br>
-<div class="create article" style="margin-top:60px;">
-
+<div class="create article">
   <div class="ui segment" style="padding:30px;">
     <h1 class="section-heading text-center">Grupo: <%= @research_group.name %></h1><br>
 
@@ -29,7 +26,7 @@
 
   <br>
   <br>
-  <div class="ui four cards">
+  <div class="ui six stackable cards">
     <% @admin = User.find(@research_group.administrator_id) %>
     <%# TODO: Corregir ese 2 %>
     <%= render partial: "users/shared/user", locals: {user: @admin, group: @research_group, member: 2} %>

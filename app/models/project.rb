@@ -37,4 +37,12 @@ class Project < ApplicationRecord
   def self.load_projects(**args)
     where(research_group_id: args[:research_group_id]).paginate(page: args[:page] || 1, per_page: 12).reverse_order
   end
+
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 end

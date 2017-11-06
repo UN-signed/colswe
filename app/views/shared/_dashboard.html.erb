@@ -1,15 +1,21 @@
 <div class="dashboard">
   <div class="ui secondary menu">
-    <div class="ui bottom line centered header">¿Qué estás buscando?</div>
-    <!-- <div class="right menu">
-      <div class="ui icon input">
-        <input type="text" placeholder="Buscar...">
-        <i class="search link icon"></i>
+    <div class="ui bottom line header">¿Qué estás buscando?</div>
+
+    <div class="right menu">
+      <div class="ui search">
+        <%= form_tag({:controller => "home", :action => "index"}, :method => :get) do %>
+          <div class="ui icon input">
+            <%= text_field_tag "searchbox", params[:searchbox], class: 'prompt', placeholder: 'Buscar en SmartHub...'%>
+            <i class="search icon"></i>
+          </div>
+          <!-- <%= submit_tag "Buscar", :name => nil, class: 'ui button'%> -->
+        <% end %>
       </div>
-    </div> -->
+    </div>
   </div>
 
-  <center>
+  <!-- <center>
     <div class="ui secondary pointing compact menu" id="dashboard-menu">
       <a class="item active" href="/?item=0">Todo</a>
       <a class="item" href="/?item=1">Proyectos</a>
@@ -17,7 +23,7 @@
       <a class="item" href="/?item=3">Grupos</a>
       <a class="item" href="/?item=4">Miembros</a>
     </div>
-  </center>
+  </center> -->
 
   <%= render "shared/paginate" %>
 

@@ -1,18 +1,5 @@
-<div class="ui secondary menu">
-  <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
-  <div class="item" style="margin-left:-15px;">
-    <%= link_to(raw('<h2 class="ui logo header">SmartHub</h2>'), '/home') %>
-  </div>
-</div>
-
 <div class="login">
-  <h1 class="text-center">Iniciar Sesión</h1>
-  <div class="links text-center">
-    ¿Nuevo en SmartHub?
-    <%= render "users/shared/links" %><br>
-  </div>
-
-  <hr class="primary">
+  <h1 class="ui text-center header">Iniciar Sesión</h1>
 
   <div class="ui two column divided grid">
     <div class="column">
@@ -27,7 +14,7 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-      <div class="field">
+      <div class="field text-center">
         <div class="ui checkbox">
           <%= f.check_box :remember_me %>
           <%= f.label :recordarme %>
@@ -53,5 +40,3 @@
     </div>
   </div>
 </div>
-
-<br><br><br>
