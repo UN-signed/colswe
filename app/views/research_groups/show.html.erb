@@ -17,9 +17,12 @@
         <h3>Proyectos:</h3>
         <% @projects = Project.where(research_group_id: @research_group.id)%>
         <% @projects.each do |project| %>
-        <%= link_to project.name, project_url(project.id) %> </h1>
+          <%= link_to project.name, research_group_project_url(@research_group, project) %> </h1>
           <br>
         <%end%>
+        <%-if current_user.id == @research_group.administrator_id%>
+          <%= link_to 'Añadir proyecto', new_research_group_project_path(@research_group), class: 'ui floated button' %>
+        <% end -%>
       </div>
     </div>
   </div>
@@ -28,14 +31,18 @@
   <br>
   <div class="ui four cards">
     <% @admin = User.find(@research_group.administrator_id) %>
-    <%= render partial: "users/shared/single", locals: {user: @admin, group: @research_group} %>
-    <% @members = Member.select(:user_id).where(research_group_id: @research_group.id).distinct%>
-    <% @members.each do |member| %>
-      <% @user = User.find(member.user_id) %>
-      <%-if member.user_id != @research_group.administrator_id%>
-        <%= render partial: "users/shared/single", locals: {user: @user, group: @research_group} %>
+    <%# TODO: Corregir ese 2 %>
+    <%= render partial: "users/shared/user", locals: {user: @admin, group: @research_group, member: 2} %>
+    <% @members = Member.select(:id, :user_id).where(research_group_id: @research_group.id)%>
+    <% @members.each do |m| %>
+      <% @user = User.find(m.user_id) %>
+      <%-if m.user_id != @research_group.administrator_id%>
+        <%= render partial: "users/shared/user", locals: {user: @user, group: @research_group, member: m.id} %>
       <% end -%>
     <% end %>
   </div>
-  <%= link_to 'Atrás', research_groups_path, class: 'ui left floated button' %>
+  <!-- javascript_include_tag "https://d3js.org/d3.v3.min.js" -->
+  <div class="ui segment">
+
+  </div>
 </div>

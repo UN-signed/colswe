@@ -1,8 +1,8 @@
-<%= form_with(model: project, local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %>
+<%= form_with(model: project, url: "/research_groups/"+params[:research_group_id]+"/projects/"+(current_page?(:action => 'new')? "": params[:id]), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %>
+<!-- %= form_with(model: project, url: current_page?(:action => 'new')? research_group_projects(@group): "/projects/"+params[:id], local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %> -->
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
       <% project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,8 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field" style="margin-bottom:40px; width:70%; margin-left:15%;">
-    <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Proyecto' %>
+  <div class="ui grid" style="margin-bottom:40px; width:70%; margin-left:15%;">
+    <div class="ten wide column">
+      <%= form.text_field :name, autofocus: true, :placeholder => 'Título del Proyecto' %>
+    </div>
+    <div class="six wide column">
+      <div class="ui compact menu"> <%# TODO: Dejar solo para administrador %>
+          <%= form.select(:state, @states, {prompt: 'Pendiente'}, class: "ui simple dropdown item") %>
+      </div>
+    </div>
   </div>
 
   <div class="ui two column scalable grid" style="margin-bottom:50px;">
@@ -27,11 +34,11 @@
         <%= form.select(:research_line_id, ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona una línea de investigación'}, class: "ui search selection dropdown",style: "margin-bottom:15px") %>
       </div>
       <div class="field">
-        <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px", multiple: "") %>
+        <%= form.select(:user_id, ResearchGroup.getUsers(params[:research_group_id]).collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px", multiple: "") %>
       </div>
-      <div class="field">
+      <!-- <div class="field">
         <%= form.select( :research_group_id, ResearchGroup.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un grupo al que pertenece proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px") %>
-      </div>
+      </div> -->
       <div class="field">
         <div class="ui left icon input">
           <%= form.text_field :git, id: :project_git, autofocus: true, :placeholder => 'URL repositorio del proyecto'%>

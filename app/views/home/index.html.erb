@@ -1,4 +1,6 @@
-<div class="ui secondary menu" id="main-menu" style="height: 70px;">
+
+
+<!-- <div class="ui secondary menu" id="main-menu" style="height: 70px;">
   <%= link_to image_tag("https://react.semantic-ui.com/logo.png"), {controller: '/home'}, {class: 'item'} %>
   <div class="item" style="margin-left:-15px;">
     <%= link_to(raw('<h2 class="ui header" id="menu-name">SmartHub</h2>'), '/home') %>
@@ -6,33 +8,39 @@
 
   <div class="right menu">
     <% if user_signed_in? %>
-      <!-- <div class="item">
-        <%= link_to 'Nuevo Proyecto', new_project_path, class: 'ui teal button' %>
-      </div> -->
 
-      <div class="item">
-        <a class="item" href="<%=edit_user_registration_path%>">
-          <h4 class="ui header">
-            <%= image_tag(current_user.photo.url, alt: 'Image', class: 'ui avatar image') if current_user.photo? %>
-            <%= current_user.name %>
-          </h4>
-        </a>
-        <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
-          Cerrar Sesión
-        </a>
+    <div class="item">
+      <div class="ui dropdown">
+        <h4 class="ui header" style="display:inline;">
+          <%= image_tag(current_user.photo, alt: 'Avatar', class: 'ui avatar image') %>
+          <%= current_user.name %>
+        </h4>
+        <i class="dropdown icon"></i>
+        <div class="menu" id="menu-dropdown">
+          <a class="item" href="<%= edit_user_registration_path %>">
+            <i class="setting icon"></i>Configuración
+          </a>
+          <a class="item" data-method="delete" href="<%=destroy_user_session_path%>">
+            <i class="sign out icon"></i>Cerrar Sesión
+          </a>
+        </div>
       </div>
+    </div>
 
     <% else %>
-      <div class="item">
-        <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
-      </div>
-      <div class="item">
-        <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
-      </div>
+    <div class="item">
+      <a class="ui button" href="<%=new_user_session_path%>">Inicio Sesión</a>
+    </div>
+    <div class="item">
+      <a class="ui teal button" href="<%=new_user_registration_path%>">Registro</a>
+    </div>
     <% end %>
 
   </div>
-</div>
+</div> -->
+
+<%= render 'shared/menu' %>
+
 
 <header class="masthead">
   <div class="header-content">
@@ -42,24 +50,14 @@
       <br><br><br><br>
 
       <% if user_signed_in? %>
-      <div class="">
-        <a class="ui green huge home icon button" href="<%=new_research_group_path%>">
-          <i class="users icon" style="margin-right:10px!important;"></i>Crear Grupo
-        </a>
-        <a class="ui teal huge home icon button" href="<%=new_project_path%>">
-          <i class="idea icon" style="margin-right:10px!important;"></i>Crear Proyecto
-        </a>
-        <a class="ui red huge icon button" href="<%=new_article_path%>">
-          <i class="file icon" style="margin-right:10px!important;"></i>Publicar Artículo
-        </a>
-      </div>
-      <div class="">
-        <a class="ui white huge home button" href="<%=research_groups_path%>">Ver Grupos</a>
-        <a class="ui white huge home button" href="<%=projects_path%>">Ver Proyectos</a>
-        <a class="ui white huge button" href="<%=articles_path%>">Ver Artículos</a>
-      </div>
+      <a class="ui green huge home icon button" href="<%=new_research_group_path%>">
+        <i class="users icon" style="margin-right:10px!important;"></i>Crear Grupo
+      </a>
+      <a class="ui red huge icon button" href="<%=new_article_path%>">
+        <i class="file icon" style="margin-right:10px!important;"></i>Publicar Artículo
+      </a>
       <% else %>
-        <a class="ui inverted huge home button" href="<%=projects_path%>">Ver Proyectos</a>
+        <!-- <a class="ui inverted huge home button" href="<%=projects_path%>">Ver Proyectos</a> -->
         <a class="ui teal huge home button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>
         <a class="ui inverted huge button" href="<%=new_contact_path%>"> Contacto </a>
       <% end %>

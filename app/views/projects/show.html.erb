@@ -3,18 +3,30 @@
 <br>
 <div class="create article" style="margin-top:60px;">
 
-  <div class="ui segment" style="padding:30px;">
-    <h1 class="section-heading text-center"><b>Proyecto:</b> <%= @project.name %></h1><br>
+  <h1 class="ui text-center bottom line heading"><b>Proyecto:</b> <%= @project.name %></h1><br>
 
+  <div class="ui segment" style="padding:30px;">
     <div class="ui grid">
       <div class="eleven wide column">
+        <%-if !@subscriber %>
+          <%= button_to "Subscribirse", add_subscriber_path(@project), method: :post, class: 'ui red button' %>
+        <%-else%>
+          <%= button_to "Cancelar Subscripcion", delete_subscriber_path(@project), method: :delete, class: 'ui red button' %>
+        <% end -%>
+        <%-if @group.has_key? current_user.id %>
+          <%= link_to(raw('<i class="file icon"></i> Publicar Artículo'), new_project_article_path(@project), class: 'ui labeled icon basic red button') %>
+        <% end -%>
         <h3 class="ui header">Descripción:</h3>
         <p><%= @project.summary %></p>
       </div>
       <div class="five wide column">
-          <h3 class="ui big label <%= @project.state %>">Activo - <%= @project.state %></h3>
+          <h3 class="ui big label <%= @project.state %>"> <%= @project.state %></h3>
         <br><br>
         <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
+        <br><br>
+        <%-if current_user.id == @group.administrator_id%>
+          <%= button_to "Eliminar Proyecto", project_path(@project), data: { confirm: "¿Estás seguro de eliminar este proyecto?" }, method: :delete, class: 'ui red button' %>
+        <% end -%>
         <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
       </div>
     </div>
@@ -25,20 +37,19 @@
   <h2 class="section-heading text-center">Integrantes</h2>
   <br>
   <div class="ui six cards">
-    <% @members.each do |member| %>
-      <% @user = User.find(member.user_id) %>
-      <%= render partial: "users/shared/single", locals: {user: @user, group: @group, member: member} %>
+    <% @members = Member.select(:id, :user_id).where(project_id: @project.id)%>
+    <% @members.each do |m| %>
+      <% @user = User.find(m.user_id) %>
+      <%= render partial: "users/shared/user", locals: {user: @user, group: @group, member: m.id, project: @project} %>
     <% end %>
   </div>
   <br>
 
   <center>
     <% if current_user%>
-    <%= link_to 'Editar', edit_project_path(@project), class: 'ui teal button' %>
+    <%= link_to 'Editar', edit_research_group_project_path(@group, @project), class: 'ui teal button' %>
     <%end%>
-    <!-- <%= link_to 'Eliminar', @project, method: :delete, data: { confirm: 'Estás seguro que quieres borrar el atículo?' }, class: 'ui red button' %> -->
     <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>
+    <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
   </center>
-
-  <%= link_to 'Atrás', projects_path, class: 'ui left floated button' %>
 </div>

@@ -15,6 +15,12 @@
 #
 
 class Article < ApplicationRecord
-  # belongs_to :user
+  belongs_to :project
+  belongs_to :user
+  
   mount_uploader :pdf, PdfUploader
+
+  def self.load_articles(**args)
+    paginate(page: args[:page] || 1, per_page: 12).reverse_order
+  end
 end

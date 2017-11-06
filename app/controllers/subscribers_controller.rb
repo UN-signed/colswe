@@ -3,6 +3,7 @@ class SubscribersController < ApplicationController
 
   # GET /subscribers
   # GET /subscribers.json
+
   def index
     @subscribers = Subscriber.all
   end
@@ -61,6 +62,20 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def add_subscriber
+    @project = Project.find(params[:id])
+    @user = User.find(current_user.id)
+    @subscriber = Subscriber.create(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    NewSubscriberMailer.welcome_email(@user, @project).deliver_now
+  end
+
+  def delete_subscriber
+    @project = Project.find(params[:id])
+    @user = User.find(current_user.id)
+    @subscriber = Subscriber.where(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    Subscriber.destroy(@subscriber[0].id)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscriber
@@ -69,6 +84,6 @@ class SubscribersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params.require(:subscriber).permit(:name, :email)
+      params.require(:subscriber).permit(:name, :email, :project_id, :member_id)
     end
 end

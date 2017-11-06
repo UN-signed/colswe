@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019195558) do
+ActiveRecord::Schema.define(version: 20171104053227) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171019195558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pdf"
+    t.integer "project_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171019195558) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "state"
+    t.string "state", default: "Pendiente"
     t.text "summary"
     t.string "git"
     t.integer "research_group_id"
@@ -63,7 +64,7 @@ ActiveRecord::Schema.define(version: 20171019195558) do
   create_table "research_groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "administrator_id", default: 0, null: false
+    t.integer "administrator_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 20171019195558) do
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -112,7 +114,6 @@ ActiveRecord::Schema.define(version: 20171019195558) do
     t.text "degree"
     t.string "github_username"
     t.string "departament"
-    t.integer "research_group_id"
     t.string "photo"
     t.string "provider"
     t.string "uid"

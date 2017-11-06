@@ -6,9 +6,11 @@
   <hr class="primary"><br>
 
   <div class="ui three cards">
-    <%= render @research_groups %>
+    <%@research_groups.each do |g|%>
+      <%= render partial: "shared/research_group", locals: {research_group: g} %>
+    <%end%>
   </div>
-
+  
   <br><br>
   <%= will_paginate @research_groups, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
   <br><br><br><br>

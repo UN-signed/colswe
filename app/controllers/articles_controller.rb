@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.paginate(page: params[:page], per_page: 12)
+    @articles = Article.load_articles(page: params[:page])
   end
 
   # GET /articles/1
@@ -25,10 +25,16 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    @project = Project.find(params[:project_id])
+    @subscribers = Subscriber.where(:project_id => params[:project_id])
+    puts @subscribers
+    @subscribers.each do |subscriber|
+      NewArticleMailer.new_article_email(subscriber, @article).deliver_now
+    end
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @project, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -69,6 +75,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :pdf, :key_words, :description, :language, :bibliography).merge(user_id: current_user.id)
+      params.require(:article).permit(:name, :pdf, :key_words, :description, :language, :bibliography).merge(user_id: current_user.id, project_id: params[:project_id])
+
     end
 end

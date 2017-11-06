@@ -10,6 +10,15 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    member = Member.find(params[:id])
+    @user = User.find(member.user_id)
+    memberView = Member.where(:user_id => member.user_id)
+    @research_groups = []
+    @projects = []
+    memberView.each do |m|
+      @research_groups.push(ResearchGroup.find(m.research_group_id))
+      @projects.push(Project.find(m.project_id))
+    end
   end
 
   # GET /members/new
