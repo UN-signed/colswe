@@ -13,5 +13,5 @@ $( document ).on('turbolinks:load', function() {
     $("div.holder." + tmp).css("display", "initial");
   });
 
-  console.log('users.js');
+  // console.log('users.js');
 });
