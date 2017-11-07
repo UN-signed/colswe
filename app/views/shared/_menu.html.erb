@@ -7,10 +7,10 @@
   <div class="right menu">
     <% if user_signed_in? %>
       <div class="item">
-        <%= link_to(raw('<i class="plus icon"></i>'), new_research_group_path, class: 'ui icon green button') %>
+        <%= link_to(raw('<i class="plus icon"></i> Nuevo Grupo'), new_research_group_path, class: 'ui green button') %>
       </div>
       <div class="item">
-        <%= link_to(raw('<i class="file icon"></i>'), new_article_path, class: 'ui icon purple button') %>
+        <%= link_to(raw('<i class="plus icon"></i> Nuevo Artículo'), new_article_path, class: 'ui purple button') %>
       </div>
 
       <div class="item">
@@ -21,9 +21,7 @@
           </h4>
           <i class="dropdown icon"></i>
           <div class="menu" id="menu-dropdown">
-            <a class="item" href="<%= user_profile_path(current_user) %>">
-              <i class="user icon"></i>Mi Perfil
-            </a>
+            <%= link_to raw('<i class="user icon"></i>Mi Perfil'), user_profile_path(current_user), class:'item' %>
             <!-- <a class="item" href="<%= edit_user_registration_path %>">
               <i class="setting icon"></i>Configuración
             </a> -->

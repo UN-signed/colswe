@@ -37,6 +37,15 @@ $( document ).on('turbolinks:load', function() {
 
   // Activate semantic dropdowns
   $('.ui.dropdown').dropdown();
+
+  // Activate menu items
+  var items = '.ui.menu a.item, .ui.menu .link.item';
+  var $menuItem = $(items);
+
+  $menuItem.on('click', function() {
+    $(items).removeClass('active');
+    $(this).addClass('active');
+  });
 });
 
 

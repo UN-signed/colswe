@@ -19,7 +19,7 @@
     ---------- Main Styles ---------
     --------------------------------  */
 
-#footer{
+#footer {
   margin: 0;
   position: relative;
   bottom: 0 !important;
@@ -29,12 +29,15 @@
 
 .main {
   padding-top: 130px;
-  /*padding-bottom: 80px;*/
   min-height: calc(100% - 42px);
 }
 
+.section {
+  padding: 0 10%;
+  margin-bottom: 100px;
+}
+
 .ui.bottom.line.header {
-  /*margin-bottom: 40px;*/
   padding-bottom: 3px;
   border-bottom: 3px solid #00b5ad;
   text-transform: uppercase;
@@ -117,19 +120,20 @@
 
 
 /*  --------------------------------
-    ------- Edit User Styles -------
+    -------- Profile Styles --------
     --------------------------------  */
 
-.edit.user {
-  padding: 160px 10%;
+.profile .four.wide.column .item {
+  margin-bottom: 20px;
+}
+
+.profile .ui.segment {
+  padding:30px;
+  min-height: 300px;
 }
 
 #avatar-upload {
   display: none;
-}
-
-.edit.user .ui.segment {
-  padding:30px;
 }
 
 
@@ -161,10 +165,6 @@
   border-bottom: 2px solid #c1c1c1;
 }
 
-.dashboard {
-  padding: 0 10%;
-}
-
 .dashboard .ui.menu {
   margin-bottom: 40px !important;
 }
@@ -178,8 +178,8 @@
   margin-left: calc(50% - 125px);
 }
 
-.no-results p {
-  font-size: 1.1em;
+.no-results h4 {
+  color: #7b7b7b !important;
 }
 
 

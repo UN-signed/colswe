@@ -16,7 +16,7 @@
 </div>
 <% end %>
 
-<div class="dashboard">
+<div class="dashboard section">
   <% if @items.length != 0 %>
   <div class="ui one cards">
     <%= render @items %>
@@ -25,6 +25,7 @@
   <div class="pagination">
     <%= will_paginate @items, previous_label:'Anterior', next_label:'Siguiente', renderer: WillPaginateSemanticUi::ActionView::Renderer %>
   </div>
+
   <% else %>
   <div class="no-results">
     <%= image_tag "sad.png", class:'ui centered small image' %>
