@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  *= require semantic_ui/semantic_ui
+ *= require_tree .
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require font-awesome
  */
 
 /*  --------------------------------
@@ -127,7 +131,7 @@
   margin-bottom: 20px;
 }
 
-.profile .ui.segment {
+.profile .ui.segment, .article .ui.segment {
   padding:30px;
   min-height: 300px;
 }

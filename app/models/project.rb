@@ -14,11 +14,11 @@
 
 class Project < ApplicationRecord
   belongs_to :research_group
-  #has_and_belongs_to_many :research_lines
+  # belongs_to :research_area
   has_many :members
-  #has_and_belongs_to_many :tags
   has_many :subscribers
   has_many :articles
+  #has_and_belongs_to_many :tags
 
   def self.getUsers(project_id)
     project = Project.find(project_id)

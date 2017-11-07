@@ -31,6 +31,10 @@ gem 'sprockets'
 # Carrierwave
 gem 'carrierwave'
 
+# Froala WYSIWYG HTML Editor
+gem "wysiwyg-rails"
+gem "font-awesome-rails"
+
 # Devise
 gem 'devise'
 # Dotenv gem

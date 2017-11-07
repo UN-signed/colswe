@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-  var items = '#profile-menu a.item, #profile-menu .link.item';
+  var items = '.menu a.item, .menu .link.item';
   var $menuItem = $(items);
 
   $("div.holder").css("display", "none");

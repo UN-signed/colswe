@@ -46,6 +46,7 @@ $( document ).on('turbolinks:load', function() {
     $(items).removeClass('active');
     $(this).addClass('active');
   });
+
 });
 
 

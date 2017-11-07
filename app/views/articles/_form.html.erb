@@ -1,17 +1,32 @@
 <%= form_with(model: article, url: "/projects/"+params[:project_id]+"/articles/"+(current_page?(:action => 'new')? "": params[:id]), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<% if article.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  <ul>
+    <% article.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-      <ul>
-      <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<center>
+  <div class="ui focus transparent input">
+    <h1 class="ui left floated header">Título:</h1>
+    <h1 class="ui left floated header">
+      <%= form.text_field :name, id: :article_name, placeholder: 'Escribe el título aquí', class: 'title' %>
+    </h1>
+  </div>
+</center>
 
-  <center>
+<div class="ui top attached tabular menu">
+  <a class="item active" data-items="content">Contenido</a>
+  <a class="item" data-items="info">Detalles</a>
+  <a class="item" data-items="references">Referencias</a>
+</div>
+
+<div class="ui bottom attached segment">
+  <div class="holder content">
     <label for="avatar-upload" class="ui big icon red button" style="margin:20px;">
       <i class="file pdf outline icon" style="margin-right:5px!important;"></i>
       Subir PDF
@@ -19,37 +34,40 @@
     <%= form.file_field :pdf, id: 'avatar-upload' %>
 
     <%= link_to('Ver pdf actual', @article.pdf.url, class: 'ui big button', target: :_blank) if @article.pdf? %>
+
+    <%= form.text_area :pdf, id: "wysiwyg" %>
+  </div>
+
+  <div class="holder info">
+    <div class="field">
+      <h4 class="ui header">Resumen</h4>
+      <%= form.text_area :description, id: :article_description, placeholder: 'Resume tu artículo para que las personas se interesen en él ...' %>
+    </div>
+
+    <div class="field">
+      <h4 class="ui header">Palabras Clave (Separadas por comas)</h4>
+      <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
+    </div>
+
+    <div class="field">
+      <h4 class="ui header">Idioma</h4>
+      <%= form.select(:lenguage, options_for_select([ "Español", "Inglés", "Alemán", "Francés", "Italiano" ], "Español"), class:"ui compact dropdown") %>
+    </div>
+  </div>
+
+  <div class="holder references">
+    <div class="field">
+      <h4 class="ui header">Bibliografía</h4>
+      <%= form.text_area :bibliography, id: :article_bibliography, placeholder: 'Bibliografía' %>
+    </div>
+  </div>
+</div>
+
+
+<div class="actions">
+  <%= link_to 'Volver', {controller: '/home'}, class: 'ui left floated button' %>
+  <%= form.submit "Crear Artículo", :class => 'ui right floated teal button' %>
+  <center>
   </center>
-
-  <div class="field">
-    <h4 class="ui header">Nombre</h4>
-    <%= form.text_field :name, id: :article_name, placeholder: 'Título' %>
-  </div>
-
-  <div class="field">
-    <h4 class="ui header">Descripción</h4>
-    <%= form.text_area :description, id: :article_description, placeholder: 'Descripción' %>
-  </div>
-
-  <div class="field">
-    <h4 class="ui header">Palabras Clave (Separadas por comas)</h4>
-    <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
-  </div>
-
-  <div class="field">
-    <h4 class="ui header">Idioma</h4>
-    <%= form.text_field :language, id: :article_lenguage, placeholder: 'Idioma' %>
-  </div>
-
-  <div class="field">
-    <h4 class="ui header">Bibliografía</h4>
-    <%= form.text_area :bibliography, id: :article_bibliography, placeholder: 'Bibliografía' %>
-  </div>
-
-  <div class="actions">
-    <%= link_to 'Volver', {controller: '/home'}, class: 'ui left floated button' %>
-    <%= form.submit "Crear Artículo", :class => 'ui right floated teal button' %>
-    <center>
-    </center>
-  </div>
+</div>
 <% end %>

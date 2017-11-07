@@ -1,38 +1,38 @@
-<div class="create article" style="margin-top:60px;">
+<div class="article section">
 
+  <%-if !@subscriber and current_user != @group.administrator_id %>
+  <%= button_to "Subscribirse", add_subscriber_path(@project), method: :post, class: 'ui blue right floated button' %>
+  <%-else%>
+  <%= button_to "Cancelar Subscripcion", delete_subscriber_path(@project), method: :delete, class: 'ui red right floated button' %>
+  <% end -%>
   <h1 class="ui text-center bottom line heading"><b>Proyecto:</b> <%= @project.name %></h1><br>
 
   <div class="ui segment" style="padding:30px;">
     <div class="ui grid">
       <div class="eleven wide column">
-        <%-if !@subscriber %>
-          <%= button_to "Subscribirse", add_subscriber_path(@project), method: :post, class: 'ui red button' %>
-        <%-else%>
-          <%= button_to "Cancelar Subscripcion", delete_subscriber_path(@project), method: :delete, class: 'ui red button' %>
-        <% end -%>
-          <%= link_to(raw('<i class="file icon"></i> Publicar Artículo'), new_project_article_path(@project), class: 'ui labeled icon basic red button') %>
         <h3 class="ui header">Descripción:</h3>
         <p><%= @project.summary %></p>
       </div>
+
       <div class="five wide column">
-          <h3 class="ui big label <%= @project.state %>"> <%= @project.state %></h3>
+        <h3 class="ui big label <%= @project.state %>"> <%= @project.state %></h3>
         <br><br>
         <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
         <br><br>
-        <%-if current_user.id == @group.administrator_id%>
+        <%-if current_user.id == @group.administrator_id %>
           <%= button_to "Eliminar Proyecto", project_path(@project), data: { confirm: "¿Estás seguro de eliminar este proyecto?" }, method: :delete, class: 'ui red button' %>
         <% end -%>
-        <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
+        <% if @members.where(user_id: current_user.id).length != 0 %>
+          <%= link_to(raw('<i class="plus icon"></i> Publicar Artículo'), new_project_article_path(@project), class: 'ui labeled icon purple button') %>
+        <% end %>
       </div>
     </div>
-  </div>
+  </div><br>
 
-  <br>
   <h1 class="section-heading text-center"> <%= link_to @group.name, research_group_url(@group.id) %> </h1>
-  <h2 class="section-heading text-center">Integrantes</h2>
-  <br>
+  <h2 class="section-heading text-center">Integrantes</h2><br>
+
   <div class="ui six stackable cards">
-    <% @members = Member.select(:id, :user_id).where(project_id: @project.id)%>
     <% @members.each do |m| %>
       <% @user = User.find(m.user_id) %>
       <%= render partial: "users/shared/user", locals: {user: @user, group: @group, member: m.id, project: @project} %>
@@ -41,10 +41,10 @@
   <br>
 
   <center>
-    <% if current_user%>
-    <%= link_to 'Editar', edit_research_group_project_path(@group, @project), class: 'ui teal button' %>
+    <% if current_user.id == @group.administrator_id %>
+      <%= link_to 'Editar', edit_research_group_project_path(@group, @project), class: 'ui teal button' %>
     <%end%>
     <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>
-    <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
+    <%= link_to 'Atrás', :back, class: 'ui left floated button' %>
   </center>
 </div>
