@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 //= require semantic_ui/semantic_ui
+//= require chart
 
 
 $( document ).on('turbolinks:load', function() {
