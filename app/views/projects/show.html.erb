@@ -8,6 +8,14 @@
   <div class="ui segment" style="padding:30px;">
     <div class="ui grid">
       <div class="eleven wide column">
+        <%-if !@subscriber %>
+          <%= button_to "Subscribirse", add_subscriber_path(@project), method: :post, class: 'ui red button' %>
+        <%-else%>
+          <%= button_to "Cancelar Subscripcion", delete_subscriber_path(@project), method: :delete, class: 'ui red button' %>
+        <% end -%>
+        <%-if @group.has_key? current_user.id %>
+          <%= link_to(raw('<i class="file icon"></i> Publicar Artículo'), new_project_article_path(@project), class: 'ui labeled icon basic red button') %>
+        <% end -%>
         <h3 class="ui header">Descripción:</h3>
         <p><%= @project.summary %></p>
       </div>
@@ -15,6 +23,10 @@
           <h3 class="ui big label <%= @project.state %>"> <%= @project.state %></h3>
         <br><br>
         <%= link_to raw('<i class="github icon"></i> Ver Repositorio'), @project.git, target: :_blank, class: 'ui labeled icon button' %>
+        <br><br>
+        <%-if current_user.id == @group.administrator_id%>
+          <%= button_to "Eliminar Proyecto", project_path(@project), data: { confirm: "¿Estás seguro de eliminar este proyecto?" }, method: :delete, class: 'ui red button' %>
+        <% end -%>
         <!-- <%= link_to @project.git, target: :_blank, class: 'ui labeled icon button' %> -->
       </div>
     </div>
@@ -37,9 +49,7 @@
     <% if current_user%>
     <%= link_to 'Editar', edit_research_group_project_path(@group, @project), class: 'ui teal button' %>
     <%end%>
-    <!-- <%= link_to 'Eliminar', @project, method: :delete, data: { confirm: 'Estás seguro que quieres borrar el atículo?' }, class: 'ui red button' %> -->
     <%= link_to 'Descargar como PDF', project_path(@project, :format => 'pdf'),  class: 'ui teal button', target: :_blank %>
+    <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
   </center>
-
-  <%= link_to 'Atrás', '/home', class: 'ui left floated button' %>
 </div>

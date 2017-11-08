@@ -7,6 +7,6 @@
 
   <%= render 'form', project: @project %>
 
-  <%= link_to 'Atrás', '/home', class: 'ui button' %>
-  <%= link_to 'Ver Proyecto', @project, class:'ui teal button' %>
+  <%= link_to 'Atrás', research_group_project_url(@project.research_group_id, @project), class:'ui button' %>
+  <!-- <%= link_to 'Ver Proyecto', @project, class:'ui teal button' %> -->
 </div>

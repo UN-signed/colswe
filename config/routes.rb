@@ -25,6 +25,13 @@ Rails.application.routes.draw do
     resources :members
   end
 
+  resources :projects do
+    resources :articles
+  end
+
+  post 'projects/:id/add_subscriber' => 'subscribers#add_subscriber', as: 'add_subscriber'
+  delete 'projects/:id/add_subscriber' => 'subscribers#delete_subscriber', as: 'delete_subscriber'
+
 	## devise controllers for users
 	devise_for :user, controllers: {
 	  confirmations: 'users/confirmations',
@@ -34,9 +41,11 @@ Rails.application.routes.draw do
 	  # unlocks: 'users/unlocks',
 
     :omniauth_callbacks => "users/omniauth_callbacks",
+    users: 'users/users',
 	}, skip: [:sessions]
 
 	## custom routes for users
+  get 'users/:id' => 'users/users#show', as: :user_profile
 	as :user do
 	  get 'login' => 'users/sessions#new', as: :new_user_session
 	  post 'login' => 'users/sessions#create', as: :user_session

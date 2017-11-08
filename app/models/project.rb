@@ -14,10 +14,11 @@
 
 class Project < ApplicationRecord
   belongs_to :research_group
-  has_and_belongs_to_many :research_lines
+  #has_and_belongs_to_many :research_lines
   has_many :members
   #has_and_belongs_to_many :tags
   has_many :subscribers
+  has_many :articles
 
   def self.getUsers(project_id)
     project = Project.find(project_id)
@@ -36,5 +37,4 @@ class Project < ApplicationRecord
   def self.load_projects(**args)
     where(research_group_id: args[:research_group_id]).paginate(page: args[:page] || 1, per_page: 12).reverse_order
   end
-
 end

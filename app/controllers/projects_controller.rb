@@ -9,10 +9,16 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1
-  # GET /projects/1.json
+  # GET /projects/1.json  
+
   def show
     @project = Project.find(params[:id])
     @group = ResearchGroup.find(@project.research_group_id)
+    @user = User.find(current_user.id)
+    @subscriber = true
+    if Subscriber.where(:project_id => params[:id], :user_id => current_user.id).blank?
+      @subscriber = false
+    end
     puts
     respond_to do |format|
       format.html
@@ -22,12 +28,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    @states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
     @project = Project.new
     @group = ResearchGroup.find(params[:research_group_id])
   end
 
   # GET /projects/1/edit
   def edit
+    @states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
     @project = Project.find(params[:id])
   end
 
@@ -90,9 +98,15 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    @project = Project.find(params[:id])
+    group = ResearchGroup.find(@project.research_group_id)
+    members = Member.where(:project_id => params[:id])
+    members.each do |m|
+      Member.destroy(m.id)
+    end
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to research_group_url(group), notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

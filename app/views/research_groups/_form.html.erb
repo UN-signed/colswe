@@ -19,7 +19,7 @@
           <%= form.text_field :name, autofocus: true, placeholder: 'Nombre del grupo' %>
           <h4 class="ui header">Administrador: <%= current_user.name %></h4>
           <div>
-          <h4 class="ui left floated header">Descripción</h4>
+            <h4 class="ui left floated header">Descripción</h4>
             <%= form.text_area :description, autofocus: true, placeholder: 'Describe en un párrafo breve para que la gente sepa de lo que hace tu equipo', class: 'big text area' %>
           </div>
         </div>
@@ -33,12 +33,12 @@
             <% @members = ResearchGroup.getUsers(@research_group.id)%>
             <% @members.each do |member| %>
               <div class="item">
-                  <% member = User.find(member.id) %>
-                  <%= image_tag(member.photo, alt: 'Image', class: 'ui avatar image') if member.photo? %>
+                  <% user = User.find(member.id) %>
+                  <%= image_tag(user.photo, alt: 'Image', class: 'ui avatar image') if user.photo? %>
                   <div class="ui label">
-                    <a class="header" style="display: inline"><%= member.name %></a> <%# TODO: Enlace al perfil %>
+                    <a class="header" style="display: inline"><%= user.name %></a> <%# TODO: Enlace al perfil %>
                     <div class="description">
-                      <%= member.degree %>
+                      <%= user.degree %>
                     </div>
                   </div>
               </div>
