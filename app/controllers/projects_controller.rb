@@ -7,14 +7,16 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @members = Member.select(:id, :user_id).where(project_id: @project.id)
+    @members = Project.getMembers(@project.id)#Member.select(:id, :user_id).where(project_id: @project.id)
     @group = ResearchGroup.find(@project.research_group_id)
     @user = User.find(current_user.id)
     @subscriber = true
     if Subscriber.where(:project_id => params[:id], :user_id => current_user.id).blank?
       @subscriber = false
     end
-    puts
+    @data = Array.new(2)
+    @data[0] = Member.vsTime(Rails.env.development? ? "date( created_at)" : "date_trunc(hour,created_at)",@project.id)
+    @data[1] = Project.getMembersDegree(@project.id)
     respond_to do |format|
       format.html
       format.pdf{render template: "projects/pdf", pdf: "pdf"}

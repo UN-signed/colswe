@@ -40,6 +40,57 @@
   </div>
   <br>
 
+  <div class="ui segment" style="padding:30px;">
+    <h2 class="ui header">Estadisticas de este proyecto</h2>
+    <br>
+    <div class="ui grid">
+      <div class="ten wide column">
+        <h3 class="ui header">¿Que tantas personas se han unido al proyecto?</h3>
+        <div id="barChart">    </div>
+      </div>
+      <div class="six wide column">
+        <h3 class="ui header">¿Que han estudiado las personas de este proyecto?</h3>
+        <div id="chart"></div>
+      </div>
+
+
+
+    </div>
+
+    <script type="text/javascript">
+    c3.generate({
+      bindto: '#barChart',
+      data: {
+          x: 'x',
+          columns: [
+              <%= raw @data[0].keys.unshift('x').to_s %>,
+              <%= raw @data[0].values.unshift('participantes').to_s %>
+          ],
+          type: 'spline'
+      },
+      axis: {
+          x: {
+              type: 'timeseries',
+              tick: {
+                  format: '%d-%m-%Y'
+              }
+          }
+      },
+      legend: {
+        show: false
+      }
+    });
+    c3.generate({
+      bindto: '#chart',
+      data: {
+
+        json: JSON.parse('<%= raw @data[1].to_json %>'),
+        type : 'pie'
+      }
+    });
+    </script>
+  </div>
+
   <center>
     <% if current_user.id == @group.administrator_id %>
       <%= link_to 'Editar', edit_research_group_project_path(@group, @project), class: 'ui teal button' %>

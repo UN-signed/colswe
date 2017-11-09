@@ -45,4 +45,12 @@ class Project < ApplicationRecord
       all
     end
   end
+
+  def self.getMembers(project_id)
+    Member.where(project_id: project_id)
+  end
+
+  def self.getMembersDegree(project_id)
+    User.joins(:members).where('project_id = ?',project_id).group(:degree).count
+  end
 end
