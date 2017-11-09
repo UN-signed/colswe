@@ -58,4 +58,7 @@ class ResearchGroup < ApplicationRecord
   def self.searchByWhere(args)
     where(args)
   end
+  def self.admin_research_groups(userId)
+    select(:id).where(administrator_id: userId)
+  end
 end
