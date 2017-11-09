@@ -22,6 +22,6 @@ end
 env = { "NODE_PATH" => NODE_MODULES_PATH.shellescape }
 cmd = [ "#{NODE_MODULES_PATH}/.bin/webpack", "--config", WEBPACK_CONFIG ] + ARGV
 
-Dir.chdir(APP_PATH) do
-  exec env, *cmd
-end
+# Dir.chdir(APP_PATH) do
+#   exec env, *cmd
+# end

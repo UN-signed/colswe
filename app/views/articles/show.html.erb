@@ -1,32 +1,50 @@
-<%= render 'shared/menu' %>
+<div class="article section">
+  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated purple button', target: :_blank) if @article.pdf? %>
+  <h1 class="section-heading text-center"><b><%= @article.name %></b></h1><br><br>
 
-<br><br><br><br>
-<div class="dashboard">
-  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated red button', target: :_blank) if @article.pdf? %>
-  <h1 class="section-heading text-center"><b><%= @article.name %></b></h1>
+  <div class="ui grid">
+    <div class="six wide column">
+      <center>
+        <h4 class="ui text-center header">Autor: </h4>
+        <% @author = User.find(@article.user_id) %>
+        <a class="ui image teal label" href="<%=user_profile_path(@author.id)%>">
+          <%= image_tag(@author.photo.url)%>
+          <%= @author.name %>
+        </a><br><br>
+      </center>
 
-  <p>
-    <strong>Key words:</strong>
-    <%= @article.key_words %>
-  </p>
+      <h3 class="ui text-center header">Descripción</h3>
+      <%= @article.description %><br><br>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @article.description %>
-  </p>
+      <h4 class="ui text-center header" style="display:inline">Idioma: </h4>
+      <%= @article.language %><br><br>
 
-  <p>
-    <strong>Language:</strong>
-    <%= @article.language %>
-  </p>
+      <h4 class="ui text-center header" style="display:inline">Palabras Clave: </h4>
+      <%= @article.key_words %><br><br>
 
-  <p>
-    <strong>Bibliography:</strong>
-    <%= @article.bibliography %>
-  </p>
+      <%= @article.bibliography %>
 
-  <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Back', articles_path %>
+      <center>
+        <% if @article.user_id == current_user.id %>
+        <%= link_to 'Eliminar Artículo', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
+        <!-- <%= link_to 'Edit', edit_article_path(@article) %> | -->
+        <% end %>
+      </center>
+    </div>
+
+    <div class="ten wide column">
+      <div class="ui raised segment" style="padding:0 !important;">
+        <div class="ui top attached purple label">
+          <i class="document icon"></i>
+          Artículo
+        </div>
+        <div class="fr-view" style="padding:30px; max-height:350px; overflow:scroll; overflow-x: hidden;">
+          <%= raw @article.html %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <%= link_to 'Atrás', articles_path, class: 'ui button' %> -->
 
 </div>

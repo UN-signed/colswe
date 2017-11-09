@@ -1,49 +1,41 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]    #, :edit, :update, :destroy]
 
-  # GET /projects
-  # GET /projects.json
   def index
     @projects = Project.load_projects(research_group_id: params[:research_group_id], page: params[:page])
-    # @projects = Project.where(research_group_id: params[:research_group_id]).paginate(page: params[:page], per_page: 12)
   end
 
-  # GET /projects/1
-  # GET /projects/1.json  
-
   def show
-    @project = Project.find(params[:id])
-    @group = ResearchGroup.find(@project.research_group_id)
-    @user = User.find(current_user.id)
+    @project = Project.searchById(params[:id])
+    @members = Project.getMembers(@project.id)#Member.select(:id, :user_id).where(project_id: @project.id)
+    @group = ResearchGroup.searchById(@project.research_group_id)
+    @user = User.searchById(current_user.id)
     @subscriber = true
-    if Subscriber.where(:project_id => params[:id], :user_id => current_user.id).blank?
+    if Subscriber.searchByWhere(:project_id => params[:id], :user_id => current_user.id).blank?
       @subscriber = false
     end
-    puts
+    @data = Array.new(2)
+    @data[0] = Member.vsTime(Rails.env.development? ? "date( created_at)" : "to_char(created_at, 'YYYY-MM-DD')",@project.id)
+    @data[1] = Project.getMembersDegree(@project.id)
     respond_to do |format|
       format.html
       format.pdf{render template: "projects/pdf", pdf: "pdf"}
     end
   end
 
-  # GET /projects/new
   def new
     @states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
     @project = Project.new
-    @group = ResearchGroup.find(params[:research_group_id])
+    @group = ResearchGroup.searchById(params[:research_group_id])
   end
 
-  # GET /projects/1/edit
   def edit
     @states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
-    @project = Project.find(params[:id])
+    @project = Project.searchById(params[:id])
   end
 
-  # POST /projects
-  # POST /projects.json
   def create
-    @project = Project.new(project_params)
-    puts @project.research_group_id
+    @project = Project.create(project_params)
     respond_to do |format|
       if @project.save
         params[:project][:user_id].each do |x|
@@ -86,7 +78,7 @@ class ProjectsController < ApplicationController
             m.save!
           end
         end
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, notice: 'El projecto de actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -95,29 +87,25 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.json
   def destroy
-    @project = Project.find(params[:id])
-    group = ResearchGroup.find(@project.research_group_id)
-    members = Member.where(:project_id => params[:id])
+    @project = Project.searchById(params[:id])
+    group = ResearchGroup.searchById(@project.research_group_id)
+    members = Member.searchByWhere(:project_id => params[:id])
     members.each do |m|
       Member.destroy(m.id)
     end
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to research_group_url(group), notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to research_group_url(group), notice: 'El proyecto se eliminó correctamente.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.searchById(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :state, :summary, :git).merge(research_group_id: params[:research_group_id])
     end

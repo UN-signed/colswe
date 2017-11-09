@@ -2,23 +2,24 @@ require 'will_paginate/array'
 
 class HomeController < ApplicationController
   def index
-    case params[:item]
-      when "1"
-        @items = Project.order('created_at DESC')
-      when "2"
-        @items = Article.order('created_at DESC')
-      when "3"
-        @items = ResearchGroup.order('created_at DESC')
-      when "4"
-        @items = User.order('created_at DESC')
+    case params[:category]
+      when "Artículos"
+        @items = Article.search(params[:searchbox])
+      when "Proyectos"
+        @items = Project.search(params[:searchbox])
+      when "Grupos"
+        @items = ResearchGroup.search(params[:searchbox])
       else
-        @items = Article.order('created_at DESC')
-        @items += Project.order('created_at DESC')
-        @items += ResearchGroup.order('created_at DESC')
-        @items += User.order('created_at DESC')
+        @items = Article.search(params[:searchbox])
+        @items += Project.search(params[:searchbox])
+        @items += ResearchGroup.search(params[:searchbox])
     end
 
-    @items = @items.paginate(page: params[:page], per_page: 8)
+    @results = @items.length
+
+    # @items.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+    @items = @items.sort { |a,b| a.created_at <=> b.created_at }
+    @items = @items.reverse.paginate(page: params[:page], per_page: 32)
 
     respond_to do |format|
       format.html

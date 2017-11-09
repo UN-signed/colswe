@@ -60,5 +60,13 @@ class User < ApplicationRecord
   def self.old_user_from_omniauth(auth)
     find_by(email: auth.info.email)
   end
-
+  def self.crete(args)
+    new(args)
+  end
+  def self.searchByWhere(args)
+    where(args)
+  end
+  def self.searchById(userId)
+    find(userId)
+  end
 end

@@ -1,39 +1,67 @@
-<%= render 'shared/menu' %>
-
-<div class="edit user">
+<div class="profile section">
   <div class="ui grid">
-    <div class="four wide column">
-      <%= image_tag(@user.photo.url, class:'ui small circular image')%>
-      <br>
+    <div class="four wide text-center column">
+      <%= image_tag(@user.photo.url, class:'ui small circular centered image item')%>
       <h3 class="ui heading"><%= @user.name%></h3>
-      <div class="ui secondary vertical pointing menu" id="profile-menu">
-        <a class="item active" data-items="groups">Grupos a los que pertenece</a>
-        <a class="item" data-items="projects">Proyectos en los que paticipa</a>
-      </div>
+      <p class="item"><%= @user.email %></p>
+      <% if @user == current_user %>
+        <%= link_to raw('<i class="pencil icon"></i>Editar perfil'), edit_user_registration_path, class:'ui teal button item' %>
+        <% else %>
+        <!-- <%= link_to raw('<i class="chat icon"></i>Enviar Mensaje'), edit_user_registration_path, class:'ui blue button item' %> -->
+      <% end %>
     </div>
 
     <div class="twelve wide column">
-      <div class="holder groups">
-        <div class="ui segment">
+      <div class="ui pointing menu" id="profile-menu">
+        <a class="active item" data-items="info">Información</a>
+        <a class="item" data-items="groups">Grupos</a>
+        <a class="item" data-items="projects">Proyectos</a>
+      </div>
+
+      <div class="ui segment">
+        <div class="holder info">
+          <h3 class="ui bottom line header">Información académica</h3><br><br>
+          <b>Descripción:</b> <%= @user.description %><br>
+          <b>Estudios:</b> <%= @user.degree %><br>
+          <b>Departamento:</b> <%= @user.departament %><br>
+        </div>
+
+        <div class="holder groups">
           <h3 class="ui bottom line header">Grupos de <%= @user.name%></h3><br><br>
+          <% if @research_groups.length != 0 %>
           <div class="ui two cards">
             <%@research_groups.each do |g|%>
             <%= render partial: "research_groups/research_group", locals: {research_group: g} %>
             <%end%>
           </div>
+          <%else%>
+            <% if @user == current_user %>
+            <p>No tienes grupos aún, pero puedes crear uno</p>
+            <%= link_to "Crear grupo", new_research_group_path, class: 'ui green button' %>
+            <% else %>
+            <p><%= @user.name%> no pertenece a ningún grupo aún</p>
+            <% end %>
+          <%end%>
         </div>
-      </div>
 
-      <div class="holder projects">
-        <div class="ui segment">
+        <div class="holder projects">
           <h3 class="ui bottom line header">Proyectos de <%= @user.name%></h3><br><br>
+          <% if @projects.length != 0 %>
           <div class="ui two cards">
             <%@projects.each do |project|%>
             <%= render partial: "projects/project", locals: {project: project} %>
             <%end%>
           </div>
+          <%else%>
+            <% if @user == current_user %>
+            <p>No tienes proyectos aún</p>
+            <% else %>
+            <p><%= @user.name%> no tiene proyectos aún</p>
+            <% end %>
+          <%end%>
         </div>
       </div>
+
     </div>
   </div>
 </div>

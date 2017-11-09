@@ -13,13 +13,18 @@
  *= require_tree .
  *= require_self
  *= require semantic_ui/semantic_ui
+ *= require_tree .
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require font-awesome
+ *= require nvd3
  */
 
 /*  --------------------------------
     ---------- Main Styles ---------
     --------------------------------  */
 
-#footer{
+#footer {
   margin: 0;
   position: relative;
   bottom: 0 !important;
@@ -27,69 +32,113 @@
   border-radius: initial;
 }
 
+.main {
+  padding-top: 130px;
+  min-height: calc(100% - 42px);
+}
+
+.section {
+  padding: 0 10%;
+  margin-bottom: 100px;
+}
+
 .ui.bottom.line.header {
-  /*margin-bottom: 40px;*/
   padding-bottom: 3px;
   border-bottom: 3px solid #00b5ad;
   text-transform: uppercase;
   display: inline-block;
 }
 
+#main-menu {
+  margin-bottom: 0;
+  position: fixed;
+  z-index: 1000;
+  width: 100.5%;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#main-menu.scrolled {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  transition: background-color 200ms linear;
+  border-bottom: 2px solid #00b5ad;
+  height: 60px !important;
+}
+
+.ui.white.button {
+  background: #ffffff;
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+  box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.ui.white.button:hover {
+  background: #e3e3e3;
+  -webkit-box-shadow: 0px 0px 0px 2px #e3e3e3 inset !important;
+  box-shadow: 0px 0px 0px 2px #e3e3e3 inset !important;
+  color: black;
+}
+
+.ui.huge.home.button {
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.ui.principal.header {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 
 
 /*  --------------------------------
-    ---- Login ad SignUp Styles ----
+    ---- Login and SignUp Styles ----
     --------------------------------  */
 
 .login {
-  margin-top: 5% !important;
-  margin-bottom: 5% !important;
   width: 700px;
-  padding: 30px 30px !important;
-  margin-left: calc(50% - 320px) !important;
+  margin: 0 calc(50% - 320px) !important;
 }
 
-.login > .ui.heading {
-  margin-bottom: 20px !important;
+.login > .ui.header {
+  margin-bottom: 40px !important;
 }
 
 .login > .links.text-center {
   margin: 20px;
 }
 
-.login > .actions > .btn {
-  background-color: rgb(168, 168, 168) !important;
-}
-
 .login .ui.grid > .column:not(.row), .ui.grid > .row > .column {
-  padding-left: 3rem;
-  padding-right: 3em;
+  padding: 3rem 3rem 1rem 3rem;
 }
 
-.socials {
-  margin-top: 30px;
+.socials.column {
+  margin-top: 20px;
+  width: 300px !important;
 }
 
 .socials > .ui.button {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 
 
 /*  --------------------------------
-    ------- Edit User Styles -------
+    -------- Profile Styles --------
     --------------------------------  */
 
-.edit.user {
-  padding: 160px 10%;
+.profile .four.wide.column .item {
+  margin-bottom: 20px;
+}
+
+.profile .ui.segment, .article .ui.segment {
+  padding:30px;
+  min-height: 300px;
 }
 
 #avatar-upload {
   display: none;
-}
-
-.edit.user .ui.segment {
-  padding:30px;
 }
 
 
@@ -98,14 +147,48 @@
     ------- Dashboard Styles -------
     --------------------------------  */
 
-.dashboard {
-  padding: 50px 10%;
+#dashboard-menu {
+  padding: 0 10%;
+  z-index: 900;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+#dashboard-menu div:not(:last-child), #dashboard-menu .right.menu div:not(:last-child) {
+  margin-right: 15px;
+}
+
+#dashboard-menu.scrolled {
+  height: 60px !important;
+  position: fixed;
+  margin-top: -110px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: rgb(242, 242, 242) !important;
+  transition: background-color 200ms linear;
+  border-bottom: 2px solid #c1c1c1;
 }
 
 .dashboard .ui.menu {
   margin-bottom: 40px !important;
 }
 
+.pagination {
+  margin-top: 30px;
+}
+
+.no-results {
+  width: 250px;
+  margin-left: calc(50% - 125px);
+}
+
+.no-results h4 {
+  color: #7b7b7b !important;
+}
+
+
+/*  Dashboard Labels  */
 .ui.basic.horizontal.label {
   margin-left: 10px;
 }

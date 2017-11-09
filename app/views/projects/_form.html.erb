@@ -31,14 +31,12 @@
 
     <div class="column">
       <div class="field">
-        <%= form.select(:research_line_id, ResearchLine.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona una línea de investigación'}, class: "ui search selection dropdown",style: "margin-bottom:15px") %>
+        <%= form.select(:research_area_id, ResearchArea.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un área de investigación'}, class: "ui search selection dropdown", style: "margin-bottom:15px") %>
       </div>
+      <% @availableUsers = ResearchGroup.getAvailableUsers(params[:research_group_id])%>
       <div class="field">
-        <%= form.select(:user_id, ResearchGroup.getUsers(params[:research_group_id]).collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px", multiple: "") %>
+        <%= form.select(:user_id, ResearchGroup.getUsers(params[:research_group_id]).collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante para agregar al proyecto'}, class: "ui search selection dropdown", style: "margin-bottom:15px", multiple: "") %>
       </div>
-      <!-- <div class="field">
-        <%= form.select( :research_group_id, ResearchGroup.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un grupo al que pertenece proyecto'}, class: "ui search selection dropdown",style: "margin-bottom:15px") %>
-      </div> -->
       <div class="field">
         <div class="ui left icon input">
           <%= form.text_field :git, id: :project_git, autofocus: true, :placeholder => 'URL repositorio del proyecto'%>

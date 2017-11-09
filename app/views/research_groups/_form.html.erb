@@ -32,20 +32,21 @@
           <div class="ui list">
             <% @members = ResearchGroup.getUsers(@research_group.id)%>
             <% @members.each do |member| %>
-              <div class="item">
-                  <% user = User.find(member.id) %>
-                  <%= image_tag(user.photo, alt: 'Image', class: 'ui avatar image') if user.photo? %>
-                  <div class="ui label">
-                    <a class="header" style="display: inline"><%= user.name %></a> <%# TODO: Enlace al perfil %>
-                    <div class="description">
-                      <%= user.degree %>
-                    </div>
-                  </div>
+            <div class="item">
+              <% user = User.find(member.id) %>
+              <%= image_tag(user.photo, alt: 'Image', class: 'ui avatar image') if user.photo? %>
+              <div class="ui label">
+                <a class="header" style="display: inline"><%= user.name %></a> <%# TODO: Enlace al perfil %>
+                <div class="description">
+                  <%= user.degree %>
+                </div>
               </div>
+            </div>
             <% end %>
           </div>
           <div class="field" style="width:100%">
-            <%= form.select(:user_id, User.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante'}, class: "ui search selection dropdown",style: "margin-bottom:15px; width:100%", multiple: "") %>
+            <% @availableUsers = ResearchGroup.getAvailableUsers(@research_group.id)%>
+            <%= form.select(:user_id, @availableUsers.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante'}, class: "ui search selection dropdown",style: "margin-bottom:15px; width:100%", multiple: "") %>
           </div>
         </div>
       </div>
@@ -53,11 +54,8 @@
     </div>
 
     <div class="actions">
-      <center>
-        <%= link_to 'Atrás', '/home', class:'ui button' %>
-        <%= link_to 'Ver', @research_group, class:'ui teal button' %>
-        <%= form.submit "Guardar", :class => 'ui teal button' %>
-      </center>
+      <%= link_to 'Atrás', '/home', class:'ui button' %>
+      <%= form.submit "Guardar", :class => 'ui teal right floated button' %>
     </div>
   <% end %>
 </div>

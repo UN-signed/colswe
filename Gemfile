@@ -31,6 +31,10 @@ gem 'sprockets'
 # Carrierwave
 gem 'carrierwave'
 
+# Froala WYSIWYG HTML Editor
+gem "wysiwyg-rails"
+gem "font-awesome-rails"
+
 # Devise
 gem 'devise'
 # Dotenv gem
@@ -74,6 +78,8 @@ gem 'annotate', require: false
 gem 'faker'
 gem 'ui_faces'
 
+gem 'chart'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -82,6 +88,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem "factory_girl_rails"
 
 end
 
