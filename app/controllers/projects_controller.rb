@@ -36,7 +36,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    puts @project.research_group_id
     respond_to do |format|
       if @project.save
         params[:project][:user_id].each do |x|

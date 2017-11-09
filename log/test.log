@@ -62,3 +62,282 @@
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnProjectIdToArticles (20171104053227)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "articles" ADD "project_id" int[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171104053227"]]
+  [1m[35m (77.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2017-11-09 09:40:12.381304"], ["key", "environment"]]
+  [1m[35m (83.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "research_groups" ("name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Boyd"], ["description", "Chuck Norris burst the dot com bubble."], ["administrator_id", 15], ["created_at", "2017-11-09 09:52:10.243723"], ["updated_at", "2017-11-09 09:52:10.243723"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "research_groups" ("name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Daisy"], ["description", "Chuck Norris doesn't delete files, he blows them away."], ["administrator_id", 12], ["created_at", "2017-11-09 10:02:33.615108"], ["updated_at", "2017-11-09 10:02:33.615108"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.4ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Isadore"], ["description", "All browsers support the hex definitions #chuck and #norris for the colors black and blue."], ["administrator_id", 11], ["created_at", "2017-11-09 10:07:41.753255"], ["updated_at", "2017-11-09 10:07:41.753255"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Lisa"], ["state", "f"], ["summary", "I'm okay!"], ["git", "hallie"], ["research_group_id", 0], ["created_at", "2017-11-09 10:07:41.804097"], ["updated_at", "2017-11-09 10:07:41.804097"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Douglas"], ["description", "For Chuck Norris, NP-Hard = O(1)."], ["created_at", "2017-11-09 10:08:58.871287"], ["updated_at", "2017-11-09 10:08:58.871287"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Jeromy"], ["state", "t"], ["summary", "Never eat raspberries."], ["git", "myriam.towne"], ["research_group_id", 0], ["created_at", "2017-11-09 10:08:58.923751"], ["updated_at", "2017-11-09 10:08:58.923751"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Forest"], ["description", "Chuck Norris does not use revision control software. None of his code has ever needed revision."], ["administrator_id", 14], ["created_at", "2017-11-09 10:08:58.933506"], ["updated_at", "2017-11-09 10:08:58.933506"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", -1], ["name", "Julia"], ["state", "f"], ["summary", "Hey, short man!"], ["git", "alverta.okuneva"], ["research_group_id", 0], ["created_at", "2017-11-09 10:08:58.940787"], ["updated_at", "2017-11-09 10:08:58.940787"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Weldon"], ["description", "Chuck Norris doesn't need the cloud to scale his applications, he uses his laptop."], ["administrator_id", 7], ["created_at", "2017-11-09 10:09:38.659647"], ["updated_at", "2017-11-09 10:09:38.659647"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Donnie"], ["state", "t"], ["summary", "MONKEYMAAAAN!"], ["git", "maybell"], ["research_group_id", 0], ["created_at", "2017-11-09 10:09:38.710738"], ["updated_at", "2017-11-09 10:09:38.710738"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Ethelyn"], ["description", "Chuck Norris can instantiate an abstract class."], ["administrator_id", 9], ["created_at", "2017-11-09 10:09:38.719834"], ["updated_at", "2017-11-09 10:09:38.719834"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", -1], ["name", "Hortense"], ["state", "t"], ["summary", "Never eat raspberries."], ["git", "jaquelin.dickens"], ["research_group_id", 0], ["created_at", "2017-11-09 10:09:38.727011"], ["updated_at", "2017-11-09 10:09:38.727011"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Brant"], ["description", "For Chuck Norris, NP-Hard = O(1)."], ["administrator_id", 6], ["created_at", "2017-11-09 10:10:00.782650"], ["updated_at", "2017-11-09 10:10:00.782650"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.4ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Urban"], ["state", "t"], ["summary", "Never eat raspberries."], ["git", "romaine_hagenes"], ["research_group_id", 0], ["created_at", "2017-11-09 10:10:00.834126"], ["updated_at", "2017-11-09 10:10:00.834126"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Donavon"], ["description", "Chuck Norris can write multi-threaded applications with a single thread."], ["administrator_id", 6], ["created_at", "2017-11-09 10:10:00.843756"], ["updated_at", "2017-11-09 10:10:00.843756"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 132165], ["name", "Anibal"], ["state", "t"], ["summary", "But you see, Arnold and tall hair boy, I don’t want to be famous! I want to live my life simply! I like my banana wallpaper, I like doing my own laundry! Just give me the simple things!"], ["git", "nellie"], ["research_group_id", 0], ["created_at", "2017-11-09 10:10:00.851206"], ["updated_at", "2017-11-09 10:10:00.851206"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Dallas"], ["description", "Chuck Norris can write multi-threaded applications with a single thread."], ["administrator_id", 14], ["created_at", "2017-11-09 10:10:27.100817"], ["updated_at", "2017-11-09 10:10:27.100817"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("id", "name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Joanny"], ["state", "t"], ["summary", "Move it, Footballhead"], ["git", "charlotte"], ["research_group_id", 0], ["created_at", "2017-11-09 10:10:27.152268"], ["updated_at", "2017-11-09 10:10:27.152268"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Terrence"], ["description", "Chuck Norris can't test for equality because he has no equal."], ["administrator_id", 8], ["created_at", "2017-11-09 10:10:27.161266"], ["updated_at", "2017-11-09 10:10:27.161266"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Amira"], ["state", "t"], ["summary", "I saw your face and wow!"], ["git", "demarcus_mills"], ["research_group_id", 0], ["created_at", "2017-11-09 10:10:27.168711"], ["updated_at", "2017-11-09 10:10:27.168711"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Brendon"], ["description", "There is no need to try catching Chuck Norris' exceptions for recovery; every single throw he does is fatal."], ["administrator_id", 0], ["created_at", "2017-11-09 10:21:57.254035"], ["updated_at", "2017-11-09 10:21:57.254035"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.5ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Murphy"], ["state", "t"], ["summary", "Kitty, kitty, kitty, do you like to pet the kitty? I like to pet the kitty! Hey look! I'm petting the kitty!"], ["git", "devante"], ["research_group_id", 0], ["created_at", "2017-11-09 10:21:57.304495"], ["updated_at", "2017-11-09 10:21:57.304495"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Sallie"], ["description", "Anonymous methods and anonymous types are really all called Chuck Norris. They just don't like to boast."], ["administrator_id", 12], ["created_at", "2017-11-09 10:21:57.313190"], ["updated_at", "2017-11-09 10:21:57.313190"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.2ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", -1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Twila"], ["description", "Chuck Norris can compile syntax errors."], ["administrator_id", 12], ["created_at", "2017-11-09 10:27:07.644940"], ["updated_at", "2017-11-09 10:27:07.644940"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.5ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Domenick"], ["state", "f"], ["summary", "Can you get your arm off my shoulder? As I've told you many times before, I don't like you like you, I just like you."], ["git", "sabryna"], ["research_group_id", 0], ["created_at", "2017-11-09 10:27:07.696365"], ["updated_at", "2017-11-09 10:27:07.696365"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Una"], ["description", "Chuck Norris does not use revision control software. None of his code has ever needed revision."], ["administrator_id", 14], ["created_at", "2017-11-09 10:27:07.704660"], ["updated_at", "2017-11-09 10:27:07.704660"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", -1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Ignatius"], ["description", "Chuck Norris does not use revision control software. None of his code has ever needed revision."], ["administrator_id", 2], ["created_at", "2017-11-09 10:27:24.440021"], ["updated_at", "2017-11-09 10:27:24.440021"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Isac"], ["state", "t"], ["summary", "Kitty, kitty, kitty, do you like to pet the kitty? I like to pet the kitty! Hey look! I'm petting the kitty!"], ["git", "kyle.cartwright"], ["research_group_id", 0], ["created_at", "2017-11-09 10:27:24.491526"], ["updated_at", "2017-11-09 10:27:24.491526"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Janiya"], ["description", "Chuck Norris has root access to your system."], ["administrator_id", 4], ["created_at", "2017-11-09 10:27:24.499777"], ["updated_at", "2017-11-09 10:27:24.499777"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", -1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Lindsay"], ["description", "When a bug sees Chuck Norris, it flees screaming in terror, and then immediately self-destructs to avoid being roundhouse-kicked."], ["administrator_id", 0], ["created_at", "2017-11-09 10:27:52.183946"], ["updated_at", "2017-11-09 10:27:52.183946"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Asa"], ["state", "t"], ["summary", "I saw your face and wow!"], ["git", "anna"], ["research_group_id", 0], ["created_at", "2017-11-09 10:27:52.236136"], ["updated_at", "2017-11-09 10:27:52.236136"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Adele"], ["description", "Chuck Norris doesn't pair program."], ["administrator_id", 6], ["created_at", "2017-11-09 10:27:52.244630"], ["updated_at", "2017-11-09 10:27:52.244630"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Yazmin"], ["description", "You don't disable the Chuck Norris plug-in, it disables you."], ["administrator_id", 4], ["created_at", "2017-11-09 10:28:40.148720"], ["updated_at", "2017-11-09 10:28:40.148720"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.4ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Isabella"], ["state", "f"], ["summary", "Can you get your arm off my shoulder? As I've told you many times before, I don't like you like you, I just like you."], ["git", "sandrine_rogahn"], ["research_group_id", 0], ["created_at", "2017-11-09 10:28:40.202005"], ["updated_at", "2017-11-09 10:28:40.202005"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Jamison"], ["description", "Chuck Norris solved the Travelling Salesman problem in O(1) time."], ["administrator_id", 13], ["created_at", "2017-11-09 10:28:40.210783"], ["updated_at", "2017-11-09 10:28:40.210783"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.2ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Kaycee"], ["description", "Chuck Norris' programs occupy 150% of CPU, even when they are not executing."], ["administrator_id", 8], ["created_at", "2017-11-09 10:37:21.038279"], ["updated_at", "2017-11-09 10:37:21.038279"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.4ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Brice"], ["state", "f"], ["summary", "But you see, Arnold and tall hair boy, I don’t want to be famous! I want to live my life simply! I like my banana wallpaper, I like doing my own laundry! Just give me the simple things!"], ["git", "susie"], ["research_group_id", 0], ["created_at", "2017-11-09 10:37:21.090313"], ["updated_at", "2017-11-09 10:37:21.090313"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Madilyn"], ["description", "Chuck Norris doesn't get compiler errors, the language changes itself to accommodate Chuck Norris."], ["administrator_id", 6], ["created_at", "2017-11-09 10:37:21.100022"], ["updated_at", "2017-11-09 10:37:21.100022"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Erling"], ["description", "The only pattern Chuck Norris knows is God Object."], ["administrator_id", 15], ["created_at", "2017-11-09 10:43:11.756392"], ["updated_at", "2017-11-09 10:43:11.756392"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.3ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "state", "summary", "git", "research_group_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Salma"], ["state", "t"], ["summary", "Hey, short man!"], ["git", "einar"], ["research_group_id", 0], ["created_at", "2017-11-09 10:43:11.808124"], ["updated_at", "2017-11-09 10:43:11.808124"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "research_groups" ("id", "name", "description", "administrator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["id", 0], ["name", "Ora"], ["description", "Chuck Norris can write infinite recursion functions... and have them return."], ["administrator_id", 5], ["created_at", "2017-11-09 10:43:11.817912"], ["updated_at", "2017-11-09 10:43:11.817912"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResearchGroup Load (0.1ms)[0m  [1m[34mSELECT  "research_groups".* FROM "research_groups" WHERE "research_groups"."id" = ? LIMIT ?[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
