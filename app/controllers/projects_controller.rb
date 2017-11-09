@@ -6,12 +6,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.searchById(params[:id])
     @members = Project.getMembers(@project.id)#Member.select(:id, :user_id).where(project_id: @project.id)
-    @group = ResearchGroup.find(@project.research_group_id)
-    @user = User.find(current_user.id)
+    @group = ResearchGroup.searchById(@project.research_group_id)
+    @user = User.searchById(current_user.id)
     @subscriber = true
-    if Subscriber.where(:project_id => params[:id], :user_id => current_user.id).blank?
+    if Subscriber.searchByWhere(:project_id => params[:id], :user_id => current_user.id).blank?
       @subscriber = false
     end
     @data = Array.new(2)
@@ -26,16 +26,16 @@ class ProjectsController < ApplicationController
   def new
     @states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
     @project = Project.new
-    @group = ResearchGroup.find(params[:research_group_id])
+    @group = ResearchGroup.searchById(params[:research_group_id])
   end
 
   def edit
     @states = ["Activo", "Pendiente", "Rechazado", "Terminado"]
-    @project = Project.find(params[:id])
+    @project = Project.searchById(params[:id])
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.create(project_params)
     respond_to do |format|
       if @project.save
         params[:project][:user_id].each do |x|
@@ -88,9 +88,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
-    group = ResearchGroup.find(@project.research_group_id)
-    members = Member.where(:project_id => params[:id])
+    @project = Project.searchById(params[:id])
+    group = ResearchGroup.searchById(@project.research_group_id)
+    members = Member.searchByWhere(:project_id => params[:id])
     members.each do |m|
       Member.destroy(m.id)
     end
@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
 
   private
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.searchById(params[:id])
     end
 
     def project_params

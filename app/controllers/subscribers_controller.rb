@@ -25,7 +25,7 @@ class SubscribersController < ApplicationController
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @subscriber = Subscriber.create(subscriber_params)
 
     respond_to do |format|
       if @subscriber.save
@@ -63,23 +63,23 @@ class SubscribersController < ApplicationController
   end
 
   def add_subscriber
-    @project = Project.find(params[:id])
-    @user = User.find(current_user.id)
+    @project = Project.searchById(params[:id])
+    @user = User.searchById(current_user.id)
     @subscriber = Subscriber.create(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
     NewSubscriberMailer.welcome_email(@user, @project).deliver_now
   end
 
   def delete_subscriber
-    @project = Project.find(params[:id])
-    @user = User.find(current_user.id)
-    @subscriber = Subscriber.where(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    @project = Project.searchById(params[:id])
+    @user = User.searchById(current_user.id)
+    @subscriber = Subscriber.searchByWhere(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
     Subscriber.destroy(@subscriber[0].id)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscriber
-      @subscriber = Subscriber.find(params[:id])
+      @subscriber = Subscriber.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
