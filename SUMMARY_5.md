@@ -16,8 +16,10 @@ Y -> Yeliana Torres
   * Filtro por categoría en la barra de busqueda del dashboard (Y)
   * Implementar la funcionalidad de subscripción a un grupo (D)
   * Notificaciones por correo a los subsciptores de un proyecto sobre todos los nuevos articulos agregados a este (D)
-  * Notificacion semanal por correo a los subscriptores de un proyecto del resumen de artigulos agregados (por medio de un job) (Y)
+  * Notificacion semanal por correo a los subscriptores de un proyecto del resumen de articulos agregados (por medio de un job) (Y)
   * Tests unitarios de los modelos proyecto y grupo (C, J)
+  * Implementación de editor de texto para crear artículos directamente en la aplicación (Y)
+  * Mejora de la vista del articulo (Y, J)
 
 ## Propuesta para el Sprint 6:
   * Implementar permisos para los roles que hay en la plataforma:
