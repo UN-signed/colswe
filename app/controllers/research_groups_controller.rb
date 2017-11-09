@@ -10,7 +10,7 @@ class ResearchGroupsController < ApplicationController
   # GET /research_groups/1
   # GET /research_groups/1.json
   def show
-    @research_group = ResearchGroup.find(params[:id])
+    @research_group = ResearchGroup.searchById(params[:id])
   end
 
   # GET /research_groups/new
@@ -25,7 +25,7 @@ class ResearchGroupsController < ApplicationController
   # POST /research_groups
   # POST /research_groups.json
   def create
-    @research_group = ResearchGroup.new(research_group_params)
+    @research_group = ResearchGroup.create(research_group_params)
     respond_to do |format|
       if @research_group.save
         params[:research_group][:user_id].each do |x|
@@ -82,7 +82,7 @@ class ResearchGroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_research_group
-      @research_group = ResearchGroup.find(params[:id])
+      @research_group = ResearchGroup.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -48,4 +48,14 @@ class ResearchGroup < ApplicationRecord
       all
     end
   end
+
+  def self.create(args)
+    new(args)
+  end
+  def self.searchById(researchGroupId)
+    find(researchGroupId)
+  end
+  def self.searchByWhere(args)
+    where(args)
+  end
 end

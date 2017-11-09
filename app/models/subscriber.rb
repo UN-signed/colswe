@@ -12,4 +12,13 @@
 
 class Subscriber < ApplicationRecord
   belongs_to :project
+  def self.create(args)
+    new(args)
+  end
+  def self.searchById(subscriberId)
+    find(subscriberId)
+  end
+  def self.searchByWhere(args)
+    where(args)
+  end
 end

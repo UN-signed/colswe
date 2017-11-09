@@ -24,10 +24,9 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
-    @project = Project.find(params[:project_id])
-    @subscribers = Subscriber.where(:project_id => params[:project_id])
-    puts @subscribers
+    @article = Article.create(article_params)
+    @project = Project.searchById(params[:project_id])
+    @subscribers = Subscriber.searchByWhere(:project_id => params[:project_id])
     @subscribers.each do |subscriber|
       NewArticleMailer.new_article_email(subscriber, @article).deliver_now
     end
@@ -70,7 +69,7 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

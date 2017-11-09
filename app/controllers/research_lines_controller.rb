@@ -24,7 +24,7 @@ class ResearchLinesController < ApplicationController
   # POST /research_lines
   # POST /research_lines.json
   def create
-    @research_line = ResearchLine.new(research_line_params)
+    @research_line = ResearchLine.create(research_line_params)
 
     respond_to do |format|
       if @research_line.save
@@ -64,7 +64,7 @@ class ResearchLinesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_research_line
-      @research_line = ResearchLine.find(params[:id])
+      @research_line = ResearchLine.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -24,7 +24,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
+    @tag = Tag.create(tag_params)
 
     respond_to do |format|
       if @tag.save
@@ -64,7 +64,7 @@ class TagsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tag
-      @tag = Tag.find(params[:id])
+      @tag = Tag.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

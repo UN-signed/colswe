@@ -1,3 +1,4 @@
+<!-- %= form_with(model: article, url: (current_page?(:action => 'new')? "/projects/"+params[:project_id]+"/articles/" : "/articles/"), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %> -->
 <%= form_with(model: article, url: "/projects/"+params[:project_id]+"/articles/"+(current_page?(:action => 'new')? "": params[:id]), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %>
 <% if article.errors.any? %>
 <div id="error_explanation">
