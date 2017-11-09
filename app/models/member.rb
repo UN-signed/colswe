@@ -39,4 +39,10 @@ class Member < ApplicationRecord
   def self.searchByWhere(args)
     where(args)
   end
+  def self.research_groups(userId)
+    select(:research_group_id).where(user_id: userId).distinct
+  end
+  def self.projectsIds(userId)
+    select(:project_id).where(user_id: userId).distinct
+  end
 end

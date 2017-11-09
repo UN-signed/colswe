@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.searchById(params[:id])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
