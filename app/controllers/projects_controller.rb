@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
       @subscriber = false
     end
     @data = Array.new(2)
-    @data[0] = Member.vsTime(Rails.env.development? ? "date( created_at)" : "to_char(created_at, 'YYYY-MM-DD HH24:MI:SS')",@project.id)
+    @data[0] = Member.vsTime(Rails.env.development? ? "date( created_at)" : "to_char(created_at, 'YYYY-MM-DD')",@project.id)
     @data[1] = Project.getMembersDegree(@project.id)
     respond_to do |format|
       format.html
