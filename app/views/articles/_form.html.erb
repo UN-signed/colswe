@@ -36,7 +36,7 @@
 
     <%= link_to('Ver pdf actual', @article.pdf.url, class: 'ui big button', target: :_blank) if @article.pdf? %>
 
-    <%= form.text_area :pdf, id: "wysiwyg" %>
+    <%= form.text_area :html, id: "wysiwyg" %>
   </div>
 
   <div class="holder info">
@@ -52,7 +52,7 @@
 
     <div class="field">
       <h4 class="ui header">Idioma</h4>
-      <%= form.select(:lenguage, options_for_select([ "Español", "Inglés", "Alemán", "Francés", "Italiano" ], "Español"), class:"ui compact dropdown") %>
+      <%= form.select(:language, options_for_select([ "Español", "Inglés", "Alemán", "Francés", "Italiano" ], "Español"), class:"ui compact dropdown") %>
     </div>
   </div>
 

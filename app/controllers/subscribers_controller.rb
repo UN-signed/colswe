@@ -67,6 +67,8 @@ class SubscribersController < ApplicationController
     @user = User.searchById(current_user.id)
     @subscriber = Subscriber.create(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
     NewSubscriberMailer.welcome_email(@user, @project).deliver_now
+    WeeklyReportSubscriberJob.set(wait_until: Time.now + 7.days).perform_later(@subscriber)
+    redirect_to project_path(@project)
   end
 
   def delete_subscriber
@@ -74,6 +76,7 @@ class SubscribersController < ApplicationController
     @user = User.searchById(current_user.id)
     @subscriber = Subscriber.searchByWhere(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
     Subscriber.destroy(@subscriber[0].id)
+    redirect_to project_path(@project)
   end
 
   private
