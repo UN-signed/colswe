@@ -1,4 +1,4 @@
-class Contact < ApplicationRecor
+class Contact < ApplicationRecord
   def self.create(args)
     new(args)
   end
