@@ -27,6 +27,16 @@ class ResearchGroup < ApplicationRecord
     return users
   end
 
+  def self.getAvailableUsers(group_id)
+    users = []
+    User.all.collect.each do |user|
+      if !user.in?(self.getUsers(group_id))
+        users.push(user)
+      end
+    end
+    return users
+  end
+
   def self.load_researh_groups(**args)
     paginate(page: args[:page] || 1, per_page: 12).reverse_order
   end

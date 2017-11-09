@@ -34,6 +34,16 @@ class Project < ApplicationRecord
     return usersProject
   end
 
+  def self.getAvailableUsers(project_id)
+    users = []
+    User.all.collect.each do |user|
+      if !user.in?(self.getUsers(project_id))
+        users.push(user)
+      end
+    end
+    return users
+  end
+
   def self.load_projects(**args)
     where(research_group_id: args[:research_group_id]).paginate(page: args[:page] || 1, per_page: 12).reverse_order
   end

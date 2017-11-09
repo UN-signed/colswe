@@ -1,4 +1,4 @@
-<div class="create article">
+<div class="article section">
   <div class="ui segment" style="padding:30px;">
     <h1 class="section-heading text-center">Grupo: <%= @research_group.name %></h1><br>
 
@@ -37,9 +37,5 @@
         <%= render partial: "users/shared/user", locals: {user: @user, group: @research_group, member: m.id} %>
       <% end -%>
     <% end %>
-  </div>
-  <!-- javascript_include_tag "https://d3js.org/d3.v3.min.js" -->
-  <div class="ui segment">
-
   </div>
 </div>

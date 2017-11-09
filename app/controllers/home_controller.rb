@@ -19,7 +19,7 @@ class HomeController < ApplicationController
 
     # @items.sort! { |a,b| a.name.downcase <=> b.name.downcase }
     @items = @items.sort { |a,b| a.created_at <=> b.created_at }
-    @items = @items.reverse.paginate(page: params[:page], per_page: 16)
+    @items = @items.reverse.paginate(page: params[:page], per_page: 32)
 
     respond_to do |format|
       format.html
