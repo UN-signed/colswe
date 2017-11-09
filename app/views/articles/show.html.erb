@@ -1,34 +1,31 @@
 <div class="article section">
-  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated red button', target: :_blank) if @article.pdf? %>
-  <h1 class="section-heading text-center"><b><%= @article.name %></b></h1>
+  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated purple button', target: :_blank) if @article.pdf? %>
+  <h1 class="section-heading text-center"><b><%= @article.name %></b></h1><br><br>
 
-  <p>
-    <strong>Key words:</strong>
-    <%= @article.key_words %>
-  </p>
+  <div class="ui grid">
+    <div class="six wide column">
+      <h3 class="ui text-center header">Descripción</h3>
+      <%= @article.description %><br><br>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @article.description %>
-  </p>
+      <h3 class="ui text-center header" style="display:inline">Idioma: </h3>
+      <%= @article.language %><br><br>
 
-  <p>
-    <strong>HTML:</strong>
-    <%= @article.html %>
-  </p>
+      <%= @article.key_words %><br><br>
+      <%= @article.user_id %><br><br>
 
-  <p>
-    <strong>Language:</strong>
-    <%= @article.language %>
-  </p>
+      <%= @article.bibliography %>
+    </div>
 
-  <p>
-    <strong>Bibliography:</strong>
-    <%= @article.bibliography %>
-  </p>
+    <div class="ten wide column">
+      <div class="ui raised segment" style="max-height:400px; overflow:scroll; overflow-x: hidden;">
+        <div class="ui top attached purple label">Artículo</div>
+        <div class="fr-view"><%= raw @article.html %></div>
+      </div>
+    </div>
+  </div>
 
-  <td><%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Back', articles_path %>
+  <%= link_to 'Eliminar', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
+  <!-- <%= link_to 'Edit', edit_article_path(@article) %> | -->
+  <!-- <%= link_to 'Atrás', articles_path, class: 'ui button' %> -->
 
 </div>

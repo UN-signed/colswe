@@ -28,7 +28,7 @@
 
 <div class="ui bottom attached segment">
   <div class="holder content">
-    <label for="avatar-upload" class="ui big icon red button" style="margin:20px;">
+    <label for="avatar-upload" class="ui big icon purple button" style="margin:20px;">
       <i class="file pdf outline icon" style="margin-right:5px!important;"></i>
       Subir PDF
     </label>
@@ -36,7 +36,9 @@
 
     <%= link_to('Ver pdf actual', @article.pdf.url, class: 'ui big button', target: :_blank) if @article.pdf? %>
 
-    <%= form.text_area :html, id: "wysiwyg" %>
+    <div class="field">
+      <%= form.text_area :html, id: "wysiwyg" %>
+    </div>
   </div>
 
   <div class="holder info">

@@ -31,6 +31,7 @@ class Article < ApplicationRecord
   def self.searchById(articleId)
     find(articleId)
   end
+  
   def self.searchByWhere(args)
     where(args)
   end
