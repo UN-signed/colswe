@@ -590,3 +590,48 @@ Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.8ms)
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name", "description", "degree") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "bauch@gmail.com"], ["encrypted_password", "$2a$04$2YwMJEh0JXCBbTU3EYEjyOmLGn8zf5MPkunWB9KqtEtOZt9q5ERmS"], ["created_at", "2017-11-09 20:37:11.281102"], ["updated_at", "2017-11-09 20:37:11.281102"], ["name", "Paul"], ["description", "Chuck Norris doesn't use a computer because a computer does everything slower than Chuck Norris."], ["degree", "There is no Esc key on Chuck Norris' keyboard, because no one escapes Chuck Norris."]]
   [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "doyle@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name", "description", "degree") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "doyle@gmail.com"], ["encrypted_password", "$2a$04$xEWIcSNZhl06a3zPZvvpnu/h6wcn7pkF5GRjiNN9nxOOVrIis9B5i"], ["created_at", "2017-11-09 21:51:24.586036"], ["updated_at", "2017-11-09 21:51:24.586036"], ["name", "Cindy"], ["description", "Chuck Norris solved the Travelling Salesman problem in O(1) time."], ["degree", "Chuck Norris doesn't need a java compiler, he goes straight to .war"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2017-11-09 16:51:24 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_forgot_pass.html.erb (2.9ms)
+  Rendered users/shared/_socials.html.erb (2.2ms)
+  Rendered users/sessions/new.html.erb within layouts/application (33.3ms)
+  Rendered shared/_menu.html.erb (5.5ms)
+Completed 200 OK in 68ms (Views: 53.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tillman@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name", "description", "degree") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "tillman@gmail.com"], ["encrypted_password", "$2a$04$KEN..YyJ63rRoOgwHUXh2e.nKcVT6FSoHtgoIsd/zWM3rXCUuzkn6"], ["created_at", "2017-11-09 21:54:36.685873"], ["updated_at", "2017-11-09 21:54:36.685873"], ["name", "Cathy"], ["description", "Chuck Norris doesn't need an OS."], ["degree", "All arrays Chuck Norris declares are of infinite size, because Chuck Norris knows no bounds."]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2017-11-09 16:54:36 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_forgot_pass.html.erb (1.6ms)
+  Rendered users/shared/_socials.html.erb (1.5ms)
+  Rendered users/sessions/new.html.erb within layouts/application (22.7ms)
+  Rendered shared/_menu.html.erb (5.0ms)
+Completed 200 OK in 53ms (Views: 39.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "howe@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name", "description", "degree") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "howe@gmail.com"], ["encrypted_password", "$2a$04$misw4QAyiXOIHyvC.j/GlOEj2xpuheH3FopNqX9WadMsb9B5MlzeW"], ["created_at", "2017-11-09 21:55:21.152868"], ["updated_at", "2017-11-09 21:55:21.152868"], ["name", "Dudley"], ["description", "Chuck Norris' keyboard doesn't have a F1 key, the computer asks him for help."], ["degree", "Chuck Norris can access private methods."]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2017-11-09 16:55:21 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_forgot_pass.html.erb (2.1ms)
+  Rendered users/shared/_socials.html.erb (1.4ms)
+  Rendered users/sessions/new.html.erb within layouts/application (22.3ms)
+  Rendered shared/_menu.html.erb (4.9ms)
+Completed 200 OK in 52ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (34.2ms)[0m  [1m[31mrollback transaction[0m

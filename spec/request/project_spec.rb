@@ -1,15 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "Project request", :type => :request do
-  before :each do
-    @group = create(:research_group, id:0)
-    @project = create(:project)
-    @user = create(:user)
-    sign_in @user
-  end
-  it "show to group" do
-    get "/projects/" + @project.id.to_s
-    click_on "Descargar como PDF"
-    assert_response :success 
+RSpec.describe "login", :type => :request do
+  it "can login" do
+    user = create(:user)
+    get "/login"
+    assert_select "form.form" do
+      assert_select "input[name=?]", "user[email]"
+      assert_select "input[name=?]", "user[password]"
+      assert_select "input[type=?]", "submit"
+    end
+
+    post "/login", :user[:email] => user, :user[:password] => "secrets1"
+    assert_select ".header .username", :text => "jdoe"
   end
 end
