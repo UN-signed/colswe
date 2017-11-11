@@ -48,6 +48,11 @@ $( document ).on('turbolinks:load', function() {
     $(this).addClass('active');
   });
 
+  // Activate close icon
+  $('.message .close').on('click', function() {
+    $(this).parent().hide(200);
+  });
+
 });
 
 

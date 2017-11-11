@@ -1,4 +1,8 @@
 <div class="article section">
+  <% if notice != nil %>
+  <div class="ui positive message"><i class="close icon"></i><div class="header"><%= notice %></div></div>
+  <% end %>
+
   <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated purple button', target: :_blank) if @article.pdf? %>
   <h1 class="section-heading text-center"><b><%= @article.name %></b></h1><br><br>
 
