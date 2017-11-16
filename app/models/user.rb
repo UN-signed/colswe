@@ -35,7 +35,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   validates :id, :email, uniqueness: true
-  validates :name, :email, :encrypted_password, :degree, presence: true
+  validates :name, :email, :encrypted_password, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -13,9 +13,9 @@
 class ResearchGroup < ApplicationRecord
   has_many :members
   has_many :projects
-
-  validates :name, uniqueness: true
   
+  validates :id, :name, uniqueness: true
+  validates :administrator_id, presence: true 
 
   def self.getUsers(group_id)
     @members = Member.select('members.research_group_id, members.user_id, users.id').distinct
