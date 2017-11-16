@@ -1,39 +1,39 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
-  # GET /articles
-  # GET /articles.json
   def index
     @articles = Article.load_articles(page: params[:page])
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
   def show
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
+  # Show the article url previsualization when its been created
+  def upload_url
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def edit
   end
 
-  # POST /articles
-  # POST /articles.json
   def create
     @article = Article.create(article_params)
     @project = Project.searchById(params[:project_id])
     @subscribers = Subscriber.searchByWhere(:project_id => params[:project_id])
+
     @subscribers.each do |subscriber|
       NewArticleMailer.new_article_email(subscriber, @article).deliver_now
     end
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: 'El artículo fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -42,12 +42,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: 'El artículo fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -56,25 +54,20 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to home_url, notice: 'El artículo fue liminado exitosamente.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.searchById(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :pdf, :key_words, :description, :language, :bibliography, :html).merge(user_id: current_user.id, project_id: params[:project_id])
-
+      params.require(:article).permit(:name, :pdf, :url, :html, :key_words, :description, :language, :bibliography, :uploader_type).merge(user_id: current_user.id, project_id: params[:project_id])
     end
 end

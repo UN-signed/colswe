@@ -26,12 +26,19 @@
       <h4 class="ui text-center header" style="display:inline">Palabras Clave: </h4>
       <%= @article.key_words %><br><br>
 
+      <h4 class="ui text-center header" style="display:inline">Bibliografía: </h4>
       <%= @article.bibliography %>
+
+      <h4 class="ui text-center header" style="display:inline">Type: </h4>
+      <%= @article.uploader_type %><br><br>
+
+      <h4 class="ui text-center header" style="display:inline">Url: </h4>
+      <%= @article.url %><br><br>
 
       <center>
         <% if @article.user_id == current_user.id %>
         <%= link_to 'Eliminar Artículo', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
-        <!-- <%= link_to 'Edit', edit_article_path(@article) %> | -->
+        <!-- <%= link_to 'Editar Artículo', edit_article_path(@article), class: 'ui teal button' %> -->
         <% end %>
       </center>
     </div>
