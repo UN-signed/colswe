@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :home
   get "home/index"
-
-  resources :contacts
+  
+  post '/contacts', to: 'contacts#create'
 	resources :subscribers
   resources :tags
   resources :research_areas

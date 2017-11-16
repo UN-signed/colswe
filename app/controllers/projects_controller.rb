@@ -2,7 +2,10 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]    #, :edit, :update, :destroy]
 
   def index
-    @projects = Project.load_projects(research_group_id: params[:research_group_id], page: params[:page])
+    # if current_user
+    #   @projects = Project.load_projects(research_group_id: params[:research_group_id], page: params[:page])
+    # else
+      
   end
 
   def show

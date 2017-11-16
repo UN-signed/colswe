@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(version: 20171107162826) do
     t.text "html"
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone"
-    t.text "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "members", force: :cascade do |t|
     t.string "role"
     t.integer "user_id"

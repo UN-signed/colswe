@@ -15,8 +15,12 @@
 #
 
 class Article < ApplicationRecord
-  belongs_to :project
+  # belongs_to :project
+  has_and_belongs_to_many :project
   belongs_to :user
+
+  validates :id, uniqueness: true
+  validates :name, :key_words, :language, :user_id, presence: true
 
   mount_uploader :pdf, PdfUploader
 
@@ -31,7 +35,7 @@ class Article < ApplicationRecord
   def self.searchById(articleId)
     find(articleId)
   end
-  
+
   def self.searchByWhere(args)
     where(args)
   end
