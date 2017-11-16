@@ -37,7 +37,7 @@ class ResearchGroupsController < ApplicationController
             m.save!
           end
         end
-        format.html { redirect_to @research_group, notice: 'Research group was successfully created.' }
+        format.html { redirect_to user_profile_url(current_user), notice: 'Research group was successfully created.' }
         format.json { render :show, status: :created, location: @research_group }
       else
         format.html { render :new }

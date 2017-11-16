@@ -20,6 +20,8 @@ class Project < ApplicationRecord
   has_many :articles
   #has_and_belongs_to_many :tags
 
+  validates :name, :summary, :research_group_id, presence: true
+
   def self.getUsers(project_id)
     project = Project.find(project_id)
     membersProject = Member.select('members.project_id, members.user_id, users.id')
