@@ -17,9 +17,11 @@ class Project < ApplicationRecord
   # belongs_to :research_area
   has_many :members
   has_many :subscribers
-  has_many :articles
+  # has_many :articles
+
+  has_and_belongs_to_many :articles
   #has_and_belongs_to_many :tags
-  
+
   validates :id, uniqueness: true
   validates :name, :summary, :research_group_id, presence: true
 
