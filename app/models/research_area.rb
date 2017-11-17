@@ -10,6 +10,9 @@
 #
 
 class ResearchArea < ApplicationRecord
+
+  validates :id, :name, uniqueness: true
+
   has_many :research_line
 
   def self.create(args)

@@ -1,13 +1,14 @@
-<%= form_with(model: article, url: "/projects/"+params[:project_id]+"/articles/"+(current_page?(:action => 'new')? "": params[:id]), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put, remote: true) do |form| %>
+<!-- %= form_with(model: article, url: (current_page?(:action => 'new')? "/projects/"+params[:project_id]+"/articles/" : "/articles/"), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %> -->
+<%= form_with(model: article, url: "/projects/"+params[:project_id]+"/articles/", local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put, remote: true) do |form| %>
 <% if article.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-  <ul>
-    <% article.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
+  <div id="error_explanation">
+    <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
+      <% article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <center>

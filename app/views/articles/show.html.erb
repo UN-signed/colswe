@@ -37,6 +37,7 @@
 
       <center>
         <% if @article.user_id == current_user.id %>
+        <%= link_to 'Editar Artículo', edit_project_article_path(@article.project_id, @article), class: 'ui teal button' %> #<%# TODO: Acomodar el margen cuando le da editar %>
         <%= link_to 'Eliminar Artículo', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
         <!-- <%= link_to 'Editar Artículo', edit_article_path(@article), class: 'ui teal button' %> -->
         <% end %>
