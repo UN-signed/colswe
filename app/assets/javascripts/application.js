@@ -20,12 +20,10 @@
 
 
 $( document ).on('turbolinks:load', function() {
-
   // Show profile photo preview when it is uploaded
   $("#avatar-upload").change('turbolinks:load', function(){
     readURL(this);
   });
-
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -42,17 +40,19 @@ $( document ).on('turbolinks:load', function() {
   // Activate menu items
   var items = '.ui.menu a.item, .ui.menu .link.item';
   var $menuItem = $(items);
-
   $menuItem.on('click', function() {
     $(items).removeClass('active');
     $(this).addClass('active');
   });
 
+  // Activate close icon
+  $('.message .close').on('click', function() {
+    $(this).parent().hide(200);
+  });
 });
 
 
 $(function () {
-
   // Fix the menus when the page is scrolled
   $(document).scroll(function () {
     var $main = $("#main-menu");

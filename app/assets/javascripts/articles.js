@@ -37,4 +37,20 @@ $( document ).on('turbolinks:load', function() {
       heightMin: '200px',
       language: 'es'
     })
+
+    // Activate menu items
+    var items = '.ui.menu label.item';
+    var $menuItem = $(items);
+
+    $("div.uploader").css("display", "none");
+    $("div.uploader").first().css("display", "initial");
+
+    $menuItem.on('click', function() {
+      var name = "#" + $(this).attr('for');
+      var tmp = $(name).attr('value');
+      $(items).removeClass('active');
+      $(this).addClass('active');
+      $("div.uploader").css("display", "none");
+      $("div.uploader." + tmp).css("display", "initial");
+    });
 });

@@ -17,3 +17,15 @@
 @import 'plugins/special_characters.min.css';
 @import 'plugins/table.min.css';
 @import 'plugins/video.min.css';
+
+#file, #url, #editor {
+  display: none;
+}
+
+#article-uploader-menu {
+  margin-bottom: 20px;
+}
+
+label.item {
+  cursor: pointer;
+}
