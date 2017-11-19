@@ -28,7 +28,6 @@
   <br>
   <div class="ui six stackable cards">
     <% @admin = User.find(@research_group.administrator_id) %>
-    <%# TODO: Corregir ese 2 %>
     <%= render partial: "users/shared/user", locals: {user: @admin, group: @research_group, member: 2} %>
     <% @members = Member.select(:id, :user_id).where(research_group_id: @research_group.id)%>
     <% @members.each do |m| %>

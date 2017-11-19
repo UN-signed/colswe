@@ -16,6 +16,7 @@
         <a class="active item" data-items="info">Información</a>
         <a class="item" data-items="groups">Grupos</a>
         <a class="item" data-items="projects">Proyectos</a>
+        <a class="item" data-items="messages">Mensajes</a>
       </div>
 
       <div class="ui segment">
@@ -60,7 +61,29 @@
             <% end %>
           <%end%>
         </div>
-      </div>
+
+        <div class="holder messages">
+          <% if @user.id == current_user.id %>
+            <h3 class="ui bottom line header">Mensajes de <%= @user.name%></h3>
+            <% if @messages.length != 0 %>
+              <div class="ui relaxed divided list">
+                <% @messages.each do |message| %>
+                  <div class="item">
+                    <i class="large mail middle aligned icon"></i>
+                    <div class="content">
+                      <a class="header"><%=message.subject%></a>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            <%else%>
+              <p>No tienes mensajes aún</p>
+            <%end%>
+          <%else%>
+            <h3 class="ui bottom line header">Enviar mensaje a <%= @user.name%></h3><br><br>
+            <%= render 'messages/form', message: @message %>
+          <%end%>
+        </div>
 
     </div>
   </div>

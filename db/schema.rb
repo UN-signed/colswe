@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107162826) do
+ActiveRecord::Schema.define(version: 20171118072137) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20171107162826) do
     t.string "pdf"
     t.integer "project_id"
     t.text "html"
+    t.string "url"
+    t.string "uploader_type"
   end
 
   create_table "members", force: :cascade do |t|
@@ -32,6 +34,15 @@ ActiveRecord::Schema.define(version: 20171107162826) do
     t.integer "user_id"
     t.integer "project_id"
     t.string "research_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "from_id"
+    t.integer "to_id"
+    t.string "subject"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,5 @@
 body {
-  background-color: #f2f2f2 !important;
+  background-color: #fff;
   color: #333;
   margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -28,7 +28,7 @@ a {
 
   &:hover {
     color: #fff;
-    // background-color: #000;
+    background-color: #000;
   }
 }
 
@@ -81,12 +81,4 @@ div {
 
 label {
   display: block;
-}
-
-.small.text.area {
-  height: 5em !important;
-}
-
-.big.text.area {
-  height: 15em !important;
 }
