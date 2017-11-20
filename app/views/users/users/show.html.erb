@@ -16,7 +16,11 @@
         <a class="active item" data-items="info">Información</a>
         <a class="item" data-items="groups">Grupos</a>
         <a class="item" data-items="projects">Proyectos</a>
-        <a class="item" data-items="messages">Mensajes</a>
+        <% if @user.id == current_user.id %>
+          <a class="item" data-items="messages">Mensajes</a>
+        <% else %>
+          <a class="item" data-items="messages">Contactar</a>
+        <% end %>
       </div>
 
       <div class="ui segment">
@@ -63,10 +67,15 @@
         </div>
 
         <div class="holder messages">
+          <h3 class="ui bottom line header">Mensajes de <%= @user.name%></h3>
           <% if @user.id == current_user.id %>
-            <h3 class="ui bottom line header">Mensajes de <%= @user.name%></h3>
-            <% if @messages.length != 0 %>
-              <div class="ui relaxed divided list">
+            <% if @messages.length == 0 %>
+              <p>No tienes mensajes aún</p>
+            <%else%>
+            <div class="ui grid" style="margin-bottom:50px;">
+              <div class="eight wide column">
+                <h3 class="ui teal header column" style="width: 100%">Mensajes</h3>
+                <div class="ui relaxed divided list">
                 <% @messages.each do |message| %>
                   <div class="item">
                     <i class="large mail middle aligned icon"></i>
@@ -74,17 +83,21 @@
                       <a class="header"><%=message.subject%></a>
                     </div>
                   </div>
-                <%end%>
+                  <%end%>
+                </div>
               </div>
-            <%else%>
-              <p>No tienes mensajes aún</p>
-            <%end%>
+              <div class="eight wide column">
+                <h3 class="ui teal header column" style="width: 100%">Mensaje</h3>
+                  <p>QUE DICEN LOS HUJUEPUTAS</p>                
+              </div>
+            </div>
+          <%end%>
           <%else%>
             <h3 class="ui bottom line header">Enviar mensaje a <%= @user.name%></h3><br><br>
             <%= render 'messages/form', message: @message %>
           <%end%>
         </div>
-
+      </div>
     </div>
   </div>
 </div>
