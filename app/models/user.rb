@@ -24,12 +24,14 @@
 #  degree                 :text
 #  github_username        :string
 #  departament            :string
-#  research_group_id      :integer
+#  photo                  :string
+#  provider               :string
+#  uid                    :string
 #
 
 class User < ApplicationRecord
   has_many :articles
-  has_many :members
+  has_many :members  
   #belongs_to :research_group
 
   mount_uploader :photo, PhotoUploader

@@ -23,9 +23,10 @@
 #  description            :text
 #  degree                 :text
 #  github_username        :string
-#  photo                  :string
 #  departament            :string
-#  research_group_id      :integer
+#  photo                  :string
+#  provider               :string
+#  uid                    :string
 #
 
 require 'test_helper'

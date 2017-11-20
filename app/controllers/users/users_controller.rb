@@ -1,6 +1,8 @@
 class Users::UsersController < ApplicationController
   def show
     @user = User.searchById(params[:id])
+    @message = Message.new
+    @messages = Message.getUserMessages(@user.id)
     @research_groups = []
     admin_research_groups = ResearchGroup.admin_research_groups(@user.id)
     admin_research_groups.each do |g|
