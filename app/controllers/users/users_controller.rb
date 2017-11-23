@@ -25,6 +25,7 @@ class Users::UsersController < ApplicationController
   end
 
   def show_message
+    @message = Message.find(params[:md]).message
     respond_to do |format|
       format.js
     end
