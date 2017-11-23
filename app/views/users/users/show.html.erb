@@ -81,7 +81,7 @@
                     <i class="large mail middle aligned icon"></i>
                     <div class="content">
                       <!-- <a class="header"><%=message.subject%></a> -->
-                      <%= link_to message.subject, show_message_path, :remote => true %>
+                      <%= link_to message.subject, show_message_path(current_user.id, message.id), :remote => true %>
                     </div>
                   </div>
                   <%end%>
