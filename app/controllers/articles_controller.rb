@@ -24,12 +24,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.create(article_params)
-    @project = Project.searchById(params[:project_id])
-    @subscribers = Subscriber.searchByWhere(:project_id => params[:project_id])
+    # @project = Project.searchById(params[:project_id])
+    # @subscribers = Subscriber.searchByWhere(:project_id => params[:project_id])
 
-    @subscribers.each do |subscriber|
-      NewArticleMailer.new_article_email(subscriber, @article).deliver_now
-    end
+    # @subscribers.each do |subscriber|
+      # NewArticleMailer.new_article_email(subscriber, @article).deliver_now
+    # end
 
     respond_to do |format|
       if @article.save
