@@ -12,9 +12,9 @@ require 'faker'
 # Create 10 research_groups and research_areas
 for i in 0..10
   ResearchGroup.create(
-    name:Faker::Company.name,
-    description:Faker::Hipster.sentence,
-    administrator_id: rand(100)+1
+    :name => Faker::Company.name,
+    :description =>Faker::Hipster.sentence,
+    :administrator_id => rand(100)+1
   )
 
   ResearchArea.create(
