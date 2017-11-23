@@ -21,7 +21,7 @@
         <br><br>
         <%-if current_user.id == @group.administrator_id %>
           <%= button_to "Eliminar Proyecto", project_path(@project), data: { confirm: "¿Estás seguro de eliminar este proyecto?" }, method: :delete, class: 'ui red button' %>
-        <% end -%>
+        <% end -%> 
         <% if @members.where(user_id: current_user.id).length != 0  or current_user.id == @group.administrator_id %>
           <%= link_to(raw('<i class="plus icon"></i> Publicar Artículo'), new_project_article_path(@project), class: 'ui labeled icon purple button') %>
         <% end %>
