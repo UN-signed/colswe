@@ -76,7 +76,7 @@ class SubscribersController < ApplicationController
     p @subscriber
     p "hola"
     redirect_to project_path(@project)
-    NewSubscriberMailer.welcome_email(@user, @project).deliver_now
+    # NewSubscriberMailer.welcome_email(@user, @project).deliver_now
     # WeeklyReportSubscriberJob.set(wait_until: Time.now + 7.days).perform_later(@subscriber)
   end
 
