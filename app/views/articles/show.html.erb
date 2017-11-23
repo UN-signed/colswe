@@ -1,7 +1,7 @@
 <div class="article section">
-  <% if notice == nil %>
+  <!-- if notice != nil %>
   <div class="ui positive message"><i class="close icon"></i><div class="header"><%= notice %></div></div>
-  <% end %>
+  < end -->
 
   <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated purple button', target: :_blank) if @article.pdf? %>
   <h1 class="section-heading text-center"><b><%= @article.name %></b></h1><br><br>
@@ -37,7 +37,7 @@
 
       <center>
         <% if @article.user_id == current_user.id %>
-        <%= link_to 'Editar Artículo', edit_project_article_path(@article.project_id, @article), class: 'ui teal button' %> #<%# TODO: Acomodar el margen cuando le da editar %>
+        <%= link_to 'Editar Artículo', edit_project_article_path(@article.project_id, @article), class: 'ui teal button' %> <%# TODO: Acomodar el margen cuando le da editar %>
         <%= link_to 'Eliminar Artículo', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
         <!-- <%= link_to 'Editar Artículo', edit_article_path(@article), class: 'ui teal button' %> -->
         <% end %>
