@@ -13,9 +13,10 @@
 class ResearchGroup < ApplicationRecord
   has_many :members
   has_many :projects
-  
+
   validates :id, :name, uniqueness: true
-  validates :administrator_id, presence: true 
+  validates :administrator_id, :name, presence: true
+  validates :name, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
 
   def self.getUsers(group_id)
     @members = Member.select('members.research_group_id, members.user_id, users.id').distinct

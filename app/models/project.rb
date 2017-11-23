@@ -23,7 +23,8 @@ class Project < ApplicationRecord
   #has_and_belongs_to_many :tags
 
   validates :id, uniqueness: true
-  validates :name, :summary, :research_group_id, presence: true
+  validates :name, :summary, :research_group_id, presence: true 
+  validates :name, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
 
   def self.getUsers(project_id)
     project = Project.find(project_id)

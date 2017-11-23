@@ -26,6 +26,7 @@ class Article < ApplicationRecord
 
   validates :id, uniqueness: true
   validates :name, :key_words, :language, :user_id, presence: true
+  validates :name, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
 
   mount_uploader :pdf, PdfUploader
 
