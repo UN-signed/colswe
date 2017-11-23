@@ -18,21 +18,13 @@ Rails.application.routes.draw do
     resources :projects
   end
 
-  resources :research_groups do
-    resources :members
-  end
-
-  resources :projects do
-    resources :members
-  end
-
-  resources :projects do
-    resources :articles
-  end
+  # resources :projects do
+  #   resources :articles
+  # end
 
   ## articles controller methods
-  get 'projects/54/articles/new/upload_url' => 'articles#upload_url', as: 'upload_url'
-  get 'users/:id/show_message' => 'users/users#show_message', as: 'show_message'
+  get 'projects/:id/articles/new/upload_url' => 'articles#upload_url', as: 'upload_url'
+  get 'users/:id/show_message/:md' => 'users/users#show_message', as: 'show_message'
 
   post 'projects/:id/add_subscriber' => 'subscribers#add_subscriber', as: 'add_subscriber'
   delete 'projects/:id/add_subscriber' => 'subscribers#delete_subscriber', as: 'delete_subscriber'
