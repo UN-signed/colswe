@@ -31,9 +31,10 @@ class ResearchGroupsController < ApplicationController
         params[:research_group][:user_id].each do |x|
           if x != ""
             m = Member.new
-            m.project_id = 1
-            m.research_group_id = @research_group.id
+            m.role = nil
             m.user_id = x
+            m.project_id = nil
+            m.research_group_id = @research_group.id
             m.save!
           end
         end
@@ -54,9 +55,10 @@ class ResearchGroupsController < ApplicationController
         params[:research_group][:user_id].each do |x|
           if x != "" and not Member.find_by research_group_id: @research_group.id, user_id: x
             m = Member.new
-            m.project_id = 1
-            m.research_group_id = @research_group.id
+            m.role = nil
             m.user_id = x
+            m.project_id = nil
+            m.research_group_id = @research_group.id
             m.save!
           end
         end

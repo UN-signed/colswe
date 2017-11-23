@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   ## articles controller methods
   get 'projects/54/articles/new/upload_url' => 'articles#upload_url', as: 'upload_url'
+  get 'users/:id/show_message' => 'users/users#show_message', as: 'show_message'
 
   post 'projects/:id/add_subscriber' => 'subscribers#add_subscriber', as: 'add_subscriber'
   delete 'projects/:id/add_subscriber' => 'subscribers#delete_subscriber', as: 'delete_subscriber'

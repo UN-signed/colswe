@@ -18,8 +18,15 @@ class Users::UsersController < ApplicationController
     @projects = []
     projects = Member.projectsIds(@user.id)
     projects.each do |m|
-      @projects.push(Project.searchById(m.project_id))
+      unless m.project_id.nil?
+        @projects.push(Project.searchById(m.project_id))
+      end
     end
-    puts @projects
+  end
+
+  def show_message
+    respond_to do |format|
+      format.js
+    end
   end
 end
