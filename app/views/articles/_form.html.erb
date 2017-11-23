@@ -1,45 +1,105 @@
-<%= form_with(model: article, local: true, class: "ui form") do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
+<!-- %= form_with(model: article, url: (current_page?(:action => 'new')? "/projects/"+params[:project_id]+"/articles/" : "/articles/"), local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put) do |form| %> -->
+<%= form_with(model: article, url: "/projects/"+params[:project_id]+"/articles/", local: true, class: "ui form", method: current_page?(:action => 'new') ? :post : :put, remote: true) do |form| %>
+<% if article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
       <% article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
+    </ul>
+  </div>
+<% end %>
+
+<center>
+  <div class="ui focus transparent input">
+    <!-- <%= link_to('Ver pdf actual', @article.pdf.url, class: 'ui big button', target: :_blank) if @article.pdf? %> -->
+    <h1 class="ui left floated header">Título:</h1>
+    <h1 class="ui left floated header">
+      <%= form.text_field :name, id: :article_name, placeholder: 'Escribe el título aquí', class: 'title' %>
+    </h1>
+  </div>
+</center>
+
+<div class="ui top attached tabular menu">
+  <a class="item active" data-items="content">Contenido</a>
+  <a class="item" data-items="info">Detalles</a>
+  <a class="item" data-items="references">Referencias</a>
+</div>
+
+<div class="ui bottom attached segment">
+  <div class="holder content">
+    <div class="ui secondary stackable menu" id="article-uploader-menu">
+      <%= form.radio_button :uploader_type, "url", id: 'url', checked: 'checked' %>
+      <%= label_tag(:url,
+      raw("<i class='external icon'></i>Cargar desde Url"),
+      class: 'active item') %>
+
+      <%= form.radio_button :uploader_type, "file", id: 'file' %>
+      <%= label_tag(:file,
+      raw("<i class='file outline pdf icon'></i>Cargar desde archivo"),
+      class: 'item') %>
+
+      <%= form.radio_button :uploader_type, "editor", id: 'editor' %>
+      <%= label_tag(:editor,
+      raw("<i class='text cursor icon'></i>Escribir desde el Editor"),
+      class: 'item') %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :título %>
-    <%= form.text_field :name, id: :article_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :palabras_clave %> (separadas por comas)
-    <%= form.text_area :key_words, id: :article_key_words %>
-  </div>
-
-  <div class="field">
-    <%= form.label :descripción %>
-    <%= form.text_area :description, id: :article_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Idioma %>
-    <%= form.text_field :lenguage, id: :article_lenguage %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bibliografía %>
-    <%= form.text_area :bibliography, id: :article_bibliography %>
-  </div>
-
-  <div class="actions">
-    <%= link_to 'Volver', {controller: '/home'}, class: 'ui left floated button' %>
-    <%= form.submit "Crear Artículo", :class => 'ui right floated teal button' %>
     <center>
-    </center>
+      <div class="uploader url"><br>
+        <div class="ui right labeled fluid input">
+          <%= form.url_field :url, id: :article_url, placeholder: 'http://ieeexplore.ieee.org/document/6740844/' %>
+          <%= link_to raw('<i class="arrow up icon"></i> Subir'), upload_url_path, class: "ui blue label icon button", :remote => true %>
+        </div>
+        <div class="ui message" id="url_prev">
+          Aquí aparecerá el artículo de tu Url
+        </div>
+      </div>
+
+      <div class="uploader file"><br><br><br>
+        <%= form.file_field :pdf, id: 'avatar-upload' %>
+        <label for="avatar-upload" class="ui big icon blue button">
+          <i class="arrow up icon"></i> Subir PDF
+        </label>
+      </div>
+
+      <div class="uploader editor">
+        <%= form.text_area :html, id: "wysiwyg" %>
+      </div>
+    </div>
+  </center>
+
+  <div class="holder info">
+    <div class="field">
+      <h4 class="ui header">Resumen</h4>
+      <%= form.text_area :description, id: :article_description, placeholder: 'Resume tu artículo para que las personas se interesen en él ...' %>
+    </div>
+
+    <div class="field">
+      <h4 class="ui header">Palabras Clave (Separadas por comas)</h4>
+      <%= form.text_area :key_words, id: :article_key_words, placeholder: 'Palabras Clave (Separadas por comas)' %>
+    </div>
+
+    <div class="field">
+      <h4 class="ui header">Idioma</h4>
+      <%= form.select(:language, options_for_select([ "Español", "Inglés", "Alemán", "Francés", "Italiano" ], "Español"), class:"ui compact dropdown") %>
+    </div>
   </div>
+
+  <div class="holder references">
+    <div class="field">
+      <h4 class="ui header">Bibliografía</h4>
+      <%= form.text_area :bibliography, id: :article_bibliography, placeholder: 'Bibliografía' %>
+    </div>
+  </div>
+</div>
+
+
+<div class="actions">
+  <%= link_to 'Volver', {controller: '/home'}, class: 'ui left floated button' %>
+  <%= form.submit "Guardar Artículo", :class => 'ui right floated teal button' %>
+  <center>
+  </center>
+</div>
 <% end %>

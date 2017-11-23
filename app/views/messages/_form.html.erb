@@ -1,0 +1,32 @@
+<%= form_with(model: message, local: true, class: 'ui form', remote: true) do |form| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :to_id, :value => params[:id] %>
+  </div>
+
+  <div class="field">
+    <h4 class="ui header">Asunto</h4>
+    <%= form.text_field :subject, autofocus: true, placeholder: 'Asunto' %>
+  </div>
+
+  <div class="field">
+    <h4 class="ui left floated header">Mensaje</h4><br>
+    <%= form.text_area :message, autofocus: true, placeholder: 'Escribe tu mensaje', class: 'big text area' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Enviar", :class => 'ui teal left floated button'%>
+  </div>
+  <br><br>
+<% end %>

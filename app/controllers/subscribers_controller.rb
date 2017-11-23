@@ -3,6 +3,7 @@ class SubscribersController < ApplicationController
 
   # GET /subscribers
   # GET /subscribers.json
+
   def index
     @subscribers = Subscriber.all
   end
@@ -24,7 +25,7 @@ class SubscribersController < ApplicationController
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @subscriber = Subscriber.create(subscriber_params)
 
     respond_to do |format|
       if @subscriber.save
@@ -61,14 +62,43 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def add_subscriber
+    @project = Project.searchById(params[:id])
+    @user = User.searchById(current_user.id)
+
+    @subscriber = Subscriber.new
+    @subscriber.name = @user.name
+    @subscriber.email = @user.email
+    @subscriber.project_id = params[:id]
+    @subscriber.user_id = current_user.id
+    @subscriber.save!
+    # @subscriber = Subscriber.new(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    p @subscriber
+    p "hola"
+    redirect_to project_path(@project)
+    # NewSubscriberMailer.welcome_email(@user, @project).deliver_now
+    # WeeklyReportSubscriberJob.set(wait_until: Time.now + 7.days).perform_later(@subscriber)
+  end
+
+  def delete_subscriber
+    begin
+      @project = Project.searchById(params[:id])
+      @user = User.searchById(current_user.id)
+      @subscriber = Subscriber.searchByWhere(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+      Subscriber.destroy(@subscriber[0].id)
+    ensure
+      redirect_to project_path(@project)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscriber
-      @subscriber = Subscriber.find(params[:id])
+      @subscriber = Subscriber.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params.require(:subscriber).permit(:name, :email)
+      params.require(:subscriber).permit(:name, :email, :project_id, :member_id)
     end
 end

@@ -10,6 +10,15 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    member = Member.searchById(params[:id])
+    @user = User.searchById(member.user_id)
+    memberView = Member.searchByWhere(:user_id => member.user_id)
+    @research_groups = []
+    @projects = []
+    memberView.each do |m|
+      @research_groups.push(ResearchGroup.searchById(m.research_group_id))
+      @projects.push(Project.searchById(m.project_id))
+    end
   end
 
   # GET /members/new
@@ -24,7 +33,7 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(member_params)
+    @member = Member.create(member_params)
 
     respond_to do |format|
       if @member.save
@@ -64,7 +73,7 @@ class MembersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
-      @member = Member.find(params[:id])
+      @member = Member.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

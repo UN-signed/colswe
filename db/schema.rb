@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930165432) do
+ActiveRecord::Schema.define(version: 20171123170630) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -22,29 +22,34 @@ ActiveRecord::Schema.define(version: 20170930165432) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone"
-    t.text "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "pdf"
+    t.integer "project_id"
+    t.text "html"
+    t.string "url"
+    t.string "uploader_type"
   end
 
   create_table "members", force: :cascade do |t|
     t.string "role"
     t.integer "user_id"
     t.integer "project_id"
-    t.string "research_group_id"
+    t.integer "research_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "from_id"
+    t.integer "to_id"
+    t.string "subject"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.boolean "state"
+    t.string "state", default: "Pendiente"
     t.text "summary"
     t.string "git"
     t.integer "research_group_id"
@@ -62,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170930165432) do
   create_table "research_groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "administrator_id", default: 0, null: false
+    t.integer "administrator_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170930165432) do
     t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -100,6 +106,10 @@ ActiveRecord::Schema.define(version: 20170930165432) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -107,7 +117,9 @@ ActiveRecord::Schema.define(version: 20170930165432) do
     t.text "degree"
     t.string "github_username"
     t.string "departament"
-    t.integer "research_group_id"
+    t.string "photo"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

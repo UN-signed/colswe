@@ -1,0 +1,21 @@
+<div class="ui card" href="<%=research_group_projects_path(project)%>">
+  <div class="content">
+    <div class="header">
+      <a class="ui project horizontal right floated label">Proyecto</a>
+      <%= project.name %>
+    </div>
+    <div class="meta">
+      Creado el <%= format_time(project.created_at, :short, "N/A") %></td>
+    </div>
+    <div class="description">
+      <%= short_description(project.summary) %>
+    </div>
+  </div>
+
+  <div class="content">
+    <center>
+      <%= link_to raw('<i class="github icon"></i> Repo'), project.git, target: :_blank, class: 'ui teal button' %>
+      <%= link_to 'Detalles', project, class: 'ui button' %>
+    </center>
+  </div>
+</div>

@@ -1,19 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="article section">
+  <div class="ui segment" style="padding:30px;">
+    <h1 class="section-heading text-center">Grupo: <%= @research_group.name %></h1><br>
 
-<p>
-  <strong>Name:</strong>
-  <%= @research_group.name %>
-</p>
+    <div class="ui grid">
+      <div class="nine wide column">
+        <% if current_user.id == @research_group.administrator_id%>
+        <%= link_to 'Editar grupo', edit_research_group_path(@research_group), class: 'ui floated button' %>
+        <%end%>
+        <h3 class="ui header">Descripción:</h3>
+        <p>  <%= @research_group.description %></p>
+      </div>
+      <div class="seven wide column">
+        <h3>Proyectos:</h3>
+        <% @projects = Project.where(research_group_id: @research_group.id)%>
+        <% @projects.each do |project| %>
+          <%= link_to project.name, research_group_project_url(@research_group, project) %> </h1>
+          <br>
+        <%end%>
+        <%-if current_user.id == @research_group.administrator_id%>
+          <%= link_to 'Añadir proyecto', new_research_group_project_path(@research_group), class: 'ui floated button' %>
+        <% end -%>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @research_group.description %>
-</p>
-
-<p>
-  <strong>Administrator:</strong>
-  <%= @research_group.administrator %>
-</p>
-
-<%= link_to 'Edit', edit_research_group_path(@research_group) %> |
-<%= link_to 'Back', research_groups_path %>
+  <br>
+  <br>
+  <div class="ui six stackable cards">
+    <% @admin = User.find(@research_group.administrator_id) %>
+    <%= render partial: "users/shared/user", locals: {user: @admin, group: @research_group, member: 2} %>
+    <% @members = Member.select(:id, :user_id).where(research_group_id: @research_group.id)%>
+    <% @members.each do |m| %>
+      <% @user = User.find(m.user_id) %>
+      <%-if m.user_id != @research_group.administrator_id%>
+        <%= render partial: "users/shared/user", locals: {user: @user, group: @research_group, member: m.id} %>
+      <% end -%>
+    <% end %>
+  </div>
+</div>

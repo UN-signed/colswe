@@ -1,29 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="article section">
+  <!-- if notice != nil %>
+  <div class="ui positive message"><i class="close icon"></i><div class="header"><%= notice %></div></div>
+  < end -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @article.name %>
-</p>
+  <%= link_to('Ver artículo en pdf', @article.pdf.url, class: 'ui right floated purple button', target: :_blank) if @article.pdf? %>
+  <h1 class="section-heading text-center"><b><%= @article.name %></b></h1><br><br>
 
-<p>
-  <strong>Key words:</strong>
-  <%= @article.key_words %>
-</p>
+  <div class="ui grid">
+    <div class="six wide column">
+      <center>
+        <h4 class="ui text-center header">Autor: </h4>
+        <% @author = User.find(@article.user_id) %>
+        <a class="ui image teal label" href="<%=user_profile_path(@author.id)%>">
+          <%= image_tag(@author.photo.url)%>
+          <%= @author.name %>
+        </a><br><br>
+      </center>
 
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
+      <h3 class="ui text-center header">Descripción</h3>
+      <%= @article.description %><br><br>
 
-<p>
-  <strong>Lenguage:</strong>
-  <%= @article.lenguage %>
-</p>
+      <h4 class="ui text-center header" style="display:inline">Idioma: </h4>
+      <%= @article.language %><br><br>
 
-<p>
-  <strong>Bibliography:</strong>
-  <%= @article.bibliography %>
-</p>
+      <h4 class="ui text-center header" style="display:inline">Palabras Clave: </h4>
+      <%= @article.key_words %><br><br>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+      <h4 class="ui text-center header" style="display:inline">Bibliografía: </h4>
+      <%= @article.bibliography %>
+
+      <!--h4 class="ui text-center header" style="display:inline">Type: </h4>
+      <= @article.uploader_type %><br><br-->
+
+      <!--h4 class="ui text-center header" style="display:inline">Url: </h4>
+      < @article.url %><br><br-->
+
+      <center>
+        <% if @article.user_id == current_user.id %>
+        <%= link_to 'Editar Artículo', edit_project_article_path(@article.project_id, @article), class: 'ui teal button' %> <%# TODO: Acomodar el margen cuando le da editar %>
+        <%= link_to 'Eliminar Artículo', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red button' %>
+        <!-- <%= link_to 'Editar Artículo', edit_article_path(@article), class: 'ui teal button' %> -->
+        <% end %>
+      </center>
+    </div>
+
+    <div class="ten wide column">
+      <div class="ui raised segment" style="padding:0 !important;">
+        <div class="ui top attached purple label">
+          <i class="document icon"></i>
+          Artículo
+        </div>
+        <div class="fr-view" style="padding:30px; max-height:350px; overflow:scroll; overflow-x: hidden;">
+          <%= raw @article.html %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <%= link_to 'Atrás', articles_path, class: 'ui button' %> -->
+
+</div>

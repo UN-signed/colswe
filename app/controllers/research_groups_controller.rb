@@ -4,12 +4,13 @@ class ResearchGroupsController < ApplicationController
   # GET /research_groups
   # GET /research_groups.json
   def index
-    @research_groups = ResearchGroup.all
+    @research_groups = ResearchGroup.load_researh_groups(page: params[:page])
   end
 
   # GET /research_groups/1
   # GET /research_groups/1.json
   def show
+    @research_group = ResearchGroup.searchById(params[:id])
   end
 
   # GET /research_groups/new
@@ -24,11 +25,20 @@ class ResearchGroupsController < ApplicationController
   # POST /research_groups
   # POST /research_groups.json
   def create
-    @research_group = ResearchGroup.new(research_group_params)
-
+    @research_group = ResearchGroup.create(research_group_params)
     respond_to do |format|
       if @research_group.save
-        format.html { redirect_to @research_group, notice: 'Research group was successfully created.' }
+        params[:research_group][:user_id].each do |x|
+          if x != ""
+            m = Member.new
+            m.role = nil
+            m.user_id = x
+            m.project_id = nil
+            m.research_group_id = @research_group.id
+            m.save!
+          end
+        end
+        format.html { redirect_to user_profile_url(current_user), notice: 'Research group was successfully created.' }
         format.json { render :show, status: :created, location: @research_group }
       else
         format.html { render :new }
@@ -42,6 +52,16 @@ class ResearchGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @research_group.update(research_group_params)
+        params[:research_group][:user_id].each do |x|
+          if x != "" and not Member.find_by research_group_id: @research_group.id, user_id: x
+            m = Member.new
+            m.role = nil
+            m.user_id = x
+            m.project_id = nil
+            m.research_group_id = @research_group.id
+            m.save!
+          end
+        end
         format.html { redirect_to @research_group, notice: 'Research group was successfully updated.' }
         format.json { render :show, status: :ok, location: @research_group }
       else
@@ -64,11 +84,11 @@ class ResearchGroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_research_group
-      @research_group = ResearchGroup.find(params[:id])
+      @research_group = ResearchGroup.searchById(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_group_params
-      params.require(:research_group).permit(:name, :description, :administrator)
+      params.require(:research_group).permit(:name, :description).merge(administrator_id: current_user.id)
     end
 end

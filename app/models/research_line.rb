@@ -13,4 +13,16 @@
 class ResearchLine < ApplicationRecord
   has_and_belongs_to_many :projects
   belongs_to :research_area
+  
+  validates :id, :name, uniqueness: true
+  
+  def self.create(args)
+    new(args)
+  end
+  def self.searchById(researchLineId)
+    find(researchLineId)
+  end
+  def self.searchByWhere(args)
+    where(args)
+  end
 end

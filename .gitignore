@@ -24,3 +24,12 @@
 /public/packs
 /public/packs-test
 /node_modules
+
+# Ignore the Carrierwave Uploads
+/public/uploads
+
+\.env
+
+log/
+
+tmp/

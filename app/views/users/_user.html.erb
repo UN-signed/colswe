@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="image">
+    <%= image_tag(user.photo.url, alt: 'Avatar') %>
+  </div>
+  <div class="content">
+    <a class="header">
+      <%= user.name %>
+    </a>
+    <div class="meta">
+      <span class="date">Miembro desde el <%= format_time(user.created_at, :short, "N/A") %></span>
+    </div>
+  </div>
+  <div class="extra content">
+    <%= link_to 'Ver perfil', user_profile_path(user), class: 'ui button' %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="ui card">
+  <div class="content">
+    <div class="header">
+      <a class="ui group horizontal right floated label">Grupo</a>
+      <%= research_group.name %>
+    </div>
+    <div class="meta">
+      Creado el
+      <%= format_time(research_group.created_at, :short, "N/A") %></td>
+    </div>
+    <div class="description">
+      <%= short_description(research_group.description) %>
+    </div>
+  </div>
+
+  <div class="content">
+    <center>
+      <%= link_to 'Detalles', research_group, class: 'ui button' %>
+    </center>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<%= form_with(model: contact, local: true, class: 'ui form') do |form| %>
+
+  <div class="field">
+    <%= form.text_field :name, id: :contact_name, placeholder: 'Nombre y Apellidos' %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :email, id: :contact_email, placeholder: 'Email' %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :phone, id: :contact_phone, placeholder: 'Teléfono' %>
+  </div>
+
+  <div class="field">
+    <%= form.text_area :message, id: :contact_message, placeholder: 'Escribe tu mensaje' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Enviar', class: 'ui teal button' %>
+  </div>
+<% end %>

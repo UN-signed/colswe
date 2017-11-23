@@ -2,20 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.create.article {
-  width: 70%;
-  margin-left: 15% !important;
-  margin-bottom: 100px;
+// Froala Plugins Styles
+@import 'plugins/char_counter.min.css';
+@import 'plugins/code_view.min.css';
+@import 'plugins/colors.min.css';
+@import 'plugins/emoticons.min.css';
+@import 'plugins/file.min.css';
+@import 'plugins/fullscreen.min.css';
+@import 'plugins/help.min.css';
+@import 'plugins/image_manager.min.css';
+@import 'plugins/image.min.css';
+@import 'plugins/line_breaker.min.css';
+@import 'plugins/quick_insert.min.css';
+@import 'plugins/special_characters.min.css';
+@import 'plugins/table.min.css';
+@import 'plugins/video.min.css';
+
+#file, #url, #editor {
+  display: none;
 }
 
-.create.article > .ui.heading {
-  margin-bottom: 20px !important;
+#article-uploader-menu {
+  margin-bottom: 20px;
 }
 
-.create.article > .links {
-  margin: 20px 0;
-}
-
-.create.article > .actions > .btn {
-  background-color: rgb(168, 168, 168) !important;
+label.item {
+  cursor: pointer;
 }

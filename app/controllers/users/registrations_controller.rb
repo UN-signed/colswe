@@ -37,6 +37,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def show
+    @user = User.searchById(params[:id])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -65,6 +72,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:name, :photo, :photo_cache, :email, :description, :departament, :degree)
   end
 end

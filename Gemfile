@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Ruby gem
+
+#ruby '2.4.0'
 # Boostrap gem
 gem 'boostrap-sass'
 # Semantic UI gem for cool front developers :P
@@ -22,11 +25,27 @@ gem "will_paginate_semantic_ui"
 # PDF Builder
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-
-
+# Sprockets
 gem 'sprockets'
 
+# Carrierwave
+gem 'carrierwave'
+
+# Froala WYSIWYG HTML Editor
+gem "wysiwyg-rails"
+gem "font-awesome-rails"
+
+# Devise
 gem 'devise'
+# Dotenv gem
+gem 'dotenv-rails', groups: [:development, :test]
+# Use Omniauth Facebook plugin
+gem 'omniauth-facebook'#, '~> 4.0'
+# Use Omniauth Github plugin
+gem 'omniauth-github'#, '~> 1.1', '>= 1.1.2'
+# Use Omniauth Google plugin
+gem 'omniauth-google-oauth2'#, '~> 0.4.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use Puma as the app server
@@ -55,7 +74,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'webpacker'
 
 gem 'annotate', require: false
+# Fakers
 gem 'faker'
+gem 'ui_faces'
+
+gem 'chart'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,6 +88,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
 
 end
 

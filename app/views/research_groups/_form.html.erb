@@ -1,32 +1,68 @@
-<%= form_with(model: research_group, local: true) do |form| %>
-  <% if research_group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(research_group.errors.count, "error") %> prohibited this research_group from being saved:</h2>
+<div class="edit user group">
+  <%= form_with(model: research_group, local: true, class: "ui form") do |form| %>
+    <% if research_group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(research_group.errors.count, "error") %> prohibited this research_group from being saved:</h2>
+        <ul>
+          <% research_group.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <br>
+    <div class="ui stackable grid" style="margin-bottom:50px;">
+      <div class="nine wide column">
+        <div class="ui row segment">
+          <h3 class="ui teal header column" style="width: 100%">Datos Básicos</h3>
+          <h4 class="ui header">Administrador:
+            <a class="ui image label" href="<%=user_profile_path(current_user.id)%>">
+              <%= image_tag(current_user.photo.url)%>
+              <%= current_user.name %>
+            </a>
+          </h4><br>
+          <h4 class="ui header">Nombre del grupo</h4>
+          <%= form.text_field :name, autofocus: true, placeholder: 'Nombre del grupo' %>
+          <h4 class="ui header">Descripción</h4>
+          <%= form.text_area :description, autofocus: true, placeholder: 'Describe en un párrafo breve para que la gente sepa de lo que hace tu equipo', class: 'big text area' %>
+        </div>
+      </div>
 
-      <ul>
-      <% research_group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div class="seven wide column">
+        <div class="ui two column row segment">
+          <h3 class="ui teal header column" style="width: 100%">Integrantes</h3>
+
+          <div class="ui list">
+            <% @members = ResearchGroup.getUsers(@research_group.id)%>
+            <% @members.each do |member| %>
+            <div class="item">
+              <% user = User.find(member.id) %>
+              <%= image_tag(user.photo, alt: 'Image', class: 'ui avatar image') if user.photo? %>
+              <div class="ui label">
+                <a class="header" style="display: inline"><%= user.name %></a> <%# TODO: Enlace al perfil %>
+                <div class="description">
+                  <%= user.degree %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="field" style="width:100%">
+            <% @availableUsers = ResearchGroup.getAvailableUsers(@research_group.id)%>
+            <%= form.select(:user_id, @availableUsers.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecciona un participante'}, class: "ui search selection dropdown",style: "margin-bottom:15px; width:100%", multiple: "") %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <%= link_to 'Atrás', '/home', class:'ui button' %>
+      <%= form.submit "Guardar", :class => 'ui teal right floated button' %>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :research_group_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :research_group_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :administrator %>
-    <%= form.number_field :administrator, id: :research_group_administrator %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<script type="text/javascript">
+$('.ui.dropdown').dropdown();
+</script>

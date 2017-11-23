@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="image">
+    <%= image_tag(user.photo.url, alt: 'Avatar') %>
+  </div>
+  <div class="content">
+    <a class="header">
+      <%-if user.id == group.administrator_id%>
+      <a class="ui green right floated label">Líder de equipo</a>
+      <%else%>
+      <a class="ui person right horizontal right floated label">Participante</a>
+      <%end-%>
+      <%= user.name %>
+    </a>
+    <div class="meta">
+      <span class="date">Miembro desde el <%= format_time(user.created_at, :short, "N/A") %></span>
+    </div>
+  </div>
+  <div class="extra content">
+    <center>
+      <%=link_to 'Ver perfil', user_profile_path(user), class: 'ui button'%>
+    </center>
+  </div>
+</div>

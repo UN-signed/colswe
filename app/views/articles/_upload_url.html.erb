@@ -1,0 +1,11 @@
+<% @url = url %>
+<b>Url:</b> <%= @url %><br>
+<b>Fuente del artículo:</b>
+<!-- <%= article_url_source(url) %> -->
+
+<% if @url == 'hola' %>
+  <%= @url %>
+  La fuente es Hola
+<% else %>
+  No la reconocemos
+<% end %>
