@@ -80,7 +80,8 @@
                   <div class="item">
                     <i class="large mail middle aligned icon"></i>
                     <div class="content">
-                      <a class="header"><%=message.subject%></a>
+                      <!-- <a class="header"><%=message.subject%></a> -->
+                      <%= link_to message.subject, show_message_path, :remote => true %>
                     </div>
                   </div>
                   <%end%>
@@ -88,7 +89,7 @@
               </div>
               <div class="eight wide column">
                 <h3 class="ui teal header column" style="width: 100%">Mensaje</h3>
-                  <p>QUE DICEN LOS MENSAJES</p>                
+                  <p id="message-body">Elige un mensaje para ver aquí</p>
               </div>
             </div>
           <%end%>

@@ -6,7 +6,7 @@
 #  role              :string
 #  user_id           :integer
 #  project_id        :integer
-#  research_group_id :string
+#  research_group_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

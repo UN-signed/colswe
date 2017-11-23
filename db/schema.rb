@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118072137) do
+ActiveRecord::Schema.define(version: 20171123175812) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20171118072137) do
     t.string "role"
     t.integer "user_id"
     t.integer "project_id"
-    t.string "research_group_id"
+    t.integer "research_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20171118072137) do
   create_table "research_groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "administrator_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

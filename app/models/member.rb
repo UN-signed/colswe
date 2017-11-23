@@ -6,7 +6,7 @@
 #  role              :string
 #  user_id           :integer
 #  project_id        :integer
-#  research_group_id :string
+#  research_group_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -14,7 +14,9 @@
 class Member < ApplicationRecord
   belongs_to :user
   belongs_to :research_group
-  belongs_to :project
+  belongs_to :project, optional: true
+  validates :user_id, presence: true
+  validates :research_group_id, presence: true
 
   def self.vsTime(groupBy, project_id)
     if project_id
