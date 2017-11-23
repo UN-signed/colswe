@@ -63,15 +63,21 @@ class SubscribersController < ApplicationController
   end
 
   def add_subscriber
-    begin
-      @project = Project.searchById(params[:id])
-      @user = User.searchById(current_user.id)
-      @subscriber = Subscriber.create(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
-      NewSubscriberMailer.welcome_email(@user, @project).deliver_now
-      WeeklyReportSubscriberJob.set(wait_until: Time.now + 7.days).perform_later(@subscriber)
-    ensure
-      redirect_to project_path(@project)
-    end
+    @project = Project.searchById(params[:id])
+    @user = User.searchById(current_user.id)
+
+    @subscriber = Subscriber.new
+    @subscriber.name = @user.name
+    @subscriber.email = @user.email
+    @subscriber.project_id = params[:id]
+    @subscriber.user_id = current_user.id
+    @subscriber.save!
+    # @subscriber = Subscriber.new(:name => @user.name, :email => @user.email, :project_id => params[:id], :user_id => current_user.id)
+    p @subscriber
+    p "hola"
+    redirect_to project_path(@project)
+    NewSubscriberMailer.welcome_email(@user, @project).deliver_now
+    WeeklyReportSubscriberJob.set(wait_until: Time.now + 7.days).perform_later(@subscriber)
   end
 
   def delete_subscriber
