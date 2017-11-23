@@ -11,17 +11,20 @@
       </div>
     <% end %>
     <br>
-    <div class="ui grid" style="margin-bottom:50px;">
+    <div class="ui stackable grid" style="margin-bottom:50px;">
       <div class="nine wide column">
         <div class="ui row segment">
           <h3 class="ui teal header column" style="width: 100%">Datos Básicos</h3>
+          <h4 class="ui header">Administrador:
+            <a class="ui image label" href="<%=user_profile_path(current_user.id)%>">
+              <%= image_tag(current_user.photo.url)%>
+              <%= current_user.name %>
+            </a>
+          </h4><br>
           <h4 class="ui header">Nombre del grupo</h4>
           <%= form.text_field :name, autofocus: true, placeholder: 'Nombre del grupo' %>
-          <h4 class="ui header">Administrador: <%= current_user.name %></h4>
-          <div>
-            <h4 class="ui left floated header">Descripción</h4>
-            <%= form.text_area :description, autofocus: true, placeholder: 'Describe en un párrafo breve para que la gente sepa de lo que hace tu equipo', class: 'big text area' %>
-          </div>
+          <h4 class="ui header">Descripción</h4>
+          <%= form.text_area :description, autofocus: true, placeholder: 'Describe en un párrafo breve para que la gente sepa de lo que hace tu equipo', class: 'big text area' %>
         </div>
       </div>
 

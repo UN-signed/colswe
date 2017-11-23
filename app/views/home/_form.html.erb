@@ -1,15 +1,4 @@
 <%= form_with(model: contact, local: true, class: 'ui form') do |form| %>
-  <% if contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-      <ul>
-      <% contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.text_field :name, id: :contact_name, placeholder: 'Nombre y Apellidos' %>

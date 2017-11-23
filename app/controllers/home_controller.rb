@@ -26,4 +26,8 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+  def contact
+    # Aquí va lo que hace el boton "contacto" del home
+  end
 end

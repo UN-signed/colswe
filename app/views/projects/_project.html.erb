@@ -8,7 +8,7 @@
       Creado el <%= format_time(project.created_at, :short, "N/A") %></td>
     </div>
     <div class="description">
-      <%= project.summary %>
+      <%= short_description(project.summary) %>
     </div>
   </div>
 

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :home
   get "home/index"
-  
-  post '/contacts', to: 'contacts#create'
+
+  get '/contact', to: 'home#contact'
 	resources :subscribers
   resources :tags
   resources :research_areas

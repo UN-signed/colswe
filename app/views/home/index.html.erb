@@ -2,6 +2,7 @@
 <%=render "shared/dashboard"%>
 <% else %>
 <header class="masthead">
+  <div class="overlay"></div>
   <div class="header-content">
     <div class="header-content-inner"><br><br><br><br>
       <h1 class="ui inverted header">Avanza en tu investigación</h1>
@@ -15,7 +16,7 @@
         <i class="file icon" style="margin-right:10px!important;"></i>Publicar Artículo
       </a> -->
         <a class="ui teal huge home button" href="<%=new_user_registration_path%>"> Unirse a la Comunidad </a>
-        <%# TODO: Agregar la vista de contacto de nuevo %>
+        <a class="ui inverted huge button" href="/contact"> Contacto </a>
     </div>
   </div>
 </header>

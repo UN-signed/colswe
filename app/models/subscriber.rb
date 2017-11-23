@@ -13,10 +13,10 @@
 
 class Subscriber < ApplicationRecord
   belongs_to :project
-  
+
   validates :id, :email, uniqueness: true
-  validates :name, :mail, presence: true
-  
+  validates :name, presence: true
+
   def self.create(args)
     new(args)
   end

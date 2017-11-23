@@ -67,8 +67,8 @@
         </div>
 
         <div class="holder messages">
-          <h3 class="ui bottom line header">Mensajes de <%= @user.name%></h3>
           <% if @user.id == current_user.id %>
+          <h3 class="ui bottom line header">Mensajes de <%= @user.name%></h3>
             <% if @messages.length == 0 %>
               <p>No tienes mensajes aún</p>
             <%else%>
@@ -94,7 +94,7 @@
             </div>
           <%end%>
           <%else%>
-            <h3 class="ui bottom line header">Enviar mensaje a <%= @user.name%></h3><br><br>
+            <h3 class="ui bottom line header">Enviar mensaje a <%= @user.name%></h3>
             <%= render 'messages/form', message: @message %>
           <%end%>
         </div>

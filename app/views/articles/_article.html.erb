@@ -8,7 +8,7 @@
       Subido el <%= format_time(article.created_at, :short, "N/A") %></td>
     </div>
     <div class="description">
-      <%= article.description %>
+      <%= short_description(article.description) %>
     </div>
   </div>
 

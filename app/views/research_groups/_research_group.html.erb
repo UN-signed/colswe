@@ -1,4 +1,4 @@
-<div class="ui link card">
+<div class="ui card">
   <div class="content">
     <div class="header">
       <a class="ui group horizontal right floated label">Grupo</a>
@@ -9,7 +9,7 @@
       <%= format_time(research_group.created_at, :short, "N/A") %></td>
     </div>
     <div class="description">
-      <%= research_group.description %>
+      <%= short_description(research_group.description) %>
     </div>
   </div>
 

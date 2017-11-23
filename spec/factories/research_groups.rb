@@ -12,7 +12,7 @@
 
 require 'faker'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :research_group do |f|
     f.name {Faker::Name.first_name}
     f.description {Faker::ChuckNorris.fact }

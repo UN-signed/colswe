@@ -14,7 +14,7 @@
 
 require 'faker'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :project do |f|
     f.name {Faker::Name.first_name}
     f.state {Faker::Boolean.boolean}
