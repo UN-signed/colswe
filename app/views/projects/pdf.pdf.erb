@@ -1,12 +1,109 @@
-<!DOCTYPE html> 
-<HTML>  
-<HEAD>  
-<TITLE></TITLE>  
-</HEAD>  
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+	<%= wicked_pdf_stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.css" -%>
+	<%= wicked_pdf_javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.js" %>
+	<%= wicked_pdf_javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.0/d3.min.js" %>
+	<%= wicked_pdf_javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js" %>
 
-<BODY>  
+<BODY>
 	<h1><%=@project.name%></h1>
-
 	<p><%=@project.summary%></p>
-</BODY>  
-</HTML>  
+	<br>
+	<% @members.each do |m| %>
+		<% @user = User.find(m.user_id) %>
+			<a class="header">
+	      <%= @user.name %> - <%= @user.degree %><br>
+	    </a>
+	<% end %>
+	<canvas id="myChart" width="400" height="400"></canvas>
+	<script>
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+					labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+					datasets: [{
+							label: '# of Votes',
+							data: [12, 19, 3, 5, 2, 3],
+							backgroundColor: [
+									'rgba(255, 99, 132, 0.2)',
+									'rgba(54, 162, 235, 0.2)',
+									'rgba(255, 206, 86, 0.2)',
+									'rgba(75, 192, 192, 0.2)',
+									'rgba(153, 102, 255, 0.2)',
+									'rgba(255, 159, 64, 0.2)'
+							],
+							borderColor: [
+									'rgba(255,99,132,1)',
+									'rgba(54, 162, 235, 1)',
+									'rgba(255, 206, 86, 1)',
+									'rgba(75, 192, 192, 1)',
+									'rgba(153, 102, 255, 1)',
+									'rgba(255, 159, 64, 1)'
+							],
+							borderWidth: 1
+					}]
+			},
+			options: {
+					scales: {
+							yAxes: [{
+									ticks: {
+											beginAtZero:true
+									}
+							}]
+					}
+			}
+	});
+	</script>
+	<!-- <div class="ui segment" style="padding:30px;">
+    <h2 class="ui header">Estadisticas de este proyecto</h2>
+    <br>
+    <div class="ui grid">
+      <div class="ten wide column">
+        <h3 class="ui header">¿Que tantas personas se han unido al proyecto?</h3>
+        <div id="barChart">    </div>
+      </div>
+      <div class="six wide column">
+        <h3 class="ui header">¿Que han estudiado las personas de este proyecto?</h3>
+        <div id="chart"></div>
+      </div>
+    </div>
+		<p>DATA0: <%= raw @data[0].keys.unshift('x').to_s %></p>
+    <script type="text/javascript">
+    c3.generate({
+      bindto: '#barChart',
+      data: {
+          x: 'x',
+          columns: [
+              <%= raw @data[0].keys.unshift('x').to_s %>,
+              <%= raw @data[0].values.unshift('participantes').to_s %>
+          ],
+          type: 'spline'
+      },
+      axis: {
+          x: {
+              type: 'timeseries',
+              tick: {
+                  format: '%d-%m-%Y'
+              }
+          }
+      },
+      legend: {
+        show: false
+      }
+    });
+    c3.generate({
+      bindto: '#chart',
+      data: {
+
+        json: JSON.parse('<%= raw @data[1].to_json %>'),
+        type : 'pie'
+      }
+    });
+    </script>
+  </div> -->
+</BODY>
+</HTML>

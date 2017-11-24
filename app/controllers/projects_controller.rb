@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     # if current_user
     #   @projects = Project.load_projects(research_group_id: params[:research_group_id], page: params[:page])
     # else
-      
+
   end
 
   def show
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @data[1] = Project.getMembersDegree(@project.id)
     respond_to do |format|
       format.html
-      format.pdf{render template: "projects/pdf", pdf: "pdf"}
+      format.pdf{render template: "projects/pdf", pdf: "pdf", javascript_delay: 5000}
     end
   end
 
