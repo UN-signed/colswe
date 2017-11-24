@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     respond_to do |format|
       if @message.save
-        MessageMailer.new_message(@message).deliver_now
+        # MessageMailer.new_message(@message).deliver_now
         format.html { redirect_to request.referrer, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
